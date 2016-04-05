@@ -16,7 +16,9 @@ public class Order {
     
     private Table table;
     private Dish dish;
+    private int dishAmount;
     private Drink drink;
+    private int drinkAmount;
     
     public Order(Table table, Dish dish){
         createOrder(table, dish, null);
@@ -38,11 +40,11 @@ public class Order {
         this.table = table;
         this.drink = drink;
         this.dish = dish;
-        
+    }
+    
+    public void writeToDatabase(){
         OrderDAO dao = new OrderDAO();
-        
         dao.writeToDB(this);
-        
     }
     
     public Table getTable()
@@ -63,6 +65,22 @@ public class Order {
     public Date getDate()
     {
         return orderDate;
+    }
+    
+    public int getDishAmount(){
+        return dishAmount;
+    }
+    
+    public void setDishAmount(int amount){
+        this.dishAmount = amount;
+    }
+    
+    public void setDrinkAmount(int amount){
+        this.drinkAmount = amount;
+    }
+    
+    public int getDrinkAmount(){
+        return dishAmount;
     }
     
     public void remove()
