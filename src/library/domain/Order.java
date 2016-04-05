@@ -23,6 +23,18 @@ public class Order {
         this.drink = null;
     }
     
+    public Order(Table table, Dish dish, Drink drink){
+        this.table = table;
+        this.dish = dish;
+        this.drink = drink;
+    }
+    
+    public Order(Table table, Drink drink, Dish dish){
+        this.table = table;
+        this.dish = dish;
+        this.drink = drink;
+    }
+    
     public Order(Table table, Drink drink){
         this.table = table;
         this.drink = drink;
