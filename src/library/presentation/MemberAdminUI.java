@@ -90,18 +90,15 @@ public class MemberAdminUI extends javax.swing.JFrame {
         // Event handlers
         searchButton.addActionListener(new ActionListener()
         {
-            public void actionPerformed(ActionEvent e)
-            {
-                int membershipNr = Integer.parseInt(textFieldMembershipNr.getText());
-                doFindMember(membershipNr);
-            }
+            public void actionPerformed(ActionEvent e){}
+              
         });      
  
         removeMemberButton.addActionListener(new ActionListener()
         {
             public void actionPerformed(ActionEvent e)
             {
-                doRemoveMember();
+             
             }
         });
         
@@ -140,76 +137,6 @@ public class MemberAdminUI extends javax.swing.JFrame {
         memberOperationsPanel.add(removeMemberButton);
         
         return memberOperationsPanel;
-    }
-    
-    private void doFindMember(int membershipNr)
-    {
-        currentMember = manager.findMember(membershipNr);
-        String memberInfo = "Lid niet gevonden";
-        boolean memberCanBeRemoved = false;
-        
-        if(currentMember != null)
-        {
-            String boekenGeleend = "nee";
-            if(currentMember.hasLoans())
-            {
-                boekenGeleend = "ja";
-            }
-            
-            String heeftReserveringen = "nee";
-            if(currentMember.hasReservations())
-            {
-                heeftReserveringen = "ja";
-            }
-            
-            memberInfo =
-                    currentMember.getFirstname() + " " + currentMember.getLastname() +
-                    "\n" +
-                    currentMember.getStreet() + " " + currentMember.getHouseNumber() +
-                    "\n" +
-                    currentMember.getCity() +
-                    "\n" +
-                    "\n" +
-                    "Boete: " + currentMember.getFine() +
-                    "\n" +
-                    "\n" +
-                    "Heeft boeken geleend: " + boekenGeleend +
-                    "\n" +
-                    "Heeft reserveringen: " + heeftReserveringen;
-            
-            memberCanBeRemoved = currentMember.isRemovable();
-        }
-        // else memberInfo has already proper value. The button that removes a
-        // member from the system needs to be disabled. No work needed for that
-        // in the else since the value of memberCanBeRemoved is correct.
-        
-        removeMemberButton.setEnabled(memberCanBeRemoved);
-        textAreaMemberInfo.setText(memberInfo);
-    }
-    
-    private void doRemoveMember()
-    {
-        if(currentMember != null)
-        {
-            String message = "";
-            boolean memberRemoved = manager.removeMember(currentMember);
-
-            if(memberRemoved)
-            {
-                message = "Lid is succesvol uitgeschreven";
-            }
-            else
-            {
-                message = "Er is een fout opgetreden. Het lid is niet uitgeschreven";
-            }
-
-            textAreaMemberInfo.setText(message);
-
-            // Reset the currentMember field, since the member it reffered
-            // to has been removed from the system.
-            currentMember = null;
-            removeMemberButton.setEnabled(false);
-        }
     }
             
     /**
