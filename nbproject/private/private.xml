@@ -4,7 +4,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Gebruiker/Documents/Hartige-Hap/src/library/datastorage/DatabaseConnection.java</file>
+            <file>file:/C:/Users/Gebruiker/Documents/Hartige-Hap/src/hartigehap/domain/Order.java</file>
+            <file>file:/C:/Users/Gebruiker/Documents/Hartige-Hap/src/hartigehap/main/Main.java</file>
+            <file>file:/C:/Users/Gebruiker/Documents/Hartige-Hap/src/hartigehap/datastorage/OrderDAO.java</file>
+            <file>file:/C:/Users/Gebruiker/Documents/Hartige-Hap/src/hartigehap/domain/Dish.java</file>
+            <file>file:/C:/Users/Gebruiker/Documents/Hartige-Hap/src/hartigehap/businesslogic/OrderManager.java</file>
+            <file>file:/C:/Users/Gebruiker/Documents/Hartige-Hap/src/hartigehap/domain/Drink.java</file>
         </group>
     </open-files>
 </project-private>
