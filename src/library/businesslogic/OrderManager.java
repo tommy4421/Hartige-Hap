@@ -24,6 +24,8 @@ public class OrderManager {
         tables = new HashMap();
         
         fillTestData();
+        
+        placeOrder(tables.get(1), new Dish(1, "Ei met spek", 10));
     }
 
     private void fillTestData()
@@ -36,7 +38,8 @@ public class OrderManager {
         tables.put(6, new Table(6));
     }
     
-    public Order placeOrder(Table customer, Dish dish){
-        return new Order(customer, dish);
+    public Order placeOrder(Table table, Dish dish){
+        System.out.println("Tafel " + table.getTableNumber() + " : " + dish.getDishTitle());
+        return new Order(table, dish);
     } 
 }
