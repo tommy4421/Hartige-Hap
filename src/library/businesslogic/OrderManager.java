@@ -26,10 +26,11 @@ public class OrderManager {
         
         fillTestData();
         
+        /* Voorbeeld van een order
         Order order = placeOrder(tables.get(1), new Dish(1, "Ei met spek", 10), new Drink(1, "Cola", 2));
         order.setDishAmount(1);
         order.setDrinkAmount(1);
-        order.writeToDatabase();
+        order.writeToDatabase();*/
     }
 
     private void fillTestData()
