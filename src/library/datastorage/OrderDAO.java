@@ -34,7 +34,7 @@ public class OrderDAO {
      * null is returned.
      */
 
-    public Order findMember(int membershipNumber)
+    public Order getOrder(int membershipNumber)
     {
         Order order = null;
         
@@ -44,7 +44,7 @@ public class OrderDAO {
         {
             // If a connection was successfully setup, execute the SELECT statement.
             ResultSet resultset = connection.executeSQLSelectStatement(
-                "SELECT * FROM member WHERE MembershipNumber = " + membershipNumber + ";");
+                "SELECT * FROM `order` WHERE `OrderNumber` = " + membershipNumber + ";");
 
             if(resultset != null)
             {

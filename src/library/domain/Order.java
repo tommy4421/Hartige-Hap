@@ -41,7 +41,7 @@ public class Order {
         this.dish = null;
     }
     
-    public Table getCustomer()
+    public Table getTable()
     {
         return table;
     }
