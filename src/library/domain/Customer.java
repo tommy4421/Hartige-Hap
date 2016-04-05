@@ -12,35 +12,20 @@ import java.util.ArrayList;
  */
 
 public class Customer {
-    
-    private int membershipNumber;
+
     private String firstname;
     private String lastname;
-    private String street;
-    private String houseNumber;
-    private String city;
-    private String phoneNumber;
-    private String emailaddress;
-    private double fine;
     
-    private ArrayList<Loan> loans;
-    private ArrayList<Order> reservations;
+    private ArrayList<Invoice> invoices;
+    private ArrayList<Order> orders;
             
-    public Customer(int membershipNumber, String firstname, String lastname)
+    public Customer(String firstname, String lastname)
     {
-        this.membershipNumber = membershipNumber;
         this.firstname = firstname;
         this.lastname = lastname;
         
-        street = "";
-        houseNumber = "";
-        city = "";
-        phoneNumber = "";
-        emailaddress = "";
-        fine = 0.00;
-        
-        loans = new ArrayList();
-        reservations = new ArrayList();
+        invoices = new ArrayList();
+        orders = new ArrayList();
     }
     
     public String getLastname()
@@ -53,66 +38,6 @@ public class Customer {
         this.lastname = lastname;
     }
 
-    public String getEmailaddress()
-    {
-        return emailaddress;
-    }
-
-    public void setEmailaddress(String emailaddress)
-    {
-        this.emailaddress = emailaddress;
-    }
-
-    public String getHouseNumber()
-    {
-        return houseNumber;
-    }
-
-    public void setHouseNumber(String houseNumber)
-    {
-        this.houseNumber = houseNumber;
-    }
-
-    public int getMembershipNumber()
-    {
-        return membershipNumber;
-    }
-
-    public void setMembershipNumber(int membershipNumber)
-    {
-        this.membershipNumber = membershipNumber;
-    }
-
-    public String getCity() 
-    {
-        return city;
-    }
-
-    public void setCity(String city)
-    {
-        this.city = city;
-    }
-
-    public String getStreet()
-    {
-        return street;
-    }
-
-    public void setStreet(String street)
-    {
-        this.street = street;
-    }
-
-    public String getPhoneNumber()
-    {
-        return phoneNumber;
-    }
-
-    public void setPhoneNumber(String phoneNumber)
-    {
-        this.phoneNumber = phoneNumber;
-    }
-
     public String getFirstname()
     {
         return firstname;
@@ -123,39 +48,29 @@ public class Customer {
         this.firstname = firstname;
     }
     
-    public double getFine()
+    public void setLoans(Invoice[] invoices)
     {
-        return fine;
-    }
-    
-    public void setFine(double fine)
-    {
-        this.fine = fine;
-    }
-    
-    public void setLoans(Loan[] loans)
-    {
-        removeAllLoans();
+        removeAllInvoices();
         
-        for(Loan theLoan: loans)
+        for(Invoice theInvoice: invoices)
         {
-            addLoan(theLoan);
+            addInvoice(theInvoice);
         }
     }
     
-    public void addLoan(Loan newLoan)
+    public void addInvoice(Invoice invoice)
     {
-        loans.add(newLoan);
+        invoices.add(invoice);
     }
     
-    public void removeAllLoans()
+    public void removeAllInvoices()
     {
-        loans.clear();
+        invoices.clear();
     }
     
-    public void addReservation(Order newReservation)
+    public void addOrder(Order newOrder)
     {
-        reservations.add(newReservation);
+        orders.add(newOrder);
     }
     
     public boolean remove()
@@ -165,16 +80,16 @@ public class Customer {
         // meaningfull value.
         boolean result = true;
         
-        removeAllReservations();
+        removeAllOrders();
         
         return result;
     }
     
-    private void removeAllReservations()
+    private void removeAllOrders()
     {
-        while(!reservations.isEmpty())
+        while(!orders.isEmpty())
         {
-            Order reservation = reservations.get(0);
+            Order reservation = orders.get(0);
             reservation.remove();
         }
         
@@ -214,29 +129,24 @@ public class Customer {
         // loop. The reservations field on the other hand is.
     }
     
-    public boolean hasLoans()
+    public boolean hasInvoices()
     {
-        return !loans.isEmpty();
+        return !invoices.isEmpty();
     }
     
-    public boolean hasFine()
+    public boolean hasOrders()
     {
-        return fine > 0;
-    }
-    
-    public boolean hasReservations()
-    {
-        return !reservations.isEmpty();
+        return !orders.isEmpty();
     }
     
     public boolean isRemovable()
     {
-        return !hasLoans() && !hasFine();
+        return !hasInvoices() && !hasOrders();
     }
     
     public void removeReservation(Order reservation)
     {
-        reservations.remove(reservation);
+        orders.remove(reservation);
     }
     
     @Override
@@ -257,7 +167,7 @@ public class Customer {
                 
                 // Boek wordt geidentificeerd door ISBN, dus alleen hierop
                 // controlleren is voldoend.
-                equal = this.membershipNumber == l.membershipNumber;
+                equal = this.firstname == l.firstname && this.lastname == l.lastname;
             }
         }
         
@@ -271,6 +181,6 @@ public class Customer {
         // in Effective Java, 2nd edition, Joshua Bloch.
         
         // membershipNumber is uniek, dus voldoende als hashcode.
-        return membershipNumber;
+        return this.hashCode();
     }
 }

@@ -7,7 +7,7 @@ package library.businesslogic;
 import java.util.ArrayList;
 import java.util.HashMap;
 import library.datastorage.LoanDAO;
-import library.datastorage.MemberDAO;
+import library.datastorage.CustomerDAO;
 import library.domain.Loan;
 import library.domain.Customer;
 import library.domain.Dish;
@@ -50,7 +50,7 @@ public class OrderManager {
         {
             // Member may not have been loaded from the database yet. Try to
             // do so.
-            MemberDAO memberDAO = new MemberDAO();
+            CustomerDAO memberDAO = new CustomerDAO();
             member = memberDAO.findMember(membershipNumber);
             
             if(member != null)
@@ -91,7 +91,7 @@ public class OrderManager {
             if(result)
             {
                 // Let the member remove itself from the database.
-                MemberDAO memberDAO = new MemberDAO();
+                CustomerDAO memberDAO = new CustomerDAO();
                 result = memberDAO.removeMember(member);
                 
                 // In case something goes wrong here, we need to roll back.

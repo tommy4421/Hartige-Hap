@@ -17,7 +17,7 @@ public class Dish {
     private String author;
     private int edition;
     
-    private ArrayList<Copy> copies;
+    private ArrayList<Invoice> copies;
     private ArrayList<Order> reservations;
     
     public Dish(int ISBN, String title, String author, int edition)

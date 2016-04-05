@@ -8,16 +8,15 @@ import library.domain.Customer;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import library.domain.Loan;
 import library.domain.Order;
 
 /**
  *
  * @author ppthgast
  */
-public class MemberDAO {
+public class CustomerDAO {
     
-    public MemberDAO()
+    public CustomerDAO()
     {
         // Nothing to be initialized. This is a stateless class. Constructor
         // has been added to explicitely make this clear.
@@ -60,14 +59,8 @@ public class MemberDAO {
                         String lastNameFromDb = resultset.getString("LastName");
 
                         member = new Customer(
-                            membershipNumberFromDb,
                             firstNameFromDb,
                             lastNameFromDb);
-                        
-                        member.setStreet(resultset.getString("Street"));
-                        member.setHouseNumber(resultset.getString("HouseNumber"));
-                        member.setCity(resultset.getString("City"));
-                        member.setFine(resultset.getDouble("Fine"));
                     }
                 }
                 catch(SQLException e)
