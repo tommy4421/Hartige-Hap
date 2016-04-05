@@ -123,8 +123,13 @@ public class OrderDAO {
             {
                 // Execute the delete statement using the membership number to
                 // identify the member row.
-                result = connection.executeSQLDeleteStatement("INSERT INTO `order` (DrinkNumber,DishNumber,TableNumber)\n" +
-"VALUES (" + order.getDrink().getDrinkNumber() + "," + order.getDish().getDishNumber() + "," + order.getTable().getTableNumber() + ");");
+                result = connection.executeSQLDeleteStatement("INSERT INTO `order` (DrinkNumber,DishNumber,TableNumber,DishAmount,DrinkAmount)\n" +
+"VALUES (" + order.getDrink().getDrinkNumber() + "," + 
+                        order.getDish().getDishNumber() + "," + 
+                        order.getTable().getTableNumber() + "," + 
+                        order.getDishAmount() + "," + 
+                        order.getDrinkAmount() +
+                        ");");
                     
                 // Finished with the connection, so close it.
                 connection.closeConnection();
