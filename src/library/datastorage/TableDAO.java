@@ -14,9 +14,9 @@ import library.domain.Order;
  *
  * @author ppthgast
  */
-public class CustomerDAO {
+public class TableDAO {
     
-    public CustomerDAO()
+    public TableDAO()
     {
         // Nothing to be initialized. This is a stateless class. Constructor
         // has been added to explicitely make this clear.
@@ -36,7 +36,7 @@ public class CustomerDAO {
      */
     public Table findMember(int membershipNumber)
     {
-        Table member = null;
+        Table table = null;
         
         // First open a database connnection
         DatabaseConnection connection = new DatabaseConnection();
@@ -54,19 +54,18 @@ public class CustomerDAO {
                     // resultset does contain data, we need its first entry.
                     if(resultset.next())
                     {
-                        int membershipNumberFromDb = resultset.getInt("MembershipNumber");
-                        String firstNameFromDb = resultset.getString("FirstName");
-                        String lastNameFromDb = resultset.getString("LastName");
+                        int tableNumberFromDb = resultset.getInt("TableNumber");
+                        
 
-                        member = new Table(
-                            firstNameFromDb,
-                            lastNameFromDb);
+                        table = new Table(
+                            tableNumberFromDb);
+                           
                     }
                 }
                 catch(SQLException e)
                 {
                     System.out.println(e);
-                    member = null;
+                    table = null;
                 }
             }
             // else an error occurred leave 'member' to null.
@@ -76,7 +75,7 @@ public class CustomerDAO {
             connection.closeConnection();
         }
         
-        return member;
+        return table;
     }
 
     /**
@@ -101,7 +100,7 @@ public class CustomerDAO {
                 // Execute the delete statement using the membership number to
                 // identify the member row.
                 result = connection.executeSQLDeleteStatement(
-                    "DELETE FROM member WHERE MembershipNumber = " + memberToBeRemoved.getMembershipNumber() + ";");
+                    "DELETE FROM member WHERE MembershipNumber = " + memberToBeRemoved.getTableNumber() + ";");
                 
                 // Finished with the connection, so close it.
                 connection.closeConnection();

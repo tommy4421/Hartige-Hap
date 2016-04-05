@@ -6,7 +6,7 @@ package library.businesslogic;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import library.datastorage.CustomerDAO;
+import library.datastorage.TableDAO;
 import library.domain.Table;
 import library.domain.Dish;
 import library.domain.Order;
