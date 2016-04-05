@@ -380,15 +380,16 @@ public class GUI extends javax.swing.JFrame {
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         CardLayout card = (CardLayout)jPanel1.getLayout();
         card.show(jPanel1, "Paneel4");
+        Order order = manager.placeOrder(new Table(1), new Dish(1, "Ei met spek", 10), new Drink(1, "Cola", 2));
+        order.setDishAmount(gerecht1aantal);
+        order.setDrinkAmount(gerecht2aantal);
+        order.writeToDatabase();
         gerecht1aantal = 0;
         gerecht2aantal = 0;
         jTextField3.setText(gerecht1aantal + "");
         jTextField2.setText(gerecht2aantal + "");
         
-        Order order = manager.placeOrder(new Table(1), new Dish(1, "Ei met spek", 10), new Drink(1, "Cola", 2));
-        order.setDishAmount(gerecht1aantal);
-        order.setDrinkAmount(gerecht2aantal);
-        order.writeToDatabase();
+        
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -398,12 +399,12 @@ public class GUI extends javax.swing.JFrame {
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
         gerecht2aantal++;
-        jTextField2.setText(gerecht2aantal +"");
+        jTextField2.setText(gerecht2aantal + "");
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         gerecht2aantal--;
-        jTextField2.setText(gerecht2aantal +"");
+        jTextField2.setText(gerecht2aantal + "");
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
