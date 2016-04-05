@@ -34,64 +34,88 @@ public class OrderDAO {
      * null is returned.
      */
 
-    public Order getOrder(int membershipNumber)
-    {
-        Order order = null;
-        
-        // First open a database connnection
-        DatabaseConnection connection = new DatabaseConnection();
-        if(connection.openConnection())
-        {
-            // If a connection was successfully setup, execute the SELECT statement.
-            ResultSet resultset = connection.executeSQLSelectStatement(
-                "SELECT * FROM `order` WHERE `OrderNumber` = " + membershipNumber + ";");
+//    public Order getOrder(int membershipNumber)
+//    {
+//        Order order = null;
+//        
+//        // First open a database connnection
+//        DatabaseConnection connection = new DatabaseConnection();
+//        if(connection.openConnection())
+//        {
+//            // If a connection was successfully setup, execute the SELECT statement.
+//            ResultSet resultset = connection.executeSQLSelectStatement(
+//                "SELECT * FROM `order` WHERE `OrderNumber` = " + membershipNumber + ";");
+//
+//            if(resultset != null)
+//            {
+//                try
+//                {
+//                    // The membershipnumber for a member is unique, so in case the
+//                    // resultset does contain data, we need its first entry.
+//                    if(resultset.next())
+//                    {
+//                        int tableNumberFromDb = resultset.getInt("TableNumber");
+//                        
+//
+//                        order = new Order(
+//                            tableNumberFromDb);
+//                           
+//                    }
+//                }
+//                catch(SQLException e)
+//                {
+//                    System.out.println(e);
+//                    table = null;
+//                }
+//            }
+//            // else an error occurred leave 'member' to null.
+//            
+//            // We had a database connection opened. Since we're finished,
+//            // we need to close it.
+//            connection.closeConnection();
+//        }
+//        
+//        return Order;
+//    }
+//
+//    /**
+//     * Removes the given member from the database.
+//     * 
+//     * @param memberToBeRemoved an object of the Member class representing the
+//     * member to be removed.
+//     * 
+//     * @return true if execution of the SQL-statement was successful, false
+//     * otherwise.
+//     */
+//    public boolean removeMember(Table memberToBeRemoved)
+//    {
+//        boolean result = false;
+//        
+//        if(memberToBeRemoved != null)
+//        {
+//            // First open the database connection.
+//            DatabaseConnection connection = new DatabaseConnection();
+//            if(connection.openConnection())
+//            {
+//                // Execute the delete statement using the membership number to
+//                // identify the member row.
+//                result = connection.executeSQLDeleteStatement(
+//                    "DELETE FROM member WHERE MembershipNumber = " + memberToBeRemoved.getTableNumber() + ";");
+//                
+//                // Finished with the connection, so close it.
+//                connection.closeConnection();
+//            }
+//            // else an error occurred leave 'member' to null.
+//        }
+//        
+//        return result;
+//    }
 
-            if(resultset != null)
-            {
-                try
-                {
-                    // The membershipnumber for a member is unique, so in case the
-                    // resultset does contain data, we need its first entry.
-                    if(resultset.next())
-                    {
-                        int tableNumberFromDb = resultset.getInt("TableNumber");
-                        
+    public void writeToDB(Order order) {
 
-                        order = new Order(
-                            tableNumberFromDb);
-                           
-                    }
-                }
-                catch(SQLException e)
-                {
-                    System.out.println(e);
-                    table = null;
-                }
-            }
-            // else an error occurred leave 'member' to null.
-            
-            // We had a database connection opened. Since we're finished,
-            // we need to close it.
-            connection.closeConnection();
-        }
+        ResultSet result = null;
         
-        return Order;
-    }
-
-    /**
-     * Removes the given member from the database.
-     * 
-     * @param memberToBeRemoved an object of the Member class representing the
-     * member to be removed.
-     * 
-     * @return true if execution of the SQL-statement was successful, false
-     * otherwise.
-     */
-    public boolean removeMember(Table memberToBeRemoved)
-    {
-        boolean result = false;
-        
-        if(memberToBeRemoved != null)
+        if(order != null)
         {
             // First open the database connection.
             DatabaseConnection connection = new DatabaseConnection();
@@ -99,15 +123,14 @@ public class OrderDAO {
             {
                 // Execute the delete statement using the membership number to
                 // identify the member row.
-                result = connection.executeSQLDeleteStatement(
-                    "DELETE FROM member WHERE MembershipNumber = " + memberToBeRemoved.getTableNumber() + ";");
-                
+                result = connection.executeSQLSelectStatement("INSERT INTO `order` (DrinkNumber,DishNumber,TableNumber)\n" +
+"VALUES (" + order.getDrink().getDrinkNumber() + "," + order.getDish().getDishNumber() + "," + order.getTable().getTableNumber() + ";");
+                    
                 // Finished with the connection, so close it.
                 connection.closeConnection();
             }
             // else an error occurred leave 'member' to null.
         }
         
-        return result;
     }
 }

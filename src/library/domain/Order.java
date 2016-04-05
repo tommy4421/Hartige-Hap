@@ -5,6 +5,7 @@
 package library.domain;
 
 import java.util.Date;
+import library.datastorage.OrderDAO;
 
 /**
  *
@@ -37,8 +38,11 @@ public class Order {
         this.table = table;
         this.drink = drink;
         this.dish = dish;
-        //Hier je database aanmaken
-        //new OrderDAO(); enzo
+        
+        OrderDAO dao = new OrderDAO();
+        
+        dao.writeToDB(this);
+        
     }
     
     public Table getTable()
@@ -49,6 +53,11 @@ public class Order {
     public Dish getDish()
     {
         return dish;
+    }
+    
+    public Drink getDrink()
+    {
+        return drink;
     }
     
     public Date getDate()

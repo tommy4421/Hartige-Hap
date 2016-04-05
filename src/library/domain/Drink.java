@@ -23,12 +23,12 @@ public class Drink {
         this.price = price;
     }
 
-    public int getDishNumber()
+    public int getDrinkNumber()
     {
         return drinkNumber;
     }
 
-    public String getDishTitle()
+    public String getDrinkTitle()
     {
         return drinkTitle;
     }
