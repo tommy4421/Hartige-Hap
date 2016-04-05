@@ -9,6 +9,7 @@ import java.util.HashMap;
 import library.datastorage.TableDAO;
 import library.domain.Table;
 import library.domain.Dish;
+import library.domain.Drink;
 import library.domain.Order;
 
 /**
@@ -25,7 +26,7 @@ public class OrderManager {
         
         fillTestData();
         
-        placeOrder(tables.get(1), new Dish(1, "Ei met spek", 10));
+        placeOrder(tables.get(1), new Dish(1, "Ei met spek", 10), new Drink(1, "Cola", 2));
     }
 
     private void fillTestData()
@@ -38,8 +39,8 @@ public class OrderManager {
         tables.put(6, new Table(6));
     }
     
-    public Order placeOrder(Table table, Dish dish){
+    public Order placeOrder(Table table, Dish dish, Drink drink){
         System.out.println("Tafel " + table.getTableNumber() + " : " + dish.getDishTitle());
-        return new Order(table, dish);
+        return new Order(table, dish, drink);
     } 
 }
