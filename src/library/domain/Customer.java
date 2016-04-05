@@ -24,7 +24,7 @@ public class Customer {
     private double fine;
     
     private ArrayList<Loan> loans;
-    private ArrayList<Reservation> reservations;
+    private ArrayList<Order> reservations;
             
     public Customer(int membershipNumber, String firstname, String lastname)
     {
@@ -153,7 +153,7 @@ public class Customer {
         loans.clear();
     }
     
-    public void addReservation(Reservation newReservation)
+    public void addReservation(Order newReservation)
     {
         reservations.add(newReservation);
     }
@@ -174,7 +174,7 @@ public class Customer {
     {
         while(!reservations.isEmpty())
         {
-            Reservation reservation = reservations.get(0);
+            Order reservation = reservations.get(0);
             reservation.remove();
         }
         
@@ -234,7 +234,7 @@ public class Customer {
         return !hasLoans() && !hasFine();
     }
     
-    public void removeReservation(Reservation reservation)
+    public void removeReservation(Order reservation)
     {
         reservations.remove(reservation);
     }

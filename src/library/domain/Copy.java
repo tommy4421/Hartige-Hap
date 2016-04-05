@@ -16,9 +16,9 @@ public class Copy {
     // null indien exmplaar niet uitgeleend.
     private Loan loan;
     
-    private Book book;
+    private Dish book;
     
-    public Copy(int copyID, int lendingPeriod, Book book)
+    public Copy(int copyID, int lendingPeriod, Dish book)
     {
         this.copyID = copyID;
         this.lendingPeriod = lendingPeriod;
@@ -37,7 +37,7 @@ public class Copy {
         return lendingPeriod;
     }
     
-    public Book getBook()
+    public Dish getBook()
     {
         return book;
     }

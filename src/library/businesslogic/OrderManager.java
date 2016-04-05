@@ -8,10 +8,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import library.datastorage.LoanDAO;
 import library.datastorage.MemberDAO;
-import library.datastorage.ReservationDAO;
 import library.domain.Loan;
 import library.domain.Customer;
-import library.domain.Reservation;
+import library.domain.Dish;
+import library.domain.Order;
 
 /**
  *
@@ -38,6 +38,10 @@ public class OrderManager {
         members.put(1006, new Customer(1006, "Marin", "van Gastel"));
     }
     
+    public Order placeOrder(Customer customer, Dish dish){
+        return new Order(customer, dish);
+    }
+    
     public Customer findMember(int membershipNumber)
     {
         Customer member = members.get(membershipNumber);
@@ -58,15 +62,6 @@ public class OrderManager {
                 for(Loan loan: loans)
                 {
                     member.addLoan(loan);
-                }
-                
-                // And read the reserverations from the database.
-                ReservationDAO reservationDAO = new ReservationDAO();
-                ArrayList<Reservation> reservations = reservationDAO.findReservations(member);
-
-                for(Reservation reservation: reservations)
-                {
-                    member.addReservation(reservation);
                 }
                 
                 // Cache the member that has been read from the database, to

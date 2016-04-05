@@ -10,7 +10,7 @@ import java.util.ArrayList;
  *
  * @author ppthgast
  */
-public class Book {
+public class Dish {
     
     private int ISBN;
     private String title;
@@ -18,9 +18,9 @@ public class Book {
     private int edition;
     
     private ArrayList<Copy> copies;
-    private ArrayList<Reservation> reservations;
+    private ArrayList<Order> reservations;
     
-    public Book(int ISBN, String title, String author, int edition)
+    public Dish(int ISBN, String title, String author, int edition)
     {
         this.ISBN = ISBN;
         this.title = title;
@@ -51,7 +51,7 @@ public class Book {
         return title;
     }
     
-    public void removeReservation(Reservation reservation)
+    public void removeReservation(Order reservation)
     {
         reservations.remove(reservation);
     }
@@ -68,9 +68,9 @@ public class Book {
         }
         else
         {
-            if(o instanceof Book)
+            if(o instanceof Dish)
             {
-                Book b = (Book)o;
+                Dish b = (Dish)o;
                 
                 // Book wordt geidentificeerd door ISBN, dus alleen hierop
                 // controlleren is voldoend.

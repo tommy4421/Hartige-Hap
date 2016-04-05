@@ -10,32 +10,30 @@ import java.util.Date;
  *
  * @author ppthgast
  */
-public class Reservation {
-    private Date reservationDate;
+public class Order {
+    private Date orderDate;
     
-    private Customer member;
-    private Book book;
+    private Customer customer;
+    private Dish dish;
     
-    public Reservation(Date reservationDate, Customer member, Book book)
-    {
-        this.reservationDate = reservationDate;
-        this.member = member;
-        this.book = book;
+    public Order(Customer customer, Dish dish){
+        this.customer = customer;
+        this.dish = dish;
     }
     
-    public Customer getMember()
+    public Customer getCustomer()
     {
-        return member;
+        return customer;
     }
     
-    public Book getBook()
+    public Dish getDish()
     {
-        return book;
+        return dish;
     }
     
-    public Date getReservationDate()
+    public Date getDate()
     {
-        return reservationDate;
+        return orderDate;
     }
     
     public void remove()
@@ -45,14 +43,14 @@ public class Reservation {
         // no more references to this object and consequently will remove it
         // from memory. To clean up nicely, the book and member fields are
         // set to null (the relations are bidirectional).
-        member.removeReservation(this);
-        member = null;
+        customer.removeReservation(this);
+        customer = null;
         
         // Check added for this POC. We don't load the Books from the database.
-        if(book != null)
+        if(dish != null)
         {
-            book.removeReservation(this);
-            book = null;
+            dish.removeReservation(this);
+            dish = null;
         }
     }
     
@@ -68,13 +66,13 @@ public class Reservation {
         }
         else
         {
-            if(o instanceof Reservation)
+            if(o instanceof Order)
             {
-                Reservation r = (Reservation)o;
+                Order r = (Order)o;
                 
-                equal = reservationDate.equals(r.reservationDate) &&
-                        member.equals(r.member) &&
-                        book.equals(r.book);
+                equal = orderDate.equals(r.orderDate) &&
+                        customer.equals(r.customer) &&
+                        dish.equals(r.dish);
             }
         }
         
@@ -88,9 +86,9 @@ public class Reservation {
         // in Effective Java, 2nd edition, Joshua Bloch.
         
         int result = 17;
-        result += reservationDate.hashCode() +
-                member.hashCode() +
-                book.hashCode();
+        result += orderDate.hashCode() +
+                customer.hashCode() +
+                dish.hashCode();
         
         return result;
     }
