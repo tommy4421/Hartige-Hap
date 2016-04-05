@@ -2,9 +2,9 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package library.main;
+package hartigehap.main;
 
-import library.presentation.GUI;
+import hartigehap.presentation.GUI;
 
 /**
  *

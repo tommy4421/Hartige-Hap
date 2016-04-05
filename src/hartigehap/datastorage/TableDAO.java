@@ -2,13 +2,13 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package library.datastorage;
+package hartigehap.datastorage;
 
-import library.domain.Table;
+import hartigehap.domain.Table;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import library.domain.Order;
+import hartigehap.domain.Order;
 
 /**
  *

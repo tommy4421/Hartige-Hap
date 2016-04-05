@@ -3,14 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package library.datastorage;
+package hartigehap.datastorage;
 
-import library.domain.Table;
+import hartigehap.domain.Table;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import library.domain.Dish;
-import library.domain.Order;
+import hartigehap.domain.Dish;
+import hartigehap.domain.Order;
 
 
 public class OrderDAO {
