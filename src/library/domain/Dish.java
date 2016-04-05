@@ -12,48 +12,30 @@ import java.util.ArrayList;
  */
 public class Dish {
     
-    private int ISBN;
-    private String title;
-    private String author;
-    private int edition;
+    int dishNumber;
+    String dishTitle;
+    int price;
     
-    private ArrayList<Invoice> copies;
-    private ArrayList<Order> reservations;
-    
-    public Dish(int ISBN, String title, String author, int edition)
+    public Dish(int dishNumber, String dishTitle, int price)
     {
-        this.ISBN = ISBN;
-        this.title = title;
-        this.author = author;
-        this.edition = edition;
-        
-        copies = new ArrayList();
-        reservations = new ArrayList();
+        this.dishNumber = dishNumber;
+        this.dishTitle = dishTitle;
+        this.price = price;
     }
 
-    public int getISBN()
+    public int getDishNumber()
     {
-        return ISBN;
+        return dishNumber;
     }
 
-    public String getAuthor()
+    public String getDishTitle()
     {
-        return author;
+        return dishTitle;
     }
 
-    public int getEdition()
+    public int getPrice()
     {
-        return edition;
-    }
-
-    public String getTitle()
-    {
-        return title;
-    }
-    
-    public void removeReservation(Order reservation)
-    {
-        reservations.remove(reservation);
+        return price;
     }
     
     @Override
@@ -74,7 +56,7 @@ public class Dish {
                 
                 // Book wordt geidentificeerd door ISBN, dus alleen hierop
                 // controlleren is voldoend.
-                equal = this.ISBN == b.ISBN;
+                equal = this.dishNumber == b.dishNumber;
             }
         }
         
@@ -88,6 +70,6 @@ public class Dish {
         // in Effective Java, 2nd edition, Joshua Bloch.
         
         // ISBN is uniek, dus voldoende als hashcode.
-        return ISBN;
+        return dishNumber;
     }
 }

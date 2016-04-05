@@ -13,17 +13,17 @@ import java.util.Date;
 public class Order {
     private Date orderDate;
     
-    private Table customer;
+    private Table table;
     private Dish dish;
     
-    public Order(Table customer, Dish dish){
-        this.customer = customer;
+    public Order(Table table, Dish dish){
+        this.table = table;
         this.dish = dish;
     }
     
     public Table getCustomer()
     {
-        return customer;
+        return table;
     }
     
     public Dish getDish()
@@ -43,13 +43,12 @@ public class Order {
         // no more references to this object and consequently will remove it
         // from memory. To clean up nicely, the book and member fields are
         // set to null (the relations are bidirectional).
-        customer.removeReservation(this);
-        customer = null;
+        table.removeReservation(this);
+        table = null;
         
         // Check added for this POC. We don't load the Books from the database.
         if(dish != null)
         {
-            dish.removeReservation(this);
             dish = null;
         }
     }
@@ -71,7 +70,7 @@ public class Order {
                 Order r = (Order)o;
                 
                 equal = orderDate.equals(r.orderDate) &&
-                        customer.equals(r.customer) &&
+                        table.equals(r.table) &&
                         dish.equals(r.dish);
             }
         }
@@ -87,7 +86,7 @@ public class Order {
         
         int result = 17;
         result += orderDate.hashCode() +
-                customer.hashCode() +
+                table.hashCode() +
                 dish.hashCode();
         
         return result;
