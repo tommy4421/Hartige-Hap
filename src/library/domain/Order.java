@@ -18,27 +18,27 @@ public class Order {
     private Drink drink;
     
     public Order(Table table, Dish dish){
-        this.table = table;
-        this.dish = dish;
-        this.drink = null;
+        createOrder(table, dish, null);
     }
     
     public Order(Table table, Dish dish, Drink drink){
-        this.table = table;
-        this.dish = dish;
-        this.drink = drink;
+        createOrder(table, dish, drink);
     }
     
     public Order(Table table, Drink drink, Dish dish){
-        this.table = table;
-        this.dish = dish;
-        this.drink = drink;
+        createOrder(table, dish, drink);
     }
     
     public Order(Table table, Drink drink){
+        createOrder(table, null, drink);
+    }
+    
+    private void createOrder(Table table, Dish dish, Drink drink){
         this.table = table;
         this.drink = drink;
-        this.dish = null;
+        this.dish = dish;
+        //Hier je database aanmaken
+        //new OrderDAO(); enzo
     }
     
     public Table getTable()
