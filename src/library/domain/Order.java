@@ -80,7 +80,7 @@ public class Order {
     }
     
     public int getDrinkAmount(){
-        return dishAmount;
+        return drinkAmount;
     }
     
     public void remove()

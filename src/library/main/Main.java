@@ -4,7 +4,7 @@
  */
 package library.main;
 
-import library.presentation.MemberAdminUI;
+import library.presentation.GUI;
 
 /**
  *
@@ -17,7 +17,7 @@ public class Main {
      */
     public static void main(String[] args) {
         
-        MemberAdminUI ui = new MemberAdminUI();
+        GUI ui = new GUI();
         ui.setVisible(true);
     }
 }
