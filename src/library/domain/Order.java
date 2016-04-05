@@ -13,15 +13,15 @@ import java.util.Date;
 public class Order {
     private Date orderDate;
     
-    private Customer customer;
+    private Table customer;
     private Dish dish;
     
-    public Order(Customer customer, Dish dish){
+    public Order(Table customer, Dish dish){
         this.customer = customer;
         this.dish = dish;
     }
     
-    public Customer getCustomer()
+    public Table getCustomer()
     {
         return customer;
     }

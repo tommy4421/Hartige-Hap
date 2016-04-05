@@ -9,7 +9,7 @@ import java.util.HashMap;
 import library.datastorage.LoanDAO;
 import library.datastorage.CustomerDAO;
 import library.domain.Loan;
-import library.domain.Customer;
+import library.domain.Table;
 import library.domain.Dish;
 import library.domain.Order;
 
@@ -19,7 +19,7 @@ import library.domain.Order;
  */
 public class OrderManager {
     
-    private HashMap<Integer, Customer> members;
+    private HashMap<Integer, Table> members;
     
     public OrderManager()
     {
@@ -30,21 +30,21 @@ public class OrderManager {
 
     private void fillTestData()
     {
-        members.put(1000, new Customer(1000, "Pascal", "van Gastel"));
-        members.put(1001, new Customer(1001, "Erco", "Argante"));
-        members.put(1002, new Customer(1002, "Marice", "Bastiaense"));
-        members.put(1004, new Customer(1004, "Floor", "van Gastel"));
-        members.put(1005, new Customer(1005, "Jet", "van Gastel"));
-        members.put(1006, new Customer(1006, "Marin", "van Gastel"));
+        members.put(1000, new Table(1000, "Pascal", "van Gastel"));
+        members.put(1001, new Table(1001, "Erco", "Argante"));
+        members.put(1002, new Table(1002, "Marice", "Bastiaense"));
+        members.put(1004, new Table(1004, "Floor", "van Gastel"));
+        members.put(1005, new Table(1005, "Jet", "van Gastel"));
+        members.put(1006, new Table(1006, "Marin", "van Gastel"));
     }
     
-    public Order placeOrder(Customer customer, Dish dish){
+    public Order placeOrder(Table customer, Dish dish){
         return new Order(customer, dish);
     }
     
-    public Customer findMember(int membershipNumber)
+    public Table findMember(int membershipNumber)
     {
-        Customer member = members.get(membershipNumber);
+        Table member = members.get(membershipNumber);
         
         if(member == null)
         {
@@ -73,7 +73,7 @@ public class OrderManager {
         return member;
     }
     
-    public boolean removeMember(Customer member)
+    public boolean removeMember(Table member)
     {
         boolean result = false;
         

@@ -11,44 +11,33 @@ import java.util.ArrayList;
  * @author ppthgast
  */
 
-public class Customer {
+public class Table {
 
-    private String firstname;
-    private String lastname;
+    private int tableNumber;
     
     private ArrayList<Invoice> invoices;
     private ArrayList<Order> orders;
             
-    public Customer(String firstname, String lastname)
+    public Table(int tableNumber)
     {
-        this.firstname = firstname;
-        this.lastname = lastname;
-        
+        this.tableNumber = tableNumber;
+      
         invoices = new ArrayList();
         orders = new ArrayList();
     }
     
-    public String getLastname()
+    public int getTableNumber()
     {
-        return lastname;
+        return tableNumber;
     }
 
-    public void setLastname(String lastname)
-    {
-        this.lastname = lastname;
-    }
 
-    public String getFirstname()
+    public void setTableNumber(int tableNumber)
     {
-        return firstname;
-    }
-
-    public void setFirstname(String firstname)
-    {
-        this.firstname = firstname;
+        this.tableNumber = tableNumber;
     }
     
-    public void setLoans(Invoice[] invoices)
+    public void setInvoices(Invoice[] invoices)
     {
         removeAllInvoices();
         
@@ -161,13 +150,13 @@ public class Customer {
         }
         else
         {
-            if(o instanceof Customer)
+            if(o instanceof Table)
             {
-                Customer l = (Customer)o;
+                Table l = (Table)o;
                 
                 // Boek wordt geidentificeerd door ISBN, dus alleen hierop
                 // controlleren is voldoend.
-                equal = this.firstname == l.firstname && this.lastname == l.lastname;
+                equal = this.tableNumber == l.tableNumber;
             }
         }
         
@@ -181,6 +170,6 @@ public class Customer {
         // in Effective Java, 2nd edition, Joshua Bloch.
         
         // membershipNumber is uniek, dus voldoende als hashcode.
-        return this.hashCode();
+        return this.tableNumber;
     }
 }

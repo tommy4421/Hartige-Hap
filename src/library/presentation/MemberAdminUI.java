@@ -12,7 +12,7 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
-import library.domain.Customer;
+import library.domain.Table;
 
 /**
  *
@@ -33,7 +33,7 @@ public class MemberAdminUI extends javax.swing.JFrame {
     // A reference to the last member that has been found. At start up and
     // in case a member could not be found for some membership nr, this
     // field has the value null.
-    private Customer currentMember;
+    private Table currentMember;
     
     /**
      * Creates new form MemberAdminUI

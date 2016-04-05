@@ -10,10 +10,10 @@ package library.domain;
  */
 public class Invoice {
     
-    private Customer customer;
+    private Table customer;
     private int amount;
     
-    public Invoice(Customer customer, int amount)
+    public Invoice(Table customer, int amount)
     {
         customer.addInvoice(this);
         this.amount = amount;
