@@ -15,10 +15,18 @@ public class Order {
     
     private Table table;
     private Dish dish;
+    private Drink drink;
     
     public Order(Table table, Dish dish){
         this.table = table;
         this.dish = dish;
+        this.drink = null;
+    }
+    
+    public Order(Table table, Drink drink){
+        this.table = table;
+        this.drink = drink;
+        this.dish = null;
     }
     
     public Table getCustomer()
