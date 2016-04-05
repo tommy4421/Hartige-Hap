@@ -8,7 +8,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
-import library.domain.Member;
+import library.domain.Customer;
 import library.domain.Reservation;
 
 /**
@@ -35,7 +35,7 @@ public class ReservationDAO
      * In case no reservation could be found, still a valid ArrayList object is returned.
      * It does not contain any objects.
      */
-    public ArrayList<Reservation> findReservations(Member member)
+    public ArrayList<Reservation> findReservations(Customer member)
     {
         ArrayList<Reservation> reservations = new ArrayList<>();
         

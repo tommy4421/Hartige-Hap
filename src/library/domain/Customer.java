@@ -11,7 +11,7 @@ import java.util.ArrayList;
  * @author ppthgast
  */
 
-public class Member {
+public class Customer {
     
     private int membershipNumber;
     private String firstname;
@@ -26,7 +26,7 @@ public class Member {
     private ArrayList<Loan> loans;
     private ArrayList<Reservation> reservations;
             
-    public Member(int membershipNumber, String firstname, String lastname)
+    public Customer(int membershipNumber, String firstname, String lastname)
     {
         this.membershipNumber = membershipNumber;
         this.firstname = firstname;
@@ -251,9 +251,9 @@ public class Member {
         }
         else
         {
-            if(o instanceof Member)
+            if(o instanceof Customer)
             {
-                Member l = (Member)o;
+                Customer l = (Customer)o;
                 
                 // Boek wordt geidentificeerd door ISBN, dus alleen hierop
                 // controlleren is voldoend.

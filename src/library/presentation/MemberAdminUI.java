@@ -4,7 +4,7 @@
  */
 package library.presentation;
 
-import library.businesslogic.MemberAdminManager;
+import library.businesslogic.OrderManager;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -12,7 +12,7 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
-import library.domain.Member;
+import library.domain.Customer;
 
 /**
  *
@@ -28,12 +28,12 @@ public class MemberAdminUI extends javax.swing.JFrame {
     private JButton searchButton;
             
     // The MemberAdminManager to delegate the real work (use cases!) to.
-    private MemberAdminManager manager;
+    private OrderManager manager;
 
     // A reference to the last member that has been found. At start up and
     // in case a member could not be found for some membership nr, this
     // field has the value null.
-    private Member currentMember;
+    private Customer currentMember;
     
     /**
      * Creates new form MemberAdminUI
@@ -42,7 +42,7 @@ public class MemberAdminUI extends javax.swing.JFrame {
         initComponents();
         setupFrame();
         
-        manager = new MemberAdminManager();
+        manager = new OrderManager();
         currentMember = null;
     }
 

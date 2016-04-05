@@ -10,18 +10,18 @@ import library.datastorage.LoanDAO;
 import library.datastorage.MemberDAO;
 import library.datastorage.ReservationDAO;
 import library.domain.Loan;
-import library.domain.Member;
+import library.domain.Customer;
 import library.domain.Reservation;
 
 /**
  *
  * @author ppthgast
  */
-public class MemberAdminManager {
+public class OrderManager {
     
-    private HashMap<Integer, Member> members;
+    private HashMap<Integer, Customer> members;
     
-    public MemberAdminManager()
+    public OrderManager()
     {
         members = new HashMap();
         
@@ -30,17 +30,17 @@ public class MemberAdminManager {
 
     private void fillTestData()
     {
-        members.put(1000, new Member(1000, "Pascal", "van Gastel"));
-        members.put(1001, new Member(1001, "Erco", "Argante"));
-        members.put(1002, new Member(1002, "Marice", "Bastiaense"));
-        members.put(1004, new Member(1004, "Floor", "van Gastel"));
-        members.put(1005, new Member(1005, "Jet", "van Gastel"));
-        members.put(1006, new Member(1006, "Marin", "van Gastel"));
+        members.put(1000, new Customer(1000, "Pascal", "van Gastel"));
+        members.put(1001, new Customer(1001, "Erco", "Argante"));
+        members.put(1002, new Customer(1002, "Marice", "Bastiaense"));
+        members.put(1004, new Customer(1004, "Floor", "van Gastel"));
+        members.put(1005, new Customer(1005, "Jet", "van Gastel"));
+        members.put(1006, new Customer(1006, "Marin", "van Gastel"));
     }
     
-    public Member findMember(int membershipNumber)
+    public Customer findMember(int membershipNumber)
     {
-        Member member = members.get(membershipNumber);
+        Customer member = members.get(membershipNumber);
         
         if(member == null)
         {
@@ -78,7 +78,7 @@ public class MemberAdminManager {
         return member;
     }
     
-    public boolean removeMember(Member member)
+    public boolean removeMember(Customer member)
     {
         boolean result = false;
         

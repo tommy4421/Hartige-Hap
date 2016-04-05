@@ -13,17 +13,17 @@ import java.util.Date;
 public class Reservation {
     private Date reservationDate;
     
-    private Member member;
+    private Customer member;
     private Book book;
     
-    public Reservation(Date reservationDate, Member member, Book book)
+    public Reservation(Date reservationDate, Customer member, Book book)
     {
         this.reservationDate = reservationDate;
         this.member = member;
         this.book = book;
     }
     
-    public Member getMember()
+    public Customer getMember()
     {
         return member;
     }

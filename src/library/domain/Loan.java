@@ -14,7 +14,7 @@ public class Loan {
     
     private Date returnDate;
     
-    private Member member;
+    private Customer member;
     private Copy copy;
     
     /**
@@ -25,7 +25,7 @@ public class Loan {
      * @param copy het Copy dat het Member heeft geleend
      * @param returnDate datum op welke het copy geretourneerd dient te worden.
      */
-    public Loan(Date returnDate, Member member, Copy copy)
+    public Loan(Date returnDate, Customer member, Copy copy)
     {
         this.returnDate = returnDate;
         this.member = member;
@@ -36,7 +36,7 @@ public class Loan {
      * Accessor methode om het betrokken Member voor deze Loan op te halen.
      * @return het betrokken Member
      */
-    public Member getMember()
+    public Customer getMember()
     {
         return member;
     }

@@ -9,7 +9,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
 import library.domain.Loan;
-import library.domain.Member;
+import library.domain.Customer;
 
 /**
  *
@@ -35,7 +35,7 @@ public class LoanDAO
      * In case no loan could be found, still a valid ArrayList object is returned.
      * It does not contain any objects.
      */
-    public ArrayList<Loan> findLoans(Member member)
+    public ArrayList<Loan> findLoans(Customer member)
     {
         ArrayList<Loan> loans = new ArrayList<>();
         

@@ -4,7 +4,7 @@
  */
 package library.datastorage;
 
-import library.domain.Member;
+import library.domain.Customer;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -35,9 +35,9 @@ public class MemberDAO {
      * @return the Member object to be found. In case member could not be found,
      * null is returned.
      */
-    public Member findMember(int membershipNumber)
+    public Customer findMember(int membershipNumber)
     {
-        Member member = null;
+        Customer member = null;
         
         // First open a database connnection
         DatabaseConnection connection = new DatabaseConnection();
@@ -59,7 +59,7 @@ public class MemberDAO {
                         String firstNameFromDb = resultset.getString("FirstName");
                         String lastNameFromDb = resultset.getString("LastName");
 
-                        member = new Member(
+                        member = new Customer(
                             membershipNumberFromDb,
                             firstNameFromDb,
                             lastNameFromDb);
@@ -95,7 +95,7 @@ public class MemberDAO {
      * @return true if execution of the SQL-statement was successful, false
      * otherwise.
      */
-    public boolean removeMember(Member memberToBeRemoved)
+    public boolean removeMember(Customer memberToBeRemoved)
     {
         boolean result = false;
         
