@@ -506,7 +506,7 @@ public class GUI extends javax.swing.JFrame {
         Order order = manager.placeOrder(new Table(1), new Dish(1, "Ei met spek", 10), new Drink(1, "Cola", 2));
         order.setDishAmount(gerecht1aantal);
         order.setDrinkAmount(gerecht2aantal);
-        order.writeToDatabase();
+        manager.writeToDatabase(order);
         gerecht1aantal = 0;
         gerecht2aantal = 0;
         jTextField3.setText(gerecht1aantal + "");

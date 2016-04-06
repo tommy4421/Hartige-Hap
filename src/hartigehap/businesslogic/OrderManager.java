@@ -47,4 +47,8 @@ public class OrderManager {
         System.out.println("Tafel " + table.getTableNumber() + " : " + dish.getDishTitle());
         return new Order(table, dish, drink);
     } 
+    
+    public void writeToDatabase(Order order) {
+        order.writeToDatabase();
+    }
 }
