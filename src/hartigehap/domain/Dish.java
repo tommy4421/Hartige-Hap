@@ -15,6 +15,7 @@ public class Dish {
     int dishNumber;
     String dishTitle;
     int price;
+    // hallo ik ben sean
     
     public Dish(int dishNumber, String dishTitle, int price)
     {
