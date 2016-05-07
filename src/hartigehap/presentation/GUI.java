@@ -18,13 +18,17 @@ import hartigehap.domain.Table;
  * @author Dorian
  */
 public class GUI extends javax.swing.JFrame {
+    private int gerecht1aantal;
+    private int gerecht2aantal;
+    private final OrderManager manager;
 
     /**
      * Creates new form Beginscherm
+     * @param manager
      */
-    public GUI() {
+    public GUI(OrderManager manager) {
         initComponents();
-        manager = new OrderManager();
+        this.manager = manager;
     }
 
     /**
@@ -482,10 +486,10 @@ public class GUI extends javax.swing.JFrame {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         if(gerecht1aantal > 0){
-            jLabel8.setText(gerecht1aantal + " x " + "Spek met ei" + " €" + (gerecht1aantal * 10));
+            jLabel8.setText(gerecht1aantal + " x Spek met ei €" + (gerecht1aantal * 10));
         }
         if(gerecht2aantal > 0){
-            jLabel9.setText(gerecht2aantal + " x " + "Cola" + " €" + (gerecht2aantal * 2));
+            jLabel9.setText(gerecht2aantal + " x Cola €" + (gerecht2aantal * 2));
         }
         if(gerecht1aantal <1 && gerecht2aantal <1 ){
             jLabel9.setText("");
@@ -527,7 +531,7 @@ public class GUI extends javax.swing.JFrame {
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         gerecht2aantal--;
-        jTextField2.setText(gerecht2aantal + "");
+        jTextField2.setText(String.valueOf(gerecht2aantal));
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
@@ -559,42 +563,7 @@ public class GUI extends javax.swing.JFrame {
         CardLayout card = (CardLayout)jPanel1.getLayout();
         card.show(jPanel1, "Paneel2");
     }//GEN-LAST:event_jButton14ActionPerformed
-    
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(GUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(GUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(GUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(GUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new GUI().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
@@ -639,9 +608,6 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     // End of variables declaration//GEN-END:variables
-    private int gerecht1aantal;
-    private int gerecht2aantal;
-    private OrderManager manager;
 
 
 }
