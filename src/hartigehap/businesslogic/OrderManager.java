@@ -11,6 +11,7 @@ import hartigehap.domain.Table;
 import hartigehap.domain.Dish;
 import hartigehap.domain.Drink;
 import hartigehap.domain.Order;
+import hartigehap.domain.Status;
 
 /**
  *
@@ -43,9 +44,9 @@ public class OrderManager {
         tables.put(6, new Table(6));
     }
     
-    public Order placeOrder(Table table, Dish dish, Drink drink){
+    public Order placeOrder(Table table, Dish dish, Drink drink, Status status){
         System.out.println("Tafel " + table.getTableNumber() + " : " + dish.getDishTitle());
-        return new Order(table, dish, drink);
+        return new Order(table, dish, drink, status);
     } 
     
     public void writeToDatabase(Order order) {

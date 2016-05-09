@@ -18,28 +18,31 @@ public class Order {
     private Dish dish;
     private int dishAmount;
     private Drink drink;
-    private int drinkAmount;
+    private int drinkAmount; 
+    private Status status;
     
-    public Order(Table table, Dish dish){
-        createOrder(table, dish, null);
+    public Order(Table table, Dish dish, Status status){
+        createOrder(table, dish, null, status);
     }
     
-    public Order(Table table, Dish dish, Drink drink){
-        createOrder(table, dish, drink);
+    public Order(Table table, Dish dish, Drink drink, Status status){
+        createOrder(table, dish, drink, status);
     }
     
-    public Order(Table table, Drink drink, Dish dish){
-        createOrder(table, dish, drink);
+    public Order(Table table, Drink drink, Dish dish, Status status){
+        createOrder(table, dish, drink, status);
     }
     
-    public Order(Table table, Drink drink){
-        createOrder(table, null, drink);
+    public Order(Table table, Drink drink, Status status){
+        createOrder(table, null, drink, status);
     }
     
-    private void createOrder(Table table, Dish dish, Drink drink){
+    private void createOrder(Table table, Dish dish, Drink drink, Status status){
         this.table = table;
         this.drink = drink;
         this.dish = dish;
+        this.status = status;
+        
     }
     
     public void writeToDatabase(){
@@ -81,6 +84,10 @@ public class Order {
     
     public int getDrinkAmount(){
         return drinkAmount;
+    }
+    
+    public Status getStatusNumber() {
+        return status;
     }
     
     public void remove()
@@ -138,4 +145,6 @@ public class Order {
         
         return result;
     }
+
+ 
 }

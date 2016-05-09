@@ -12,6 +12,7 @@ import hartigehap.domain.Dish;
 import hartigehap.domain.Drink;
 import hartigehap.domain.Order;
 import hartigehap.domain.Table;
+import hartigehap.domain.Status;
 
 /**
  *
@@ -507,7 +508,7 @@ public class GUI extends javax.swing.JFrame {
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         CardLayout card = (CardLayout)jPanel1.getLayout();
         card.show(jPanel1, "Paneel4");
-        Order order = manager.placeOrder(new Table(1), new Dish(1, "Ei met spek", 10), new Drink(1, "Cola", 2));
+        Order order = manager.placeOrder(new Table(1), new Dish(1, "Ei met spek", 10), new Drink(1, "Cola", 2), new Status(0));
         order.setDishAmount(gerecht1aantal);
         order.setDrinkAmount(gerecht2aantal);
         manager.writeToDatabase(order);
