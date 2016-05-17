@@ -14,7 +14,6 @@ import java.util.ArrayList;
 public class Status {
 
     private int statusNumber;
-    public String status;
      
     public Status(int statusNumber)
     {

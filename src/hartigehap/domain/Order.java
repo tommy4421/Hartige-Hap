@@ -20,6 +20,7 @@ public class Order {
     private Drink drink;
     private int drinkAmount; 
     private Status status;
+    private int statusNumber;
     
     public Order(Table table, Dish dish, Status status){
         createOrder(table, dish, null, status);
@@ -85,9 +86,9 @@ public class Order {
     public int getDrinkAmount(){
         return drinkAmount;
     }
-    
-    public Status getStatusNumber() {
-        return status;
+  
+    public int getStatusNumber() {
+        return statusNumber;
     }
     
     public void remove()
