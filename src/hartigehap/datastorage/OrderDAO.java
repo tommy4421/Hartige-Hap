@@ -15,8 +15,11 @@ import hartigehap.domain.Order;
 
 public class OrderDAO {
     
-    public OrderDAO()
+    private DatabaseConnection connection;
+    
+    public OrderDAO(DatabaseConnection connection)
     {
+        this.connection = connection;
         // Nothing to be initialized. This is a stateless class. Constructor
         // has been added to explicitely make this clear.
     }
@@ -118,7 +121,6 @@ public class OrderDAO {
         if(order != null)
         {
             // First open the database connection.
-            DatabaseConnection connection = new DatabaseConnection();
             if(connection.openConnection())
             {
                 // Execute the delete statement using the membership number to
