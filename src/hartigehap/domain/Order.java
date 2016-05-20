@@ -36,18 +36,17 @@ public class Order {
         createOrder(table, null, drink);
     }
     
-    public Order(Table table, Dish dish, int dishAmount, Drink drink, int drinkAmount){
-        this(table, dish, drink);
-        this.setDishAmount(dishAmount);
-        this.setDrinkAmount(drinkAmount);
-    }
-    
     private void createOrder(Table table, Dish dish, Drink drink){
         this.table = table;
         this.drink = drink;
         this.dish = dish;
     }
-
+    
+    public void writeToDatabase(){
+        OrderDAO dao = new OrderDAO();
+        dao.writeToDB(this);
+    }
+    
     public Table getTable()
     {
         return table;
