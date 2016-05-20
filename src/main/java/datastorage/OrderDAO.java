@@ -3,15 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package hartigehap.datastorage;
+package datastorage;
 
-import hartigehap.domain.Table;
+import domain.Table;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import hartigehap.domain.Dish;
-import hartigehap.domain.Order;
-import hartigehap.domain.Status;
+import domain.Dish;
+import domain.Order;
+import domain.Status;
 
 
 public class OrderDAO {
@@ -54,7 +54,6 @@ public class OrderDAO {
                         order.getTable().getTableNumber() + "," + 
                         order.getDishAmount() + "," + 
                         order.getDrinkAmount() + "," +
-                        order.getStatusNumber() +
                         ");");
                 
                 

@@ -2,15 +2,15 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package hartigehap.businesslogic;
+package businesslogic;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import hartigehap.datastorage.TableDAO;
-import hartigehap.domain.Table;
-import hartigehap.domain.Dish;
-import hartigehap.domain.Drink;
-import hartigehap.domain.Order;
+import datastorage.TableDAO;
+import domain.Table;
+import domain.Dish;
+import domain.Drink;
+import domain.Order;
 
 /**
  *

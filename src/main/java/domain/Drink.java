@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package hartigehap.domain;
+package domain;
 
 import java.util.ArrayList;
 
@@ -10,28 +10,27 @@ import java.util.ArrayList;
  *
  * @author ppthgast
  */
-public class Dish {
+public class Drink {
     
-    int dishNumber;
-    String dishTitle;
+    int drinkNumber;
+    String drinkTitle;
     int price;
-    // hallo ik ben sean
     
-    public Dish(int dishNumber, String dishTitle, int price)
+    public Drink(int drinkNumber, String drinkTitle, int price)
     {
-        this.dishNumber = dishNumber;
-        this.dishTitle = dishTitle;
+        this.drinkNumber = drinkNumber;
+        this.drinkTitle = drinkTitle;
         this.price = price;
     }
 
-    public int getDishNumber()
+    public int getDrinkNumber()
     {
-        return dishNumber;
+        return drinkNumber;
     }
 
-    public String getDishTitle()
+    public String getDrinkTitle()
     {
-        return dishTitle;
+        return drinkTitle;
     }
 
     public int getPrice()
@@ -51,13 +50,13 @@ public class Dish {
         }
         else
         {
-            if(o instanceof Dish)
+            if(o instanceof Drink)
             {
-                Dish b = (Dish)o;
+                Drink b = (Drink)o;
                 
                 // Book wordt geidentificeerd door ISBN, dus alleen hierop
                 // controlleren is voldoend.
-                equal = this.dishNumber == b.dishNumber;
+                equal = this.drinkNumber == b.drinkNumber;
             }
         }
         
@@ -71,6 +70,6 @@ public class Dish {
         // in Effective Java, 2nd edition, Joshua Bloch.
         
         // ISBN is uniek, dus voldoende als hashcode.
-        return dishNumber;
+        return drinkNumber;
     }
 }

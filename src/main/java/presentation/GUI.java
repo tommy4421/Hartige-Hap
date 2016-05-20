@@ -3,15 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package hartigehap.presentation;
+package presentation;
 
 import java.awt.CardLayout;
 import java.util.HashMap;
-import hartigehap.businesslogic.OrderManager;
-import hartigehap.domain.Dish;
-import hartigehap.domain.Drink;
-import hartigehap.domain.Order;
-import hartigehap.domain.Table;
+import businesslogic.OrderManager;
+import domain.Dish;
+import domain.Drink;
+import domain.Order;
+import domain.Table;
 
 /**
  *

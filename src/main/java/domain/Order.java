@@ -2,10 +2,10 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package hartigehap.domain;
+package domain;
 
 import java.util.Date;
-import hartigehap.datastorage.OrderDAO;
+import datastorage.OrderDAO;
 
 /**
  *
