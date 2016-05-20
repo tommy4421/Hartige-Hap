@@ -5,9 +5,6 @@
 package hartigehap.main;
 
 import hartigehap.businesslogic.OrderManager;
-import hartigehap.businesslogic.TestOrderManager;
-import hartigehap.datastorage.DatabaseConnection;
-import hartigehap.datastorage.OrderDAO;
 import hartigehap.presentation.GUI;
 
 /**
@@ -43,7 +40,7 @@ public class Main {
         }
         
         
-        GUI ui = new GUI(new TestOrderManager(new OrderDAO(new DatabaseConnection())));
+        GUI ui = new GUI(new OrderManager());
         ui.setVisible(true);
     }
 }
