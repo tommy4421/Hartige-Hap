@@ -48,12 +48,12 @@ public class OrderDAO {
             {
                 // Execute the delete statement using the membership number to
                 // identify the member row.
-                result = connection.executeSQLDeleteStatement("INSERT INTO `order` (DrinkNumber,DishNumber,TableNumber,DishAmount,DrinkAmount,Status)\n" +
+                result = connection.executeSQLDeleteStatement("INSERT INTO `order` (DrinkNumber,DishNumber,TableNumber,DishAmount,DrinkAmount)\n" +
                 "VALUES (" + order.getDrink().getDrinkNumber() + "," + 
                         order.getDish().getDishNumber() + "," + 
                         order.getTable().getTableNumber() + "," + 
                         order.getDishAmount() + "," + 
-                        order.getDrinkAmount() + "," +
+                        order.getDrinkAmount() +
                         ");");
                 
                 
