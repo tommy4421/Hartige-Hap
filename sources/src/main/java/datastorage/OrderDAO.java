@@ -53,7 +53,7 @@ public class OrderDAO {
                         order.getDish().getDishNumber() + "," + 
                         order.getTable().getTableNumber() + "," + 
                         order.getDishAmount() + "," + 
-                        order.getDrinkAmount() + "," +
+                        order.getDrinkAmount() +
                         ");");
                 
                 
