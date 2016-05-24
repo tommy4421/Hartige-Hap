@@ -1,1 +1,4 @@
 nbproject/private/private.properties
+*.form
+build/classes/presentation/GUI$9.class
+*.class
