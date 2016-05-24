@@ -1,4 +1,8 @@
 nbproject/private/private.properties
+<<<<<<< HEAD
 *.form
 build/classes/presentation/GUI$9.class
 *.class
+=======
+/build/
+>>>>>>> origin/master
