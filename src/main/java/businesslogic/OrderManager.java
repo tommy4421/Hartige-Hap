@@ -33,19 +33,15 @@ public class OrderManager {
         order.writeToDatabase();*/
     }
 
-    public Order placeOrder(Table table, Dish dish, Drink drink){
-        System.out.println("Tafel " + table.getTableNumber() + " : " + dish.getDishTitle());
-        return new Order(table, dish, drink);
+    public Order placeOrder(Order order){
+        daoOrder.add(order);
+        return order;
     } 
     
     public List<Table> getTables(){
         return this.daoTable.getTables();
     }
-    
-    public void writeToDatabase(Order order) {
-        daoOrder.add(order);
-    }
-    
+
     protected TableDAO getTableDAO(){
         return this.daoTable;
     }

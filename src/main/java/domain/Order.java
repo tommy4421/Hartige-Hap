@@ -19,27 +19,13 @@ public class Order {
     private int dishAmount;
     private Drink drink;
     private int drinkAmount;
-    
-    public Order(Table table, Dish dish){
-        createOrder(table, dish, null);
-    }
-    
-    public Order(Table table, Dish dish, Drink drink){
-        createOrder(table, dish, drink);
-    }
-    
-    public Order(Table table, Drink drink, Dish dish){
-        createOrder(table, dish, drink);
-    }
-    
-    public Order(Table table, Drink drink){
-        createOrder(table, null, drink);
-    }
-    
-    private void createOrder(Table table, Dish dish, Drink drink){
+
+    public Order(Table table, Dish dish, int dishAmount, Drink drink, int drinkAmount) {
         this.table = table;
-        this.drink = drink;
         this.dish = dish;
+        this.dishAmount = dishAmount;
+        this.drink = drink;
+        this.drinkAmount = drinkAmount;
     }
     
     public Table getTable()
