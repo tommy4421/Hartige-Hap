@@ -14,10 +14,11 @@ import domain.Order;
 import domain.Status;
 
 
-public class OrderDAO {
+public class OrderDAO extends BaseDAO{
     
-    public OrderDAO()
+    public OrderDAO(DatabaseConnection con)
     {
+        super(con);
         // Nothing to be initialized. This is a stateless class. Constructor
         // has been added to explicitely make this clear.
     }
@@ -36,14 +37,14 @@ public class OrderDAO {
      */
 
 
-    public void writeToDB(Order order) {
+    public void add(Order order) {
 
         boolean result = false;
         
         if(order != null)
         {
             // First open the database connection.
-            DatabaseConnection connection = new DatabaseConnection();
+            DatabaseConnection connection = super.getDatabaseConnection();
             if(connection.openConnection())
             {
                 // Execute the delete statement using the membership number to

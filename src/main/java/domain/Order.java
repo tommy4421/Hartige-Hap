@@ -42,11 +42,6 @@ public class Order {
         this.dish = dish;
     }
     
-    public void writeToDatabase(){
-        OrderDAO dao = new OrderDAO();
-        dao.writeToDB(this);
-    }
-    
     public Table getTable()
     {
         return table;

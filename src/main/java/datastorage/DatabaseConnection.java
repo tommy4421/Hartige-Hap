@@ -19,9 +19,15 @@ public class DatabaseConnection {
     // be closed as you would do when it was a local variable in the query
     // execution method.
     private Statement statement;
+    private final String pass;
+    private final String name;
+    private final String connectionString;
     
-    public DatabaseConnection()
+    public DatabaseConnection(String connectionString, String name, String pass)
     {
+        this.connectionString = connectionString;
+        this.name = name;
+        this.pass = pass;
         connection = null;
         statement = null;
     }
@@ -35,7 +41,7 @@ public class DatabaseConnection {
             try
             {   
                 // Try to create a connection with the library database
-                connection = DriverManager.getConnection("jdbc:mysql://localhost/23ivp4c1", "IVP1C1", "Koksmuts#4");
+                connection = DriverManager.getConnection(this.connectionString, this.name, this.pass);
 
                 if(connection != null)
                 {

@@ -9,17 +9,18 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import domain.Order;
+import java.util.HashMap;
+import java.util.List;
 
 /**
  *
  * @author ppthgast
  */
-public class TableDAO {
+public class TableDAO extends BaseDAO{
     
-    public TableDAO()
+    public TableDAO(DatabaseConnection con)
     {
-        // Nothing to be initialized. This is a stateless class. Constructor
-        // has been added to explicitely make this clear.
+        super(con);
     }
     
     /**
@@ -39,7 +40,7 @@ public class TableDAO {
         Table table = null;
         
         // First open a database connnection
-        DatabaseConnection connection = new DatabaseConnection();
+        DatabaseConnection connection = super.getDatabaseConnection();
         if(connection.openConnection())
         {
             // If a connection was successfully setup, execute the SELECT statement.
@@ -94,7 +95,7 @@ public class TableDAO {
         if(memberToBeRemoved != null)
         {
             // First open the database connection.
-            DatabaseConnection connection = new DatabaseConnection();
+            DatabaseConnection connection = super.getDatabaseConnection();
             if(connection.openConnection())
             {
                 // Execute the delete statement using the membership number to
@@ -109,5 +110,13 @@ public class TableDAO {
         }
         
         return result;
+    }
+
+    public List<Table> getTables() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public void add(Table table) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
