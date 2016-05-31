@@ -42,7 +42,7 @@ public class Main {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(GUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        DatabaseConnection con = new DatabaseConnection( "jdbc:mysql://localhost/23ivp4c1", "IVP1C1", "Koksmuts#4");
+        DatabaseConnection con = new DatabaseConnection( "jdbc:mysql://localhost/23ivp4c1", "IVP4C1", "Koksmuts#4");
         OrderDAO daoOrder = new OrderDAO(con);
         TableDAO daoTable = new TableDAO(con);
         OrderManager manager = new TestOrderManager(daoOrder,daoTable);
