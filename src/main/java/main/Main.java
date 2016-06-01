@@ -47,6 +47,7 @@ public class Main {
         TableDAO daoTable = new TableDAO(con);
         OrderManager manager = new TestOrderManager(daoOrder,daoTable);
         
+        
         GUI ui = new GUI(manager);
         ui.setVisible(true);
     }

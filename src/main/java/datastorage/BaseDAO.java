@@ -10,13 +10,16 @@ package datastorage;
  * @author Sean
  */
 public class BaseDAO {
-    private DatabaseConnection con;
+    DatabaseConnection con;
+    
     
     public BaseDAO(DatabaseConnection con){
         this.con = con;
+        
     }
     
     public DatabaseConnection getDatabaseConnection(){
         return this.con;
+        
     }
 }

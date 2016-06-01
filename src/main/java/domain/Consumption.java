@@ -10,27 +10,28 @@ import java.util.ArrayList;
  *
  * @author ppthgast
  */
-public class Drink {
+public class Consumption {
     
-    int drinkNumber;
-    String drinkTitle;
+    int consumtionName;
+    String consumtionTitle;
     int price;
+    // hallo ik ben sean
     
-    public Drink(int drinkNumber, String drinkTitle, int price)
+    public Consumption(int consumtionName, String consumtionTitle, int price)
     {
-        this.drinkNumber = drinkNumber;
-        this.drinkTitle = drinkTitle;
+        this.consumtionName = consumtionName;
+        this.consumtionTitle = consumtionTitle;
         this.price = price;
     }
 
-    public int getDrinkNumber()
+    public int getConsumtionNumber()
     {
-        return drinkNumber;
+        return consumtionName;
     }
 
-    public String getDrinkTitle()
+    public String getConsumtionTitle()
     {
-        return drinkTitle;
+        return consumtionTitle;
     }
 
     public int getPrice()
@@ -50,13 +51,13 @@ public class Drink {
         }
         else
         {
-            if(o instanceof Drink)
+            if(o instanceof Consumption)
             {
-                Drink b = (Drink)o;
+                Consumption b = (Consumption)o;
                 
                 // Book wordt geidentificeerd door ISBN, dus alleen hierop
                 // controlleren is voldoend.
-                equal = this.drinkNumber == b.drinkNumber;
+                equal = this.consumtionName == b.consumtionName;
             }
         }
         
@@ -70,6 +71,6 @@ public class Drink {
         // in Effective Java, 2nd edition, Joshua Bloch.
         
         // ISBN is uniek, dus voldoende als hashcode.
-        return drinkNumber;
+        return consumtionName;
     }
 }

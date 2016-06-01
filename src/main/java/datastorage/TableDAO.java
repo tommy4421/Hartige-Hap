@@ -101,7 +101,7 @@ public class TableDAO extends BaseDAO{
                 // Execute the delete statement using the membership number to
                 // identify the member row.
                 result = connection.executeSQLDeleteStatement(
-                    "DELETE FROM member WHERE MembershipNumber = " + memberToBeRemoved.getTableNumber() + ";");
+                    "DELETE FROM member WHERE MembershipNumber = " + memberToBeRemoved.getTableNumber() + ";" ,"");
                 
                 // Finished with the connection, so close it.
                 connection.closeConnection();

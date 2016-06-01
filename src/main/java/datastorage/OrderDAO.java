@@ -9,7 +9,7 @@ import domain.Table;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import domain.Dish;
+import domain.Consumption;
 import domain.Order;
 import domain.Status;
 
@@ -47,17 +47,32 @@ public class OrderDAO extends BaseDAO{
             DatabaseConnection connection = super.getDatabaseConnection();
             if(connection.openConnection())
             {
-                // Execute the delete statement using the membership number to
-                // identify the member row.
-                result = connection.executeSQLDeleteStatement("INSERT INTO `order` (DrinkNumber,DishNumber,TableNumber,DishAmount,DrinkAmount)\n" +
-                "VALUES (" + order.getDrink().getDrinkNumber() + "," + 
-                        order.getDish().getDishNumber() + "," + 
-                        order.getTable().getTableNumber() + "," + 
-                        order.getDishAmount() + "," + 
-                        order.getDrinkAmount() +
-                        ");");
-                
-                
+
+                result = connection.executeSQLDeleteStatement(
+                        
+//                result = connection.executeSQLDeleteStatement("INSERT INTO `order`, (ConsumptionName, ConsumtionAmount, TableNumber)\n" +
+//                "VALUES (" + order.getConsumtion().getConsumtionNumber() + "," + 
+//                        order.getTable().getTableNumber() + "," + 
+//                        order.getConsumtionAmount() + ");");
+                        
+//                        "INSERT INTO `order` (StatusNumber, TableNumber) "
+//                        + "VALUES (0," + order.getTable().getTableNumber() + ");"
+//                        + " INSERT INTO `consumptionorder` (OrderNumber, ConsumptionNumber, Amount) "
+//                        + "VALUES (3423," + order.getConsumtion().getConsumtionNumber() + "," + order.getConsumtionAmount() + ");"
+//                        + "COMMIT;");
+//                
+//                  result = connection.executeSQLDeleteStatement( 
+//                                 "INSERT INTO `consumptionorder` (OrderNumber, ConsumptionNumber, Amount) "
+//                                + "VALUES(LAST_INSERT_ID(),1,1); "
+//                                );
+
+
+                        "INSERT INTO `order` (StatusNumber, TableNumber) "
+                        + "VALUES (0," + order.getTable().getTableNumber() + ");"
+                         ,
+                        "INSERT INTO `consumptionorder` (OrderNumber, ConsumptionNumber, Amount)"
+                        + "VALUES (LAST_INSERT_ID()," + order.getConsumtion().getConsumtionNumber() + "," + order.getConsumtionAmount()+ ");"
+                        );
                     
                 // Finished with the connection, so close it.
                 connection.closeConnection();

@@ -8,8 +8,7 @@ package presentation;
 import java.awt.CardLayout;
 import java.util.HashMap;
 import businesslogic.OrderManager;
-import domain.Dish;
-import domain.Drink;
+import domain.Consumption;
 import domain.Order;
 import domain.Table;
 
@@ -507,7 +506,7 @@ public class GUI extends javax.swing.JFrame {
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         CardLayout card = (CardLayout)jPanel1.getLayout();
         card.show(jPanel1, "Paneel4");
-        Order order = new Order(new Table(1), new Dish(1, "Ei met spek", 10), gerecht1aantal, new Drink(1, "Cola", 2), gerecht2aantal);
+        Order order = new Order(new Table(1), new Consumption(1, "Ei met spek", 10), gerecht1aantal);
         manager.placeOrder(order);
 
         gerecht1aantal = 0;

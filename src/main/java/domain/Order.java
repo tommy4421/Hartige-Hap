@@ -15,17 +15,13 @@ public class Order {
     private Date orderDate;
     
     private Table table;
-    private Dish dish;
-    private int dishAmount;
-    private Drink drink;
-    private int drinkAmount;
+    private Consumption consumption;
+    private int consumptionAmount;
 
-    public Order(Table table, Dish dish, int dishAmount, Drink drink, int drinkAmount) {
+    public Order(Table table, Consumption consumption, int consumptionAmount) {
         this.table = table;
-        this.dish = dish;
-        this.dishAmount = dishAmount;
-        this.drink = drink;
-        this.drinkAmount = drinkAmount;
+        this.consumption = consumption;
+        this.consumptionAmount = consumptionAmount;
     }
     
     public Table getTable()
@@ -33,14 +29,9 @@ public class Order {
         return table;
     }
     
-    public Dish getDish()
+    public Consumption getConsumtion()
     {
-        return dish;
-    }
-    
-    public Drink getDrink()
-    {
-        return drink;
+        return consumption;
     }
     
     public Date getDate()
@@ -48,20 +39,12 @@ public class Order {
         return orderDate;
     }
     
-    public int getDishAmount(){
-        return dishAmount;
+    public int getConsumtionAmount(){
+        return consumptionAmount;
     }
     
-    public void setDishAmount(int amount){
-        this.dishAmount = amount;
-    }
-    
-    public void setDrinkAmount(int amount){
-        this.drinkAmount = amount;
-    }
-    
-    public int getDrinkAmount(){
-        return drinkAmount;
+    public void setConsumtionAmount(int amount){
+        this.consumptionAmount = amount;
     }
     
     public void remove()
@@ -74,10 +57,9 @@ public class Order {
         table.removeReservation(this);
         table = null;
         
-        // Check added for this POC. We don't load the Books from the database.
-        if(dish != null)
+        if(consumption != null)
         {
-            dish = null;
+            consumption = null;
         }
     }
     
@@ -99,7 +81,7 @@ public class Order {
                 
                 equal = orderDate.equals(r.orderDate) &&
                         table.equals(r.table) &&
-                        dish.equals(r.dish);
+                        consumption.equals(r.consumption);
             }
         }
         
@@ -115,7 +97,7 @@ public class Order {
         int result = 17;
         result += orderDate.hashCode() +
                 table.hashCode() +
-                dish.hashCode();
+                consumption.hashCode();
         
         return result;
     }

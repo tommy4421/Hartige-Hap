@@ -124,7 +124,7 @@ public class DatabaseConnection {
         return resultset;
     }
     
-    public boolean executeSQLDeleteStatement(String query)
+    public boolean executeSQLDeleteStatement(String query, String query2)
     {
         boolean result = false;
         
@@ -135,8 +135,11 @@ public class DatabaseConnection {
             // Then, if succeeded, execute the query.
             try
             {
+                connection.setAutoCommit(false);
                 statement.executeUpdate(query);
+                statement.executeUpdate(query2);
                 result = true;
+                connection.commit();
             }
             catch(SQLException e)
             {

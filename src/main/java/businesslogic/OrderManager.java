@@ -9,8 +9,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import datastorage.TableDAO;
 import domain.Table;
-import domain.Dish;
-import domain.Drink;
+import domain.Consumption;
 import domain.Order;
 import java.util.List;
 
