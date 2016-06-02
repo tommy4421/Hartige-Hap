@@ -1,14 +1,10 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package domain;
 
 import java.util.ArrayList;
 
 /**
  *
- * @author ppthgast
+ * @author Tom Maljaars 
  */
 
 public class Status {
@@ -32,21 +28,24 @@ public class Status {
     
     public String translateStatusNumber(int statusNumber)
     {
+        // Database configuration (int)
+        //0. Niet besteld
+        //1. Besteld
+        //3. Wordt bereid
+        //4. Wordt opgediend
+        //5. Opgediend
+        
         String status;
         switch (statusNumber) {
-            case 1:  status = "Order ontvangen.";
+            case 1:  status = "Besteld";
                      break;
-            case 2:  status = "Order wordt gereedgemaakt.";
+            case 2:  status = "Wordt bereid";
                      break;
-            case 3:  status = "Order klaargemaakt.";
+            case 3:  status = "Wordt opgediend";
                      break;
-            case 4:  status = "Order afgerond.";
+            case 4:  status = "Opgediend";
                      break;
-            case 5:  status = "Ongeldige status";
-                     break;
-            case 6:  status = "Ongeldige status";
-                     break;
-            default: status = "Order versturen";
+            default: status = "Niet besteld";
                      break;
         }
         return status;

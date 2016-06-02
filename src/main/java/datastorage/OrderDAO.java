@@ -23,19 +23,6 @@ public class OrderDAO extends BaseDAO{
         // has been added to explicitely make this clear.
     }
     
-    /**
-     * Tries to find the member identified by the given membership number
-     * in the persistent data store, in this case a MySQL database. All loans
-     * and reservations for the member are loaded as well. In this POC, the
-     * reserved books and/or lend copies of the books are not loaded - it is
-     * out of scope for now.
-     * 
-     * @param membershipNumber identifies the member to be loaded from the database
-     * 
-     * @return the Member object to be found. In case member could not be found,
-     * null is returned.
-     */
-
 
     public void add(Order order) {
 
@@ -68,7 +55,7 @@ public class OrderDAO extends BaseDAO{
 
 
                         "INSERT INTO `order` (StatusNumber, TableNumber) "
-                        + "VALUES (0," + order.getTable().getTableNumber() + ");"
+                        + "VALUES (1," + order.getTable().getTableNumber() + ");"
                          ,
                         "INSERT INTO `consumptionorder` (OrderNumber, ConsumptionNumber, Amount)"
                         + "VALUES (LAST_INSERT_ID()," + order.getConsumtion().getConsumtionNumber() + "," + order.getConsumtionAmount()+ ");"

@@ -135,11 +135,9 @@ public class DatabaseConnection {
             // Then, if succeeded, execute the query.
             try
             {
-                connection.setAutoCommit(false);
                 statement.executeUpdate(query);
                 statement.executeUpdate(query2);
                 result = true;
-                connection.commit();
             }
             catch(SQLException e)
             {
