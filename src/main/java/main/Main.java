@@ -47,7 +47,7 @@ public class Main {
         ConsumptionDAO daoConsumption = new ConsumptionDAO(con);
         ConsumptionManager conManager = new ConsumptionManager(daoConsumption);
         
-        GUI ui = new GUI(manager);
+        GUI ui = new GUI(manager, conManager);
         ui.setVisible(true);
     }
 }

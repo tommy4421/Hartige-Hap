@@ -5,12 +5,16 @@
  */
 package presentation;
 
+import businesslogic.ConsumptionManager;
 import java.awt.CardLayout;
 import java.util.HashMap;
 import businesslogic.OrderManager;
 import domain.Consumption;
 import domain.Order;
 import domain.Table;
+import java.awt.*;
+import java.util.ArrayList;
+import javax.swing.*;
 
 /**
  *
@@ -21,15 +25,18 @@ public class GUI extends javax.swing.JFrame {
     private int gerecht1aantal;
     private int gerecht2aantal;
     private final OrderManager manager;
+    private final ConsumptionManager conManager;
+    private ArrayList<MenuItem> menuItems = new ArrayList<>();
 
     /**
      * Creates new form Beginscherm
      *
      * @param manager
      */
-    public GUI(OrderManager manager) {
-        initComponents();
+    public GUI(OrderManager manager, ConsumptionManager conManager) {
         this.manager = manager;
+        this.conManager = conManager;
+        initComponents();
     }
 
     /**
@@ -209,7 +216,27 @@ public class GUI extends javax.swing.JFrame {
                 jButton12ActionPerformed(evt);
             }
         });
-
+        
+        Menu.setLayout(new BorderLayout());
+        JPanel mainList = new JPanel();
+        mainList.setLayout(new GridLayout(0, 2, 0, 0));
+        JScrollPane scroll = new JScrollPane(mainList);
+        scroll.setPreferredSize(new Dimension(600, 300));
+        Menu.add(scroll, BorderLayout.CENTER);
+        
+        if(conManager.GetConsumptions() != null){
+            for(Consumption con : conManager.GetConsumptions()){
+                if(con != null){
+                    MenuItem item = new MenuItem(con.getConsumtionNumber(), con.getConsumtionTitle(), con.getPrice());
+                    menuItems.add(item);
+                    //Menu.add(item);
+                    mainList.add(item);
+                }
+            }
+        }
+        Menu.add(new JLabel("Menu"), BorderLayout.NORTH);
+        Menu.add(new JButton("Bestel"), BorderLayout.SOUTH);
+        /*
         javax.swing.GroupLayout MenuLayout = new javax.swing.GroupLayout(Menu);
         Menu.setLayout(MenuLayout);
         MenuLayout.setHorizontalGroup(
@@ -272,8 +299,7 @@ public class GUI extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 206, Short.MAX_VALUE)
                 .addComponent(jButton4)
                 .addGap(41, 41, 41))
-        );
-
+        );*/
         jPanel1.add(Menu, "Paneel2");
 
         jButton5.setText("Terug");
