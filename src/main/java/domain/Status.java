@@ -45,6 +45,8 @@ public class Status {
                      break;
             case 4:  status = "Opgediend";
                      break;
+            case 5:  status = "Betaald";
+                     break;
             default: status = "Niet besteld";
                      break;
         }
