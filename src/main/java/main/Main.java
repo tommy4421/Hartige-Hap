@@ -4,11 +4,8 @@
  */
 package main;
 
-import businesslogic.OrderManager;
-import businesslogic.TestOrderManager;
-import datastorage.DatabaseConnection;
-import datastorage.OrderDAO;
-import datastorage.TableDAO;
+import businesslogic.*;
+import datastorage.*;
 import presentation.GUI;
 
 /**
@@ -47,6 +44,8 @@ public class Main {
         TableDAO daoTable = new TableDAO(con);
         OrderManager manager = new TestOrderManager(daoOrder,daoTable);
         
+        ConsumptionDAO daoConsumption = new ConsumptionDAO(con);
+        ConsumptionManager conManager = new ConsumptionManager(daoConsumption);
         
         GUI ui = new GUI(manager);
         ui.setVisible(true);

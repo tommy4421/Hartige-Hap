@@ -20,6 +20,5 @@ public class BaseDAO {
     
     public DatabaseConnection getDatabaseConnection(){
         return this.con;
-        
     }
 }
