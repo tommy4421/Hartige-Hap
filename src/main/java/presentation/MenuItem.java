@@ -5,8 +5,15 @@
  */
 package presentation;
 
+import domain.Consumption;
+import domain.Order;
+import domain.Table;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import static java.lang.System.out;
 import javax.swing.*;
 import javax.swing.border.MatteBorder;
 
@@ -19,69 +26,78 @@ public class MenuItem extends JPanel {
     private int conNumber;
     private String conTitle;
     private int price;
+    private Consumption consumption;
     
     private JLabel titleLabel;
     private JLabel priceLabel;
+    private JLabel amount;
+    private JButton minusButton;
+    private JButton plusButton;
+    private JButton info;
     
-    public MenuItem(int conNumber, String conTitle, int price){
-        this.conNumber = conNumber;
-        this.conTitle = conTitle;
-        this.price = price;
+    public MenuItem(Consumption consumption){
+        this.conNumber = consumption.getConsumtionNumber();
+        this.conTitle = consumption.getConsumtionTitle();
+        this.price = consumption.getPrice();
+        this.consumption = consumption;
+        setMaximumSize(new Dimension(375, 40));
         initComps();
     }
     
     private void initComps(){
+        
         titleLabel = new JLabel(conTitle);
         priceLabel = new JLabel("€" + price);
-        JButton minusButton = new JButton("-");
-        JButton plusButton = new JButton("+");
-        JTextField amount = new JTextField("0");
-        JButton info = new JButton("?");
+        minusButton = new JButton("-");
+        plusButton = new JButton("+");
+        amount = new JLabel("0");
+        info = new JButton("?");
         
-        javax.swing.GroupLayout MenuLayout = new javax.swing.GroupLayout(this);
-        setLayout(MenuLayout);
-        MenuLayout.setHorizontalGroup(
-            MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(MenuLayout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addGroup(MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(minusButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(priceLabel))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(MenuLayout.createSequentialGroup()
-                        .addGroup(MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(MenuLayout.createSequentialGroup()
-                                .addComponent(plusButton)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(amount, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(MenuLayout.createSequentialGroup()
-                                .addComponent(titleLabel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(info)))))
-                .addContainerGap(29, Short.MAX_VALUE))
-        );
-        MenuLayout.setVerticalGroup(
-            MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(MenuLayout.createSequentialGroup()
-                .addGap(32, 32, 32)
-                .addGroup(MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(titleLabel)
-                    .addComponent(priceLabel)
-                    .addComponent(info))
-                .addGap(13, 13, 13)
-                .addGroup(MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(plusButton)
-                    .addComponent(minusButton)
-                    .addComponent(amount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 206, Short.MAX_VALUE)
-                .addGap(41, 41, 41))
-        );
+        minusButton.addActionListener(new ButtonHandler());
+        plusButton.addActionListener(new ButtonHandler());
+        
+        setLayout(new FlowLayout(FlowLayout.LEFT));
+        
+        add(info);
+        add(titleLabel);
+        add(Box.createHorizontalStrut(215 - titleLabel.getPreferredSize().width - priceLabel.getPreferredSize().width));
+        add(priceLabel);
+        add(minusButton);
+        add(amount);
+        add(plusButton);
+    }
+    
+    private void ChangeAmount(int change){
+        int curAmount = Integer.parseInt(amount.getText());
+        curAmount = Math.max(Math.min(curAmount + change, 9), 0);
+        amount.setText(Integer.toString(curAmount));
     }
     
     @Override
     public Dimension getPreferredSize() {
-        return new Dimension(272, 110);
+        return this.getMaximumSize();
     }
     
+    public Order GetOrder(){
+        int amount1 = Integer.parseInt(amount.getText());
+        if(amount1 != 0){
+            return new Order(new Table(1), consumption, amount1);
+        }else{
+            return null;
+        }
+    }
+    
+    class ButtonHandler implements ActionListener{
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        switch(e.getActionCommand()){
+            case "+":
+                ChangeAmount(1); break;
+            case "-":
+                ChangeAmount(-1); break;
+        }
+    }
+    
+}
 }

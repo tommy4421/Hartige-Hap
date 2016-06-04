@@ -6,6 +6,8 @@ package main;
 
 import businesslogic.*;
 import datastorage.*;
+import domain.Order;
+import domain.Table;
 import presentation.GUI;
 
 /**

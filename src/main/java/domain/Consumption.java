@@ -12,31 +12,37 @@ import java.util.ArrayList;
  */
 public class Consumption {
     
-    int consumtionNumber;
-    String consumtionTitle;
+    int consumptionNumber;
+    String consumptionTitle;
     int price;
+    String consumptionType;
     // hallo ik ben sean
     
-    public Consumption(int consumtionNumber, String consumtionTitle, int price)
+    public Consumption(int consumtionNumber, String consumtionTitle, int price, String type)
     {
-        this.consumtionNumber = consumtionNumber;
-        this.consumtionTitle = consumtionTitle;
+        this.consumptionNumber = consumtionNumber;
+        this.consumptionTitle = consumtionTitle;
         this.price = price;
+        this.consumptionType = type;
     }
 
     public int getConsumtionNumber()
     {
-        return consumtionNumber;
+        return consumptionNumber;
     }
 
     public String getConsumtionTitle()
     {
-        return consumtionTitle;
+        return consumptionTitle;
     }
 
     public int getPrice()
     {
         return price;
+    }
+    
+    public String getConsumptionType(){
+        return consumptionType;
     }
     
     @Override
@@ -57,7 +63,7 @@ public class Consumption {
                 
                 // Book wordt geidentificeerd door ISBN, dus alleen hierop
                 // controlleren is voldoend.
-                equal = this.consumtionNumber == b.consumtionNumber;
+                equal = this.consumptionNumber == b.consumptionNumber;
             }
         }
         
@@ -71,6 +77,6 @@ public class Consumption {
         // in Effective Java, 2nd edition, Joshua Bloch.
         
         // ISBN is uniek, dus voldoende als hashcode.
-        return consumtionNumber;
+        return consumptionNumber;
     }
 }

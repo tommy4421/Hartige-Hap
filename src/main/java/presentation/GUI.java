@@ -13,6 +13,8 @@ import domain.Consumption;
 import domain.Order;
 import domain.Table;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import javax.swing.*;
 
@@ -21,12 +23,12 @@ import javax.swing.*;
  * @author Dorian
  */
 public class GUI extends javax.swing.JFrame {
-
-    private int gerecht1aantal;
-    private int gerecht2aantal;
+    
     private final OrderManager manager;
     private final ConsumptionManager conManager;
     private ArrayList<MenuItem> menuItems = new ArrayList<>();
+    private Menu menuPanel;
+    private JButton bestel;
 
     /**
      * Creates new form Beginscherm
@@ -37,6 +39,25 @@ public class GUI extends javax.swing.JFrame {
         this.manager = manager;
         this.conManager = conManager;
         initComponents();
+        initMenu();
+    }
+    
+    private void initMenu(){
+        menuPanel = new Menu(conManager.GetConsumptions());
+        bestel = new JButton("Bestel");
+        bestel.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                for(Order order : menuPanel.GetOrders()){
+                    manager.placeOrder(order);
+                }
+            }        
+        });
+        
+        Menu.setLayout(new BorderLayout());
+        Menu.add(menuPanel, BorderLayout.CENTER);
+        Menu.add(new JLabel("Menu"), BorderLayout.NORTH);
+        Menu.add(bestel, BorderLayout.SOUTH);
     }
 
     /**
@@ -93,7 +114,7 @@ public class GUI extends javax.swing.JFrame {
         Afrekenscherm = new javax.swing.JPanel();
         jLabel12 = new javax.swing.JLabel();
         jButton16 = new javax.swing.JButton();
-
+        
         javax.swing.GroupLayout jFrame1Layout = new javax.swing.GroupLayout(jFrame1.getContentPane());
         jFrame1.getContentPane().setLayout(jFrame1Layout);
         jFrame1Layout.setHorizontalGroup(
@@ -158,42 +179,7 @@ public class GUI extends javax.swing.JFrame {
 
         jLabel3.setText("Cola");
 
-        jButton2.setText("+");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-
-        jButton3.setText("-");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
-            }
-        });
-
-        jButton4.setText("Verder");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
-            }
-        });
-
         jLabel4.setText("€10,00");
-
-        jButton7.setText("-");
-        jButton7.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton7ActionPerformed(evt);
-            }
-        });
-
-        jButton8.setText("+");
-        jButton8.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton8ActionPerformed(evt);
-            }
-        });
 
         jTextField2.setEditable(false);
         jTextField2.setText("0");
@@ -216,26 +202,6 @@ public class GUI extends javax.swing.JFrame {
                 jButton12ActionPerformed(evt);
             }
         });
-        
-        Menu.setLayout(new BorderLayout());
-        JPanel mainList = new JPanel();
-        mainList.setLayout(new GridLayout(0, 2, 0, 0));
-        JScrollPane scroll = new JScrollPane(mainList);
-        scroll.setPreferredSize(new Dimension(600, 300));
-        Menu.add(scroll, BorderLayout.CENTER);
-        
-        if(conManager.GetConsumptions() != null){
-            for(Consumption con : conManager.GetConsumptions()){
-                if(con != null){
-                    MenuItem item = new MenuItem(con.getConsumtionNumber(), con.getConsumtionTitle(), con.getPrice());
-                    menuItems.add(item);
-                    //Menu.add(item);
-                    mainList.add(item);
-                }
-            }
-        }
-        Menu.add(new JLabel("Menu"), BorderLayout.NORTH);
-        Menu.add(new JButton("Bestel"), BorderLayout.SOUTH);
         /*
         javax.swing.GroupLayout MenuLayout = new javax.swing.GroupLayout(Menu);
         Menu.setLayout(MenuLayout);
@@ -306,13 +272,6 @@ public class GUI extends javax.swing.JFrame {
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton5ActionPerformed(evt);
-            }
-        });
-
-        jButton6.setText("Bestel");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
             }
         });
 
@@ -555,59 +514,10 @@ public class GUI extends javax.swing.JFrame {
         card.show(jPanel1, "Paneel2");
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        gerecht1aantal++;
-        jTextField3.setText(gerecht1aantal + "");
-    }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        if (gerecht1aantal > 0) {
-            jLabel8.setText(gerecht1aantal + " x Spek met ei €" + (gerecht1aantal * 10));
-        }
-        if (gerecht2aantal > 0) {
-            jLabel9.setText(gerecht2aantal + " x Cola €" + (gerecht2aantal * 2));
-        }
-        if (gerecht1aantal < 1 && gerecht2aantal < 1) {
-            jLabel9.setText("");
-            jLabel8.setText("U heeft niks geselecteerd");
-        }
-        CardLayout card = (CardLayout) jPanel1.getLayout();
-        card.show(jPanel1, "Paneel3");
-    }//GEN-LAST:event_jButton4ActionPerformed
-
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         CardLayout card = (CardLayout) jPanel1.getLayout();
         card.show(jPanel1, "Paneel2");
     }//GEN-LAST:event_jButton5ActionPerformed
-
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        CardLayout card = (CardLayout) jPanel1.getLayout();
-        card.show(jPanel1, "Paneel4");
-        Order order = new Order(new Table(1), new Consumption(1, "Ei met spek", 10), gerecht1aantal);
-        manager.placeOrder(order);
-
-        gerecht1aantal = 0;
-        gerecht2aantal = 0;
-        jTextField3.setText(gerecht1aantal + "");
-        jTextField2.setText(gerecht2aantal + "");
-
-
-    }//GEN-LAST:event_jButton6ActionPerformed
-
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        gerecht1aantal--;
-        jTextField3.setText(gerecht1aantal + "");
-    }//GEN-LAST:event_jButton3ActionPerformed
-
-    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        gerecht2aantal++;
-        jTextField2.setText(gerecht2aantal + "");
-    }//GEN-LAST:event_jButton8ActionPerformed
-
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        gerecht2aantal--;
-        jTextField2.setText(String.valueOf(gerecht2aantal));
-    }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
         CardLayout card = (CardLayout) jPanel1.getLayout();

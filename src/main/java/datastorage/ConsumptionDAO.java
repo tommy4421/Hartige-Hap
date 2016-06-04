@@ -37,7 +37,8 @@ public class ConsumptionDAO extends BaseDAO {
                         int conNumber = result.getInt("ConsumptionNumber");
                         String conName = result.getString("ConsumptionName");
                         int conPrice = result.getInt("ConsumptionPrice");
-                        cons.add(new Consumption(conNumber, conName, conPrice));
+                        String conType = result.getString("ConsumptionType");
+                        cons.add(new Consumption(conNumber, conName, conPrice, conType));
                     }
                 } catch (SQLException ex) {
                     Logger.getLogger(ConsumptionDAO.class.getName()).log(Level.SEVERE, null, ex);

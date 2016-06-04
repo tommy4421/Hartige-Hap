@@ -47,7 +47,6 @@ public class DatabaseConnection {
                 {
                     statement = connection.createStatement();
                 }
-                
                 result = true;
             }
             catch(SQLException e)
@@ -61,7 +60,6 @@ public class DatabaseConnection {
             // A connection was already initalized.
             result = true;
         }
-        
         return result;
     }
     
@@ -130,6 +128,7 @@ public class DatabaseConnection {
         
         // First, check whether a some query was passed and the connection with
         // the database.
+        
         if(query != null && connectionIsOpen())
         {
             // Then, if succeeded, execute the query.
@@ -144,6 +143,7 @@ public class DatabaseConnection {
                 System.out.println(e);
                 result = false;
             }
+            
         }
         
         return result;

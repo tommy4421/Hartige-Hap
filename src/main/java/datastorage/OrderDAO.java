@@ -25,16 +25,15 @@ public class OrderDAO extends BaseDAO{
     
 
     public void add(Order order) {
-
         boolean result = false;
         
         if(order != null)
         {
             // First open the database connection.
             DatabaseConnection connection = super.getDatabaseConnection();
+            
             if(connection.openConnection())
             {
-
                 result = connection.executeSQLDeleteStatement(
                         
 //                result = connection.executeSQLDeleteStatement("INSERT INTO `order`, (ConsumptionName, ConsumtionAmount, TableNumber)\n" +
