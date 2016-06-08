@@ -35,14 +35,13 @@ public class DatabaseConnection {
     public boolean openConnection()
     {
         boolean result = false;
-
         if(connection == null)
         {
             try
             {   
                 // Try to create a connection with the library database
                 connection = DriverManager.getConnection(this.connectionString, this.name, this.pass);
-
+                
                 if(connection != null)
                 {
                     statement = connection.createStatement();
@@ -97,6 +96,7 @@ public class DatabaseConnection {
         catch(Exception e) {
             System.out.println(e);
         }
+        connection = null;
     }
     
     public ResultSet executeSQLSelectStatement(String query)

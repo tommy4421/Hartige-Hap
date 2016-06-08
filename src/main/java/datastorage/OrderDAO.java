@@ -31,7 +31,6 @@ public class OrderDAO extends BaseDAO{
         {
             // First open the database connection.
             DatabaseConnection connection = super.getDatabaseConnection();
-            
             if(connection.openConnection())
             {
                 result = connection.executeSQLDeleteStatement(
