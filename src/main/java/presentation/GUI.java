@@ -45,9 +45,7 @@ public class GUI extends javax.swing.JFrame {
         jButton4.addActionListener((ActionEvent e) -> {
             menuPanel.GetOrders().stream().forEach((order) -> {
                 manager.placeOrder(order);
-            });
-            CardLayout card = (CardLayout) jPanel1.getLayout();
-            card.show(jPanel1, "Paneel3");        
+            });       
         });
         
         jPanel3.setLayout(new BorderLayout());
@@ -398,12 +396,21 @@ public class GUI extends javax.swing.JFrame {
         CardLayout card = (CardLayout) jPanel1.getLayout();
         card.show(jPanel1, "Paneel2");
     }//GEN-LAST:event_jButton1ActionPerformed
-
+    
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+        CardLayout card = (CardLayout) jPanel1.getLayout();
+        card.show(jPanel1, "Paneel3");
+    } 
+    
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         CardLayout card = (CardLayout) jPanel1.getLayout();
         card.show(jPanel1, "Paneel2");
     }//GEN-LAST:event_jButton5ActionPerformed
-
+    
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+        
+    } 
+    
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
         CardLayout card = (CardLayout) jPanel1.getLayout();
         card.show(jPanel1, "Paneel1");
