@@ -25,14 +25,13 @@ public class OrderManager {
     {
         this.daoOrder = daoOrder;
         this.daoTable = daoTable;
-        /* Voorbeeld van een order
-        Order order = placeOrder(tables.get(1), new Dish(1, "Ei met spek", 10), new Drink(1, "Cola", 2));
-        order.setDishAmount(1);
-        order.setDrinkAmount(1);
-        order.writeToDatabase();*/
     }
 
-    public Order placeOrder(Order order){
+    public Order placeOrder(int tableNr, ArrayList<Consumption> consumptions){
+        Order order = new Order(new Table(tableNr));
+        for(Consumption con : consumptions){
+            order.AddConsumption(con);
+        }
         daoOrder.add(order);
         return order;
     } 

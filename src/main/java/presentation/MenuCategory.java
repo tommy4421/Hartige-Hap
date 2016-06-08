@@ -5,6 +5,7 @@
  */
 package presentation;
 
+import domain.Consumption;
 import domain.Order;
 import java.awt.*;
 import java.util.ArrayList;
@@ -41,15 +42,15 @@ public class MenuCategory extends JPanel {
         menuItems.add(item);
     }
     
-    public ArrayList<Order> GetOrders(){
-        ArrayList<Order> orders = new ArrayList<>();
+    public ArrayList<Consumption> GetConsumptions(){
+        ArrayList<Consumption> cons = new ArrayList<>();
         for(MenuItem item : menuItems){
-            Order order = item.GetOrder();
-            if(order != null){
-                orders.add(order);
+            Consumption con = item.GetConsumption();
+            if(con != null){
+                cons.add(con);
             }
         }
-        return orders;
+        return cons;
     }
     
 }

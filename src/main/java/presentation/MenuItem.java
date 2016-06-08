@@ -78,10 +78,10 @@ public class MenuItem extends JPanel {
         return this.getMaximumSize();
     }
     
-    public Order GetOrder(){
+    public Consumption GetConsumption(){
         int amount1 = Integer.parseInt(amount.getText());
-        if(amount1 != 0){
-            return new Order(new Table(1), consumption, amount1);
+        if(amount1 > 0){
+            return consumption;
         }else{
             return null;
         }

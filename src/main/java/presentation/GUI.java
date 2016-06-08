@@ -8,7 +8,9 @@ package presentation;
 import businesslogic.ConsumptionManager;
 import java.awt.CardLayout;
 import businesslogic.OrderManager;
+import domain.Consumption;
 import domain.Order;
+import domain.Table;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -43,10 +45,8 @@ public class GUI extends javax.swing.JFrame {
     
     private void initMenu(){
         menuPanel = new Menu(conManager.GetConsumptions());
-        jButton4.addActionListener((ActionEvent e) -> {
-            menuPanel.GetOrders().stream().forEach((order) -> {
-                manager.placeOrder(order);
-            });       
+        jButton6.addActionListener((ActionEvent e) -> {  
+            manager.placeOrder(1, menuPanel.GetConsumptions());
         });
         
         jPanel3.setLayout(new BorderLayout());

@@ -7,6 +7,7 @@ package presentation;
 
 import domain.Consumption;
 import domain.Order;
+import domain.Table;
 import java.awt.*;
 import java.util.ArrayList;
 import javax.swing.BorderFactory;
@@ -80,13 +81,13 @@ public class Menu extends JPanel {
         }
     }
     
-    public ArrayList<Order> GetOrders(){
-        ArrayList<Order> orders = new ArrayList<>();
+    public ArrayList<Consumption> GetConsumptions(){
+        ArrayList<Consumption> cons = new ArrayList<>();
         for(MenuCategory panel : panels){
-            for(Order order : panel.GetOrders()){
-                orders.add(order);
+            for(Consumption con : panel.GetConsumptions()){
+                cons.add(con);
             }
         }
-        return orders;
+        return cons;
     }
 }

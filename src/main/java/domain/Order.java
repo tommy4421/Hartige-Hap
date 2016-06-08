@@ -6,6 +6,7 @@ package domain;
 
 import java.util.Date;
 import datastorage.OrderDAO;
+import java.util.ArrayList;
 
 /**
  *
@@ -15,12 +16,11 @@ public class Order {
     private Date orderDate;
     
     private Table table;
-    private Consumption consumption;
+    private ArrayList<Consumption> consumptions = new ArrayList<>();
     private int consumptionAmount;
 
-    public Order(Table table, Consumption consumption, int consumptionAmount) {
+    public Order(Table table) {
         this.table = table;
-        this.consumption = consumption;
         this.consumptionAmount = consumptionAmount;
     }
     
@@ -29,9 +29,9 @@ public class Order {
         return table;
     }
     
-    public Consumption getConsumtion()
+    public ArrayList<Consumption> getConsumtions()
     {
-        return consumption;
+        return consumptions;
     }
     
     public Date getDate()
@@ -39,12 +39,8 @@ public class Order {
         return orderDate;
     }
     
-    public int getConsumtionAmount(){
-        return consumptionAmount;
-    }
-    
-    public void setConsumtionAmount(int amount){
-        this.consumptionAmount = amount;
+    public void AddConsumption(Consumption con){
+        consumptions.add(con);
     }
     
     public void remove()
@@ -57,9 +53,9 @@ public class Order {
         table.removeReservation(this);
         table = null;
         
-        if(consumption != null)
+        if(consumptions != null)
         {
-            consumption = null;
+            consumptions = null;
         }
     }
     
@@ -81,7 +77,7 @@ public class Order {
                 
                 equal = orderDate.equals(r.orderDate) &&
                         table.equals(r.table) &&
-                        consumption.equals(r.consumption);
+                        consumptions.equals(r.consumptions);
             }
         }
         
@@ -97,7 +93,7 @@ public class Order {
         int result = 17;
         result += orderDate.hashCode() +
                 table.hashCode() +
-                consumption.hashCode();
+                consumptions.hashCode();
         
         return result;
     }

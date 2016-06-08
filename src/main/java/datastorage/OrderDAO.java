@@ -12,6 +12,8 @@ import java.util.ArrayList;
 import domain.Consumption;
 import domain.Order;
 import domain.Status;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 public class OrderDAO extends BaseDAO{
@@ -33,31 +35,31 @@ public class OrderDAO extends BaseDAO{
             DatabaseConnection connection = super.getDatabaseConnection();
             if(connection.openConnection())
             {
+                int orderid = 0;
+                ResultSet resultSet;
+                try {
+                    resultSet = connection.executeSQLSelectStatement("SELECT MAX(OrderNumber) FROM `order`;");
+                    resultSet.first();
+                    orderid = resultSet.getInt(1) + 1;
+                } catch (SQLException ex) {
+                    Logger.getLogger(OrderDAO.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                System.out.println(orderid);
+                String query = "";
+                query += " INSERT INTO `consumptionorder` (OrderNumber, ConsumptionNumber) VALUES";
+                ArrayList<Consumption> consumptions = order.getConsumtions();
+                for(int i = 0; i < consumptions.size(); i ++){
+                    query += "(" + orderid + "," + consumptions.get(i).getConsumtionNumber() + ")";
+                    if(i < consumptions.size() - 1)
+                        query += ",";
+                }
+                
+                query += ";";
+                System.out.println(query);
                 result = connection.executeSQLDeleteStatement(
-                        
-//                result = connection.executeSQLDeleteStatement("INSERT INTO `order`, (ConsumptionName, ConsumtionAmount, TableNumber)\n" +
-//                "VALUES (" + order.getConsumtion().getConsumtionNumber() + "," + 
-//                        order.getTable().getTableNumber() + "," + 
-//                        order.getConsumtionAmount() + ");");
-                        
-//                        "INSERT INTO `order` (StatusNumber, TableNumber) "
-//                        + "VALUES (0," + order.getTable().getTableNumber() + ");"
-//                        + " INSERT INTO `consumptionorder` (OrderNumber, ConsumptionNumber, Amount) "
-//                        + "VALUES (3423," + order.getConsumtion().getConsumtionNumber() + "," + order.getConsumtionAmount() + ");"
-//                        + "COMMIT;");
-//                
-//                  result = connection.executeSQLDeleteStatement( 
-//                                 "INSERT INTO `consumptionorder` (OrderNumber, ConsumptionNumber, Amount) "
-//                                + "VALUES(LAST_INSERT_ID(),1,1); "
-//                                );
-
-
-                        "INSERT INTO `order` (StatusNumber, TableNumber) "
+                         "INSERT INTO `order` (StatusNumber, TableNumber) "
                         + "VALUES (1," + order.getTable().getTableNumber() + ");"
-                         ,
-                        "INSERT INTO `consumptionorder` (OrderNumber, ConsumptionNumber, Amount)"
-                        + "VALUES (LAST_INSERT_ID()," + order.getConsumtion().getConsumtionNumber() + "," + order.getConsumtionAmount()+ ");"
-                        );
+                         , query);
                     
                 // Finished with the connection, so close it.
                 connection.closeConnection();
