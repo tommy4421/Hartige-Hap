@@ -140,21 +140,26 @@ public class GUI extends javax.swing.JFrame {
 
         jPanel1.setLayout(new java.awt.CardLayout());
 
-        jTextField1.setText("jTextField1");
+        jTextField1.setText("Tafelnummer");
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField1ActionPerformed(evt);
             }
         });
 
-        jButton17.setText("jButton17");
+        jButton17.setText("Set");
         jButton17.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton17ActionPerformed(evt);
             }
         });
 
-        jButton18.setText("jButton18");
+        jButton18.setText("Start");
+        jButton18.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton18ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout TafelNummerLayout = new javax.swing.GroupLayout(TafelNummer);
         TafelNummer.setLayout(TafelNummerLayout);
@@ -162,26 +167,26 @@ public class GUI extends javax.swing.JFrame {
             TafelNummerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(TafelNummerLayout.createSequentialGroup()
                 .addGroup(TafelNummerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton18)
-                    .addGroup(TafelNummerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(TafelNummerLayout.createSequentialGroup()
-                            .addGap(160, 160, 160)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(TafelNummerLayout.createSequentialGroup()
-                            .addGap(150, 150, 150)
-                            .addComponent(jButton17))))
+                    .addGroup(TafelNummerLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jButton18, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, TafelNummerLayout.createSequentialGroup()
+                        .addGap(161, 161, 161)
+                        .addGroup(TafelNummerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jButton17, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(176, Short.MAX_VALUE))
         );
         TafelNummerLayout.setVerticalGroup(
             TafelNummerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(TafelNummerLayout.createSequentialGroup()
-                .addGap(125, 125, 125)
+                .addGap(87, 87, 87)
                 .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton17)
-                .addGap(29, 29, 29)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 162, Short.MAX_VALUE)
                 .addComponent(jButton18)
-                .addContainerGap(123, Short.MAX_VALUE))
+                .addGap(40, 40, 40))
         );
 
         jPanel1.add(TafelNummer, "card9");
@@ -651,6 +656,11 @@ public class GUI extends javax.swing.JFrame {
     private void jButton17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton17ActionPerformed
             tableNumber = Integer.parseInt(jTextField1.getText()); 
     }//GEN-LAST:event_jButton17ActionPerformed
+
+    private void jButton18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton18ActionPerformed
+        CardLayout card = (CardLayout) jPanel1.getLayout();
+        card.show(jPanel1, "Paneel1");
+    }//GEN-LAST:event_jButton18ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
