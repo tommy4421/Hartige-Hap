@@ -27,6 +27,8 @@ public class MenuCategory extends JPanel {
     public MenuCategory(String name){
         this.name = name;
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+        setMaximumSize(new Dimension(420, 190));
+        setPreferredSize(getMaximumSize());
         init();
     }
     
