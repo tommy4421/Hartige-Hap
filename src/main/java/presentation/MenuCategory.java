@@ -45,9 +45,11 @@ public class MenuCategory extends JPanel {
     public ArrayList<Consumption> GetConsumptions(){
         ArrayList<Consumption> cons = new ArrayList<>();
         for(MenuItem item : menuItems){
-            Consumption con = item.GetConsumption();
+            ArrayList<Consumption> con = item.GetConsumption();
             if(con != null){
-                cons.add(con);
+                for(Consumption c : con){
+                    cons.add(c);
+                }
             }
         }
         return cons;

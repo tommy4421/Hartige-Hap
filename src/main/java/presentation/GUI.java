@@ -27,6 +27,7 @@ public class GUI extends javax.swing.JFrame {
     private final ConsumptionManager conManager;
     private final ArrayList<MenuItem> menuItems = new ArrayList<>();
     private Menu menuPanel;
+    private JPanel orderPanel;
     private int tableNumber;
     
 
@@ -44,13 +45,14 @@ public class GUI extends javax.swing.JFrame {
     }
     
     private void initMenu(){
-        menuPanel = new Menu(conManager.GetConsumptions());
-        jButton6.addActionListener((ActionEvent e) -> {  
-            manager.placeOrder(1, menuPanel.GetConsumptions());
-        });
-        
+        menuPanel = new Menu(conManager.GetConsumptions());        
         Menu.setLayout(new BorderLayout());
         Menu.add(menuPanel, BorderLayout.CENTER);
+        
+        orderPanel = new JPanel();
+        orderPanel.setLayout(new BoxLayout(orderPanel, BoxLayout.Y_AXIS));
+        OrderContainer.setLayout(new BorderLayout());
+        OrderContainer.add(new JScrollPane(orderPanel), BorderLayout.CENTER);
     }
 
     /**
@@ -69,18 +71,19 @@ public class GUI extends javax.swing.JFrame {
         TafelNummer = new javax.swing.JPanel();
         jTextField1 = new javax.swing.JTextField();
         jButton17 = new javax.swing.JButton();
-        jButton18 = new javax.swing.JButton();
         Welkomscherm = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         Menu = new javax.swing.JPanel();
         jButton4 = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
         BestellingUitleesScherm = new javax.swing.JPanel();
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
+        OrderContainer = new javax.swing.JPanel();
         Confirmatiescherm = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         jButton9 = new javax.swing.JButton();
@@ -135,14 +138,12 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
-        jButton17.setText("jButton17");
+        jButton17.setText("Verder");
         jButton17.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton17ActionPerformed(evt);
             }
         });
-
-        jButton18.setText("jButton18");
 
         javax.swing.GroupLayout TafelNummerLayout = new javax.swing.GroupLayout(TafelNummer);
         TafelNummer.setLayout(TafelNummerLayout);
@@ -154,11 +155,9 @@ public class GUI extends javax.swing.JFrame {
                         .addGap(160, 160, 160)
                         .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(TafelNummerLayout.createSequentialGroup()
-                        .addGap(150, 150, 150)
-                        .addGroup(TafelNummerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jButton18)
-                            .addComponent(jButton17))))
-                .addContainerGap(518, Short.MAX_VALUE))
+                        .addGap(172, 172, 172)
+                        .addComponent(jButton17)))
+                .addContainerGap(656, Short.MAX_VALUE))
         );
         TafelNummerLayout.setVerticalGroup(
             TafelNummerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -167,9 +166,7 @@ public class GUI extends javax.swing.JFrame {
                 .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButton17)
-                .addGap(29, 29, 29)
-                .addComponent(jButton18)
-                .addContainerGap(205, Short.MAX_VALUE))
+                .addContainerGap(548, Short.MAX_VALUE))
         );
 
         jPanel1.add(TafelNummer, "card9");
@@ -192,7 +189,7 @@ public class GUI extends javax.swing.JFrame {
                 .addGroup(WelkomschermLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(496, Short.MAX_VALUE))
+                .addContainerGap(591, Short.MAX_VALUE))
         );
         WelkomschermLayout.setVerticalGroup(
             WelkomschermLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -201,7 +198,7 @@ public class GUI extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(335, Short.MAX_VALUE))
+                .addContainerGap(632, Short.MAX_VALUE))
         );
 
         jPanel1.add(Welkomscherm, "Paneel1");
@@ -213,21 +210,28 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
+        jLabel2.setText("Menu");
+
         javax.swing.GroupLayout MenuLayout = new javax.swing.GroupLayout(Menu);
         Menu.setLayout(MenuLayout);
         MenuLayout.setHorizontalGroup(
             MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(MenuLayout.createSequentialGroup()
-                .addGap(122, 122, 122)
-                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(495, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MenuLayout.createSequentialGroup()
+                .addContainerGap(390, Short.MAX_VALUE)
+                .addGroup(MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(387, 387, 387))
         );
         MenuLayout.setVerticalGroup(
             MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(MenuLayout.createSequentialGroup()
-                .addContainerGap(379, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MenuLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 581, Short.MAX_VALUE)
                 .addComponent(jButton4)
-                .addGap(41, 41, 41))
+                .addGap(31, 31, 31))
         );
 
         jPanel1.add(Menu, "Paneel2");
@@ -248,6 +252,17 @@ public class GUI extends javax.swing.JFrame {
 
         jLabel6.setText("Uw bestelling");
 
+        javax.swing.GroupLayout OrderContainerLayout = new javax.swing.GroupLayout(OrderContainer);
+        OrderContainer.setLayout(OrderContainerLayout);
+        OrderContainerLayout.setHorizontalGroup(
+            OrderContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 823, Short.MAX_VALUE)
+        );
+        OrderContainerLayout.setVerticalGroup(
+            OrderContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 543, Short.MAX_VALUE)
+        );
+
         javax.swing.GroupLayout BestellingUitleesSchermLayout = new javax.swing.GroupLayout(BestellingUitleesScherm);
         BestellingUitleesScherm.setLayout(BestellingUitleesSchermLayout);
         BestellingUitleesSchermLayout.setHorizontalGroup(
@@ -266,8 +281,9 @@ public class GUI extends javax.swing.JFrame {
                         .addGap(46, 46, 46)
                         .addGroup(BestellingUitleesSchermLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, 189, Short.MAX_VALUE))))
-                .addContainerGap(494, Short.MAX_VALUE))
+                            .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(OrderContainer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(38, Short.MAX_VALUE))
         );
         BestellingUitleesSchermLayout.setVerticalGroup(
             BestellingUitleesSchermLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -278,7 +294,9 @@ public class GUI extends javax.swing.JFrame {
                 .addComponent(jLabel8)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel9)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 311, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(OrderContainer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
                 .addComponent(jButton5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton6)
@@ -315,13 +333,13 @@ public class GUI extends javax.swing.JFrame {
         ConfirmatieschermLayout.setHorizontalGroup(
             ConfirmatieschermLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ConfirmatieschermLayout.createSequentialGroup()
-                .addContainerGap(454, Short.MAX_VALUE)
+                .addContainerGap(517, Short.MAX_VALUE)
                 .addComponent(jLabel7)
                 .addGap(93, 93, 93))
             .addGroup(ConfirmatieschermLayout.createSequentialGroup()
                 .addGap(141, 141, 141)
                 .addGroup(ConfirmatieschermLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton10, javax.swing.GroupLayout.DEFAULT_SIZE, 108, Short.MAX_VALUE)
+                    .addComponent(jButton10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -331,7 +349,7 @@ public class GUI extends javax.swing.JFrame {
             .addGroup(ConfirmatieschermLayout.createSequentialGroup()
                 .addGap(56, 56, 56)
                 .addComponent(jLabel7)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 281, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 555, Short.MAX_VALUE)
                 .addComponent(jButton15, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton9)
@@ -370,7 +388,7 @@ public class GUI extends javax.swing.JFrame {
                     .addGroup(Infoscherm1Layout.createSequentialGroup()
                         .addGap(133, 133, 133)
                         .addComponent(jButton13, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(405, Short.MAX_VALUE))
+                .addContainerGap(565, Short.MAX_VALUE))
         );
         Infoscherm1Layout.setVerticalGroup(
             Infoscherm1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -379,7 +397,7 @@ public class GUI extends javax.swing.JFrame {
                 .addComponent(jLabel10)
                 .addGap(27, 27, 27)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 200, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 488, Short.MAX_VALUE)
                 .addComponent(jButton13, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(25, 25, 25))
         );
@@ -415,7 +433,7 @@ public class GUI extends javax.swing.JFrame {
                     .addGroup(Infoscherm2Layout.createSequentialGroup()
                         .addGap(133, 133, 133)
                         .addComponent(jButton14, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(405, Short.MAX_VALUE))
+                .addContainerGap(565, Short.MAX_VALUE))
         );
         Infoscherm2Layout.setVerticalGroup(
             Infoscherm2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -424,7 +442,7 @@ public class GUI extends javax.swing.JFrame {
                 .addComponent(jLabel11)
                 .addGap(27, 27, 27)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 200, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 488, Short.MAX_VALUE)
                 .addComponent(jButton14, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(25, 25, 25))
         );
@@ -452,14 +470,14 @@ public class GUI extends javax.swing.JFrame {
                     .addGroup(AfrekenschermLayout.createSequentialGroup()
                         .addGap(143, 143, 143)
                         .addComponent(jButton16, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(423, Short.MAX_VALUE))
+                .addContainerGap(460, Short.MAX_VALUE))
         );
         AfrekenschermLayout.setVerticalGroup(
             AfrekenschermLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(AfrekenschermLayout.createSequentialGroup()
                 .addGap(59, 59, 59)
                 .addComponent(jLabel12)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 301, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 592, Short.MAX_VALUE)
                 .addComponent(jButton16)
                 .addGap(46, 46, 46))
         );
@@ -470,11 +488,11 @@ public class GUI extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 747, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 443, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 746, Short.MAX_VALUE)
         );
 
         pack();
@@ -488,10 +506,15 @@ public class GUI extends javax.swing.JFrame {
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {                                         
         CardLayout card = (CardLayout) jPanel1.getLayout();
         card.show(jPanel1, "Paneel3");
+        orderPanel.removeAll();
+        for(Consumption con : menuPanel.GetConsumptions()){
+            JLabel label = new JLabel("1x " + con.getConsumtionTitle() + " €" + con.getPrice());
+            orderPanel.add(label);
+        }
     } 
     
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {                                         
-        
+        manager.placeOrder(1, menuPanel.GetConsumptions());
     } 
     
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
@@ -534,7 +557,14 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void jButton17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton17ActionPerformed
-            tableNumber = Integer.parseInt(jTextField1.getText()); 
+        try{    
+            tableNumber = Integer.parseInt(jTextField1.getText());
+            CardLayout card = (CardLayout) jPanel1.getLayout();
+            card.show(jPanel1, "Paneel1");
+        }catch(NumberFormatException e){
+            System.out.println("That was not an int you big dumb dumb");
+        }
+        
     }//GEN-LAST:event_jButton17ActionPerformed
 
 
@@ -545,6 +575,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JPanel Infoscherm1;
     private javax.swing.JPanel Infoscherm2;
     private javax.swing.JPanel Menu;
+    private javax.swing.JPanel OrderContainer;
     private javax.swing.JPanel TafelNummer;
     private javax.swing.JPanel Welkomscherm;
     private javax.swing.JButton jButton1;
@@ -554,7 +585,6 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JButton jButton15;
     private javax.swing.JButton jButton16;
     private javax.swing.JButton jButton17;
-    private javax.swing.JButton jButton18;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
@@ -566,6 +596,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;

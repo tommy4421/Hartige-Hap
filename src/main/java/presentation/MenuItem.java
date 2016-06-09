@@ -14,6 +14,7 @@ import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import static java.lang.System.out;
+import java.util.ArrayList;
 import javax.swing.*;
 import javax.swing.border.MatteBorder;
 
@@ -78,10 +79,14 @@ public class MenuItem extends JPanel {
         return this.getMaximumSize();
     }
     
-    public Consumption GetConsumption(){
+    public ArrayList<Consumption> GetConsumption(){
         int amount1 = Integer.parseInt(amount.getText());
         if(amount1 > 0){
-            return consumption;
+            ArrayList<Consumption> consumptions = new ArrayList<>();
+            for(int i = 0;  i < amount1; i++){
+                consumptions.add(consumption);
+            }            
+            return consumptions;
         }else{
             return null;
         }
