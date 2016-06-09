@@ -37,7 +37,11 @@ public class MenuCategory extends JPanel {
         panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
         JScrollPane scroll = new JScrollPane(panel);
         scroll.setMinimumSize(new Dimension(400, 170));
-        add(new JLabel(name));
+        JLabel label = new JLabel("<html><span style='font-size:12px'>"+name+"</span></html>");
+        label.setOpaque(true);
+        label.setForeground(Color.white);
+        label.setBackground(Color.red);
+        add(label);
         add(scroll);
     }
     

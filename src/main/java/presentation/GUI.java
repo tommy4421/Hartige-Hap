@@ -47,7 +47,7 @@ public class GUI extends javax.swing.JFrame {
     }
     
     private void initMenu(){
-        menuPanel = new Menu(conManager.GetConsumptions());        
+        menuPanel = new Menu(conManager.GetConsumptions());
         Menu.setLayout(new BorderLayout());
         Menu.add(menuPanel, BorderLayout.CENTER);
         
@@ -132,7 +132,9 @@ public class GUI extends javax.swing.JFrame {
         jCheckBox1.setText("jCheckBox1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(255, 255, 255));
 
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new java.awt.CardLayout());
 
         jTextField1.setText("1");
@@ -496,7 +498,7 @@ public class GUI extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 746, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
