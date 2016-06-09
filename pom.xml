@@ -52,7 +52,7 @@
         <artifactId>exec-maven-plugin</artifactId>
         <version>1.2.1</version>
         <configuration>
-          <mainClass>pom.main.Main</mainClass>
+          <mainClass>main.Main</mainClass>
         </configuration>
       </plugin>
       <plugin>
@@ -67,6 +67,29 @@
           </execution>
         </executions>
       </plugin>
+	  <plugin>
+    <artifactId>maven-assembly-plugin</artifactId>
+    <version>2.4</version>
+    <configuration>
+       <descriptorRefs>
+          <descriptorRef>jar-with-dependencies</descriptorRef>
+       </descriptorRefs>
+       <archive>
+          <manifest>
+              <mainClass>main.Main</mainClass>
+          </manifest>
+       </archive>
+    </configuration>
+    <executions>
+        <execution>
+            <id>make-assembly</id>
+            <phase>package</phase>
+            <goals>                        
+                <goal>single</goal>
+            </goals>
+         </execution>
+     </executions>
+</plugin>
     </plugins>
   </build>
 </project>
