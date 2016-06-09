@@ -23,6 +23,8 @@ import javax.swing.*;
  */
 public class GUI extends javax.swing.JFrame {
     
+    private static final long serialVersionUID = 10003;
+    
     private final OrderManager manager;
     private final ConsumptionManager conManager;
     private final ArrayList<MenuItem> menuItems = new ArrayList<>();
@@ -52,7 +54,9 @@ public class GUI extends javax.swing.JFrame {
         orderPanel = new JPanel();
         orderPanel.setLayout(new BoxLayout(orderPanel, BoxLayout.Y_AXIS));
         OrderContainer.setLayout(new BorderLayout());
-        OrderContainer.add(new JScrollPane(orderPanel), BorderLayout.CENTER);
+        JScrollPane scroll = new JScrollPane(orderPanel);
+        scroll.setMaximumSize(new Dimension(400, 170));
+        OrderContainer.add(scroll, BorderLayout.CENTER);
     }
 
     /**

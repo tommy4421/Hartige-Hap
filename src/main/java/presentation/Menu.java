@@ -21,6 +21,8 @@ import javax.swing.JScrollPane;
  */
 public class Menu extends JPanel {
     
+    private static final long serialVersionUID = 10000;
+    
     private MenuCategory appetizers;
     private MenuCategory salads;
     private MenuCategory mainDishes;

@@ -24,6 +24,8 @@ import javax.swing.border.MatteBorder;
  */
 public class MenuItem extends JPanel {
     
+    private static final long serialVersionUID = 10002;
+    
     private int conNumber;
     private String conTitle;
     private int price;

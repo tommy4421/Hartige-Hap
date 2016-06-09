@@ -22,8 +22,8 @@ public class Table {
     {
         this.tableNumber = tableNumber;
       
-        invoices = new ArrayList();
-        orders = new ArrayList();
+        invoices = new ArrayList<>();
+        orders = new ArrayList<>();
     }
     
     public int getTableNumber()
