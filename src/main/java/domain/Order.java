@@ -17,11 +17,10 @@ public class Order {
     
     private Table table;
     private ArrayList<Consumption> consumptions = new ArrayList<>();
-    private int consumptionAmount;
+    private Status status;
 
     public Order(Table table) {
         this.table = table;
-        this.consumptionAmount = consumptionAmount;
     }
     
     public Table getTable()
@@ -96,5 +95,19 @@ public class Order {
                 consumptions.hashCode();
         
         return result;
+    }
+
+    /**
+     * @return the status
+     */
+    public Status getStatus() {
+        return status;
+    }
+
+    /**
+     * @param status the status to set
+     */
+    public void setStatus(Status status) {
+        this.status = status;
     }
 }

@@ -10,6 +10,8 @@ import java.awt.CardLayout;
 import businesslogic.OrderManager;
 import domain.Consumption;
 import domain.Order;
+import domain.Pair;
+import domain.Status;
 import domain.Table;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -44,6 +46,8 @@ public class GUI extends javax.swing.JFrame {
         this.conManager = conManager;
         initComponents();
         initMenu();
+        
+        Status t = Status.Besteld;
     }
     
     private void initMenu(){
@@ -172,7 +176,7 @@ public class GUI extends javax.swing.JFrame {
                 .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButton17)
-                .addContainerGap(548, Short.MAX_VALUE))
+                .addContainerGap(593, Short.MAX_VALUE))
         );
 
         jPanel1.add(TafelNummer, "card9");
@@ -204,7 +208,7 @@ public class GUI extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(632, Short.MAX_VALUE))
+                .addContainerGap(671, Short.MAX_VALUE))
         );
 
         jPanel1.add(Welkomscherm, "Paneel1");
@@ -235,7 +239,7 @@ public class GUI extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MenuLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 581, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 656, Short.MAX_VALUE)
                 .addComponent(jButton4)
                 .addGap(31, 31, 31))
         );
@@ -302,7 +306,7 @@ public class GUI extends javax.swing.JFrame {
                 .addComponent(jLabel9)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(OrderContainer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 98, Short.MAX_VALUE)
                 .addComponent(jButton5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton6)
@@ -355,7 +359,7 @@ public class GUI extends javax.swing.JFrame {
             .addGroup(ConfirmatieschermLayout.createSequentialGroup()
                 .addGap(56, 56, 56)
                 .addComponent(jLabel7)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 555, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 617, Short.MAX_VALUE)
                 .addComponent(jButton15, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton9)
@@ -403,7 +407,7 @@ public class GUI extends javax.swing.JFrame {
                 .addComponent(jLabel10)
                 .addGap(27, 27, 27)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 488, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 536, Short.MAX_VALUE)
                 .addComponent(jButton13, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(25, 25, 25))
         );
@@ -448,7 +452,7 @@ public class GUI extends javax.swing.JFrame {
                 .addComponent(jLabel11)
                 .addGap(27, 27, 27)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 488, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 536, Short.MAX_VALUE)
                 .addComponent(jButton14, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(25, 25, 25))
         );
@@ -483,7 +487,7 @@ public class GUI extends javax.swing.JFrame {
             .addGroup(AfrekenschermLayout.createSequentialGroup()
                 .addGap(59, 59, 59)
                 .addComponent(jLabel12)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 592, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 637, Short.MAX_VALUE)
                 .addComponent(jButton16)
                 .addGap(46, 46, 46))
         );
@@ -513,10 +517,33 @@ public class GUI extends javax.swing.JFrame {
         CardLayout card = (CardLayout) jPanel1.getLayout();
         card.show(jPanel1, "Paneel3");
         orderPanel.removeAll();
+        
+        
+        ArrayList<Pair> consumptions = new ArrayList<>();
+        
         for(Consumption con : menuPanel.GetConsumptions()){
-            JLabel label = new JLabel("1x " + con.getConsumtionTitle() + " €" + con.getPrice());
-            orderPanel.add(label);
+            Pair<Consumption, Integer> pair = new Pair<>(con, 1);
+            
+            int index = consumptions.indexOf(pair);
+            if(index != -1){
+                Pair<Consumption, Integer> pairFound = consumptions.get(index);
+                pairFound.setValue(pairFound.getValue()+1);
+            }
+            else{
+                consumptions.add(pair);
+            }
         }
+        
+        int total = 0;
+        for(Pair<Consumption, Integer> pair : consumptions){
+            int price = (pair.getValue() * pair.getKey().getPrice());
+            JLabel label = new JLabel(pair.getValue()+"x " + pair.getKey().getConsumtionTitle() + " €" + price );
+            orderPanel.add(label);
+            total += price;
+        }
+        
+        orderPanel.add(new JLabel("Totaal bedrag: €"+String.valueOf(total)));
+
     } 
     
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {                                         
