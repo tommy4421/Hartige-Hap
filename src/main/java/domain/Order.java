@@ -42,21 +42,7 @@ public class Order {
         consumptions.add(con);
     }
     
-    public void remove()
-    {
-        // Removing this reservation means unlinking from the member and the
-        // book. The garbage collection mechanism will detect that there are
-        // no more references to this object and consequently will remove it
-        // from memory. To clean up nicely, the book and member fields are
-        // set to null (the relations are bidirectional).
-        table.removeReservation(this);
-        table = null;
-        
-        if(consumptions != null)
-        {
-            consumptions = null;
-        }
-    }
+    
     
     @Override
     public boolean equals(Object o)

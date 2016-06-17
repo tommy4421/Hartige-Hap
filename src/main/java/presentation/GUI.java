@@ -547,7 +547,7 @@ public class GUI extends javax.swing.JFrame {
     } 
     
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {                                         
-        manager.placeOrder(1, menuPanel.GetConsumptions());
+        manager.placeOrder(tableNumber, menuPanel.GetConsumptions());
         CardLayout card = (CardLayout) jPanel1.getLayout();
         card.show(jPanel1, "Paneel4");
     } 

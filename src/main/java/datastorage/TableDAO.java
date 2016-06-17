@@ -16,26 +16,17 @@ import java.util.List;
  *
  * @author ppthgast
  */
-public class TableDAO extends BaseDAO{
+public class TableDAO extends BaseDAO {
+    
+    //private int tablenumber = getTableNumber();
     
     public TableDAO(DatabaseConnection con)
     {
         super(con);
     }
     
-    /**
-     * Tries to find the member identified by the given membership number
-     * in the persistent data store, in this case a MySQL database. All loans
-     * and reservations for the member are loaded as well. In this POC, the
-     * reserved books and/or lend copies of the books are not loaded - it is
-     * out of scope for now.
-     * 
-     * @param membershipNumber identifies the member to be loaded from the database
-     * 
-     * @return the Member object to be found. In case member could not be found,
-     * null is returned.
-     */
-    public Table findMember(int membershipNumber)
+
+    public Table table(int membershipNumber)
     {
         Table table = null;
         
@@ -45,7 +36,9 @@ public class TableDAO extends BaseDAO{
         {
             // If a connection was successfully setup, execute the SELECT statement.
             ResultSet resultset = connection.executeSQLSelectStatement(
-                "SELECT * FROM member WHERE MembershipNumber = " + membershipNumber + ";");
+                "UPDATE `table` SET `Pay`= 1 WHERE TableNumber = " + 
+                        //Table.getTableNumber() +
+                         ";");
 
             if(resultset != null)
             {
@@ -77,39 +70,6 @@ public class TableDAO extends BaseDAO{
         }
         
         return table;
-    }
-
-    /**
-     * Removes the given member from the database.
-     * 
-     * @param memberToBeRemoved an object of the Member class representing the
-     * member to be removed.
-     * 
-     * @return true if execution of the SQL-statement was successful, false
-     * otherwise.
-     */
-    public boolean removeMember(Table memberToBeRemoved)
-    {
-        boolean result = false;
-        
-        if(memberToBeRemoved != null)
-        {
-            // First open the database connection.
-            DatabaseConnection connection = super.getDatabaseConnection();
-            if(connection.openConnection())
-            {
-                // Execute the delete statement using the membership number to
-                // identify the member row.
-                result = connection.executeSQLDeleteStatement(
-                    "DELETE FROM member WHERE MembershipNumber = " + memberToBeRemoved.getTableNumber() + ";" ,"");
-                
-                // Finished with the connection, so close it.
-                connection.closeConnection();
-            }
-            // else an error occurred leave 'member' to null.
-        }
-        
-        return result;
     }
 
     public List<Table> getTables() {
