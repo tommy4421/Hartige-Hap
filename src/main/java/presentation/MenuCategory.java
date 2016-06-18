@@ -10,6 +10,7 @@ import domain.Order;
 import java.awt.*;
 import java.util.ArrayList;
 import javax.swing.*;
+import static presentation.GUI.folderID;
 
 /**
  *
@@ -26,7 +27,9 @@ public class MenuCategory extends JPanel {
     
     public MenuCategory(String name){
         this.name = name;
-        setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+        //setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+        setLayout(new FlowLayout(FlowLayout.LEFT));
+        setBackground(new Color(244, 244, 244));
         setMaximumSize(new Dimension(420, 190));
         setPreferredSize(getMaximumSize());
         init();
@@ -36,11 +39,11 @@ public class MenuCategory extends JPanel {
         panel = new JPanel();
         panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
         JScrollPane scroll = new JScrollPane(panel);
-        scroll.setMinimumSize(new Dimension(400, 170));
-        JLabel label = new JLabel("<html><span style='font-size:12px'>"+name+"</span></html>");
-        label.setOpaque(true);
-        label.setForeground(Color.white);
-        label.setBackground(Color.red);
+        scroll.setMinimumSize(new Dimension(400, 130));
+        scroll.setPreferredSize(scroll.getMinimumSize());
+        JLabel label = new JLabel("<html><div style='position: relative; width: 110px; background: white url(https://googledrive.com/host/" + folderID + "/Categoryheader.png) no-repeat right top;'>"
+                + "<h3 style='position: absolute; padding-left: 3px; color: white'>" + name + "</h3>"
+                + "</div></html>");
         add(label);
         add(scroll);
     }

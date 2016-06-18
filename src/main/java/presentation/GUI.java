@@ -34,6 +34,7 @@ public class GUI extends javax.swing.JFrame {
     private JPanel orderPanel;
     private int tableNumber;
     
+    public static String folderID = "0BzSX3v-GVetMeDZrTGZJdEFFNFU";
 
     /**
      * Creates new form Beginscherm
@@ -53,6 +54,7 @@ public class GUI extends javax.swing.JFrame {
     private void initMenu(){
         menuPanel = new Menu(conManager.GetConsumptions());
         Menu.setLayout(new BorderLayout());
+        jLabel2.setText("<html><img src='https://googledrive.com/host/" + folderID + "/Menuheader.png' width='500' height='183' /></html>");
         Menu.add(menuPanel, BorderLayout.CENTER);
         
         orderPanel = new JPanel();
@@ -236,24 +238,29 @@ public class GUI extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
         jLabel2.setText("Menu");
+        jLabel2.setMaximumSize(new java.awt.Dimension(500, 183));
+        jLabel2.setMinimumSize(new java.awt.Dimension(500, 183));
 
         javax.swing.GroupLayout MenuLayout = new javax.swing.GroupLayout(Menu);
         Menu.setLayout(MenuLayout);
         MenuLayout.setHorizontalGroup(
             MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MenuLayout.createSequentialGroup()
-                .addContainerGap(473, Short.MAX_VALUE)
+            .addGroup(MenuLayout.createSequentialGroup()
+                .addContainerGap(265, Short.MAX_VALUE)
                 .addGroup(MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(387, 387, 387))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MenuLayout.createSequentialGroup()
+                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(387, 387, 387))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MenuLayout.createSequentialGroup()
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 501, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(224, 224, 224))))
         );
         MenuLayout.setVerticalGroup(
             MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MenuLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 969, Short.MAX_VALUE)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 854, Short.MAX_VALUE)
                 .addComponent(jButton4)
                 .addGap(31, 31, 31))
         );

@@ -14,6 +14,7 @@ import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.border.EmptyBorder;
 
 /**
  *
@@ -35,7 +36,8 @@ public class Menu extends JPanel {
     public Menu(ArrayList<Consumption> cons){
         
         GridBagLayout gbl = new GridBagLayout();
-        setLayout(gbl);
+        this.setLayout(gbl);
+        this.setBackground(new Color(244, 244, 244));
         
         appetizers = new MenuCategory("Voorgerechten");
         salads = new MenuCategory("Salades");
