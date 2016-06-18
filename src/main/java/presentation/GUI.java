@@ -63,6 +63,18 @@ public class GUI extends javax.swing.JFrame {
         JScrollPane scroll = new JScrollPane(orderPanel);
         scroll.setMaximumSize(new Dimension(400, 170));
         OrderContainer.add(scroll, BorderLayout.CENTER);
+        
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        
+        //full screen
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
+        GraphicsEnvironment env =
+        GraphicsEnvironment.getLocalGraphicsEnvironment();
+        GraphicsDevice dev = env.getDefaultScreenDevice();
+        setBackground(Color.darkGray);
+        setResizable(false);
+        setUndecorated(true);
+        pack();
     }
 
     /**
@@ -525,8 +537,6 @@ public class GUI extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
-
-        pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
