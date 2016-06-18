@@ -54,6 +54,13 @@ public class GUI extends javax.swing.JFrame {
         menuPanel = new Menu(conManager.GetConsumptions());
         Menu.setLayout(new BorderLayout());
         Menu.add(menuPanel, BorderLayout.CENTER);
+
+        
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//        jFrame1.setExtendedState(JFrame.MAXIMIZED_BOTH); 
+//        jFrame1.setVisible(true);
+//        jFrame2.setExtendedState(JFrame.MAXIMIZED_BOTH); 
+//        jFrame2.setVisible(true);
         
         orderPanel = new JPanel();
         orderPanel.setLayout(new BoxLayout(orderPanel, BoxLayout.Y_AXIS));
@@ -61,6 +68,7 @@ public class GUI extends javax.swing.JFrame {
         JScrollPane scroll = new JScrollPane(orderPanel);
         scroll.setMaximumSize(new Dimension(400, 170));
         OrderContainer.add(scroll, BorderLayout.CENTER);
+        
     }
 
     /**
@@ -167,7 +175,7 @@ public class GUI extends javax.swing.JFrame {
                     .addGroup(TafelNummerLayout.createSequentialGroup()
                         .addGap(172, 172, 172)
                         .addComponent(jButton17)))
-                .addContainerGap(656, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         TafelNummerLayout.setVerticalGroup(
             TafelNummerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -176,7 +184,7 @@ public class GUI extends javax.swing.JFrame {
                 .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButton17)
-                .addContainerGap(593, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel1.add(TafelNummer, "card9");
@@ -199,7 +207,7 @@ public class GUI extends javax.swing.JFrame {
                 .addGroup(WelkomschermLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(591, Short.MAX_VALUE))
+                .addContainerGap(628, Short.MAX_VALUE))
         );
         WelkomschermLayout.setVerticalGroup(
             WelkomschermLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -228,7 +236,7 @@ public class GUI extends javax.swing.JFrame {
         MenuLayout.setHorizontalGroup(
             MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MenuLayout.createSequentialGroup()
-                .addContainerGap(390, Short.MAX_VALUE)
+                .addContainerGap(362, Short.MAX_VALUE)
                 .addGroup(MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -293,7 +301,7 @@ public class GUI extends javax.swing.JFrame {
                             .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(OrderContainer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(38, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         BestellingUitleesSchermLayout.setVerticalGroup(
             BestellingUitleesSchermLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -343,7 +351,7 @@ public class GUI extends javax.swing.JFrame {
         ConfirmatieschermLayout.setHorizontalGroup(
             ConfirmatieschermLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ConfirmatieschermLayout.createSequentialGroup()
-                .addContainerGap(517, Short.MAX_VALUE)
+                .addContainerGap(586, Short.MAX_VALUE)
                 .addComponent(jLabel7)
                 .addGap(93, 93, 93))
             .addGroup(ConfirmatieschermLayout.createSequentialGroup()
@@ -398,7 +406,7 @@ public class GUI extends javax.swing.JFrame {
                     .addGroup(Infoscherm1Layout.createSequentialGroup()
                         .addGap(133, 133, 133)
                         .addComponent(jButton13, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(565, Short.MAX_VALUE))
+                .addContainerGap(537, Short.MAX_VALUE))
         );
         Infoscherm1Layout.setVerticalGroup(
             Infoscherm1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -443,7 +451,7 @@ public class GUI extends javax.swing.JFrame {
                     .addGroup(Infoscherm2Layout.createSequentialGroup()
                         .addGap(133, 133, 133)
                         .addComponent(jButton14, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(565, Short.MAX_VALUE))
+                .addContainerGap(537, Short.MAX_VALUE))
         );
         Infoscherm2Layout.setVerticalGroup(
             Infoscherm2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -480,7 +488,7 @@ public class GUI extends javax.swing.JFrame {
                     .addGroup(AfrekenschermLayout.createSequentialGroup()
                         .addGap(143, 143, 143)
                         .addComponent(jButton16, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(460, Short.MAX_VALUE))
+                .addContainerGap(555, Short.MAX_VALUE))
         );
         AfrekenschermLayout.setVerticalGroup(
             AfrekenschermLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -507,7 +515,9 @@ public class GUI extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
+    
+    
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         CardLayout card = (CardLayout) jPanel1.getLayout();
         card.show(jPanel1, "Paneel2");
