@@ -39,6 +39,9 @@ public class MenuCategory extends JPanel {
         panel = new JPanel();
         panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
         JScrollPane scroll = new JScrollPane(panel);
+        DragScrollListener dl = new DragScrollListener(panel);
+        panel.addMouseListener(dl);
+        panel.addMouseMotionListener(dl);
         scroll.setMinimumSize(new Dimension(400, 130));
         scroll.setPreferredSize(scroll.getMinimumSize());
         JLabel label = new JLabel("<html><div style='position: relative; width: 110px; background: white url(https://googledrive.com/host/" + folderID + "/Categoryheader.png) no-repeat right top;'>"

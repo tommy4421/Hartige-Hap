@@ -58,7 +58,11 @@ public class GUI extends javax.swing.JFrame {
         orderPanel.setLayout(new BoxLayout(orderPanel, BoxLayout.Y_AXIS));
         OrderContainer.setLayout(new BorderLayout());
         JScrollPane scroll = new JScrollPane(orderPanel);
-        scroll.setMaximumSize(new Dimension(400, 170));
+        scroll.setMinimumSize(new Dimension(400, 500));
+        scroll.setPreferredSize(scroll.getMinimumSize());
+        DragScrollListener dl = new DragScrollListener(orderPanel);
+        orderPanel.addMouseListener(dl);
+        orderPanel.addMouseMotionListener(dl);
         OrderContainer.add(scroll, BorderLayout.CENTER);
         
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -255,7 +259,7 @@ public class GUI extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Menu");
+        jLabel2.setText("Menu\n");
         jLabel2.setMaximumSize(new java.awt.Dimension(500, 183));
         jLabel2.setMinimumSize(new java.awt.Dimension(500, 183));
 
