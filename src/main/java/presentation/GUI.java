@@ -30,7 +30,6 @@ public class GUI extends javax.swing.JFrame {
     private final OrderManager manager;
     private final ConsumptionManager conManager;
     private final ArrayList<MenuItem> menuItems = new ArrayList<>();
-    private Menu menuPanel;
     private JPanel orderPanel;
     private int tableNumber;
     
@@ -52,11 +51,9 @@ public class GUI extends javax.swing.JFrame {
     }
     
     private void initMenu(){
-        menuPanel = new Menu(conManager.GetConsumptions());
-        Menu.setLayout(new BorderLayout());
-        jLabel2.setText("<html><img src='https://googledrive.com/host/" + folderID + "/Menuheader.png' width='500' height='183' /></html>");
-        Menu.add(menuPanel, BorderLayout.CENTER);
-        
+        menuPanel.SetConsumptions(conManager.GetConsumptions());
+        jLabel2.setText("<html><img src='https://googledrive.com/host/" + folderID + "/Menuheader.png' alt='Menu' width='900' height='183' /></html>");
+        jLabel3.setText("<html><img src='https://googledrive.com/host/" + folderID + "/MenuFooter.png' alt='Menu' width='900' height='13'/></html>");
         orderPanel = new JPanel();
         orderPanel.setLayout(new BoxLayout(orderPanel, BoxLayout.Y_AXIS));
         OrderContainer.setLayout(new BorderLayout());
@@ -100,6 +97,8 @@ public class GUI extends javax.swing.JFrame {
         Menu = new javax.swing.JPanel();
         jButton4 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
+        menuPanel = new presentation.Menu();
+        jLabel3 = new javax.swing.JLabel();
         BestellingUitleesScherm = new javax.swing.JPanel();
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
@@ -152,12 +151,13 @@ public class GUI extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
+        setPreferredSize(new java.awt.Dimension(990, 500));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new java.awt.CardLayout());
 
-        TafelNummer.setMinimumSize(new java.awt.Dimension(990, 1103));
-        TafelNummer.setPreferredSize(new java.awt.Dimension(990, 1103));
+        TafelNummer.setMinimumSize(new java.awt.Dimension(0, 0));
+        TafelNummer.setPreferredSize(new java.awt.Dimension(500, 800));
 
         jTextField1.setText("1");
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
@@ -189,7 +189,7 @@ public class GUI extends javax.swing.JFrame {
                             .addGroup(TafelNummerLayout.createSequentialGroup()
                                 .addGap(172, 172, 172)
                                 .addComponent(jButton17)))
-                        .addGap(0, 724, Short.MAX_VALUE))
+                        .addGap(0, 743, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, TafelNummerLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(Logo, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -204,10 +204,12 @@ public class GUI extends javax.swing.JFrame {
                 .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButton17)
-                .addContainerGap(824, Short.MAX_VALUE))
+                .addContainerGap(425, Short.MAX_VALUE))
         );
 
         jPanel1.add(TafelNummer, "card9");
+
+        Welkomscherm.setPreferredSize(new java.awt.Dimension(500, 800));
 
         jLabel1.setText("Welkom bij de Hartige Hap!");
 
@@ -227,7 +229,7 @@ public class GUI extends javax.swing.JFrame {
                 .addGroup(WelkomschermLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(674, Short.MAX_VALUE))
+                .addContainerGap(739, Short.MAX_VALUE))
         );
         WelkomschermLayout.setVerticalGroup(
             WelkomschermLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -236,10 +238,13 @@ public class GUI extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(989, Short.MAX_VALUE))
+                .addContainerGap(579, Short.MAX_VALUE))
         );
 
         jPanel1.add(Welkomscherm, "Paneel1");
+
+        Menu.setBackground(new java.awt.Color(244, 244, 244));
+        Menu.setPreferredSize(new java.awt.Dimension(500, 800));
 
         jButton4.setText("Verder");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -249,35 +254,50 @@ public class GUI extends javax.swing.JFrame {
         });
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Menu");
         jLabel2.setMaximumSize(new java.awt.Dimension(500, 183));
         jLabel2.setMinimumSize(new java.awt.Dimension(500, 183));
+
+        jLabel3.setText("footer");
 
         javax.swing.GroupLayout MenuLayout = new javax.swing.GroupLayout(Menu);
         Menu.setLayout(MenuLayout);
         MenuLayout.setHorizontalGroup(
             MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(MenuLayout.createSequentialGroup()
-                .addContainerGap(265, Short.MAX_VALUE)
+                .addContainerGap(536, Short.MAX_VALUE)
                 .addGroup(MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MenuLayout.createSequentialGroup()
-                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(387, 387, 387))
+                        .addComponent(menuPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(364, 364, 364))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MenuLayout.createSequentialGroup()
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 501, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(224, 224, 224))))
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 840, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(363, 363, 363))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MenuLayout.createSequentialGroup()
+                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(720, 720, 720))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MenuLayout.createSequentialGroup()
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 840, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(402, 402, 402))))
         );
         MenuLayout.setVerticalGroup(
             MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MenuLayout.createSequentialGroup()
+            .addGroup(MenuLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 854, Short.MAX_VALUE)
+                .addGap(34, 34, 34)
+                .addComponent(menuPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(36, 36, 36)
                 .addComponent(jButton4)
-                .addGap(31, 31, 31))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                .addComponent(jLabel3)
+                .addGap(20, 20, 20))
         );
 
         jPanel1.add(Menu, "Paneel2");
+
+        BestellingUitleesScherm.setPreferredSize(new java.awt.Dimension(500, 800));
 
         jButton5.setText("Terug");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
@@ -326,7 +346,7 @@ public class GUI extends javax.swing.JFrame {
                             .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(OrderContainer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(121, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         BestellingUitleesSchermLayout.setVerticalGroup(
             BestellingUitleesSchermLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -339,7 +359,7 @@ public class GUI extends javax.swing.JFrame {
                 .addComponent(jLabel9)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(OrderContainer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 390, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton6)
@@ -347,6 +367,8 @@ public class GUI extends javax.swing.JFrame {
         );
 
         jPanel1.add(BestellingUitleesScherm, "Paneel3");
+
+        Confirmatiescherm.setPreferredSize(new java.awt.Dimension(500, 800));
 
         jLabel7.setText("Uw bestelling is ontvangen. Eet smakelijk!");
 
@@ -376,7 +398,7 @@ public class GUI extends javax.swing.JFrame {
         ConfirmatieschermLayout.setHorizontalGroup(
             ConfirmatieschermLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ConfirmatieschermLayout.createSequentialGroup()
-                .addContainerGap(600, Short.MAX_VALUE)
+                .addContainerGap(697, Short.MAX_VALUE)
                 .addComponent(jLabel7)
                 .addGap(93, 93, 93))
             .addGroup(ConfirmatieschermLayout.createSequentialGroup()
@@ -392,7 +414,7 @@ public class GUI extends javax.swing.JFrame {
             .addGroup(ConfirmatieschermLayout.createSequentialGroup()
                 .addGap(56, 56, 56)
                 .addComponent(jLabel7)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 912, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 525, Short.MAX_VALUE)
                 .addComponent(jButton15, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton9)
@@ -402,6 +424,8 @@ public class GUI extends javax.swing.JFrame {
         );
 
         jPanel1.add(Confirmatiescherm, "Paneel4");
+
+        Infoscherm1.setPreferredSize(new java.awt.Dimension(500, 800));
 
         jLabel10.setText("Ei met spek");
 
@@ -440,13 +464,15 @@ public class GUI extends javax.swing.JFrame {
                 .addComponent(jLabel10)
                 .addGap(27, 27, 27)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 845, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 444, Short.MAX_VALUE)
                 .addComponent(jButton13, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(25, 25, 25))
         );
 
         jPanel1.add(Infoscherm1, "Paneel5");
         Infoscherm1.getAccessibleContext().setAccessibleName("");
+
+        Infoscherm2.setPreferredSize(new java.awt.Dimension(500, 800));
 
         jTextArea2.setColumns(20);
         jTextArea2.setRows(5);
@@ -485,12 +511,14 @@ public class GUI extends javax.swing.JFrame {
                 .addComponent(jLabel11)
                 .addGap(27, 27, 27)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 845, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 444, Short.MAX_VALUE)
                 .addComponent(jButton14, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(25, 25, 25))
         );
 
         jPanel1.add(Infoscherm2, "Paneel6");
+
+        Afrekenscherm.setPreferredSize(new java.awt.Dimension(500, 800));
 
         jLabel12.setText("Er komt er komt iemand aan waarbij u kunt betalen");
 
@@ -513,14 +541,14 @@ public class GUI extends javax.swing.JFrame {
                     .addGroup(AfrekenschermLayout.createSequentialGroup()
                         .addGap(143, 143, 143)
                         .addComponent(jButton16, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(543, Short.MAX_VALUE))
+                .addContainerGap(666, Short.MAX_VALUE))
         );
         AfrekenschermLayout.setVerticalGroup(
             AfrekenschermLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(AfrekenschermLayout.createSequentialGroup()
                 .addGap(59, 59, 59)
                 .addComponent(jLabel12)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 949, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 545, Short.MAX_VALUE)
                 .addComponent(jButton16)
                 .addGap(46, 46, 46))
         );
@@ -535,8 +563,10 @@ public class GUI extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 687, Short.MAX_VALUE)
         );
+
+        setBounds(0, 0, 800, 800);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -664,6 +694,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
@@ -674,6 +705,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextArea jTextArea2;
     private javax.swing.JTextField jTextField1;
+    private presentation.Menu menuPanel;
     // End of variables declaration//GEN-END:variables
 
 }

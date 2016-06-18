@@ -33,7 +33,7 @@ public class Menu extends JPanel {
     
     private ArrayList<MenuCategory> panels = new ArrayList<>();
     
-    public Menu(ArrayList<Consumption> cons){
+    public Menu(){
         
         GridBagLayout gbl = new GridBagLayout();
         this.setLayout(gbl);
@@ -53,6 +53,16 @@ public class Menu extends JPanel {
         panels.add(hotBeverages);
         panels.add(desserts);
         
+        GridBagConstraints gbc = new GridBagConstraints();
+        for(int i = 0; i < panels.size(); i++){
+            MenuCategory panel = panels.get(i);
+            gbc.gridx = i % 2;
+            gbc.gridy = (int) Math.ceil(i / 2);
+            add(panel, gbc);
+        }
+    }
+    
+    public void SetConsumptions(ArrayList<Consumption> cons){
         if(cons != null){
             for(Consumption con : cons){
                 if(con != null){
@@ -75,13 +85,6 @@ public class Menu extends JPanel {
                     }   
                 }
             }
-        }
-        GridBagConstraints gbc = new GridBagConstraints();
-        for(int i = 0; i < panels.size(); i++){
-            MenuCategory panel = panels.get(i);
-            gbc.gridx = i % 2;
-            gbc.gridy = (int) Math.ceil(i / 2);
-            add(panel, gbc);
         }
     }
     
