@@ -31,6 +31,8 @@ public class Menu extends JPanel {
     private MenuCategory hotBeverages;
     private MenuCategory desserts;
     
+    private GUI gui;
+    
     private ArrayList<MenuCategory> panels = new ArrayList<>();
     
     public Menu(){
@@ -85,6 +87,13 @@ public class Menu extends JPanel {
                     }   
                 }
             }
+        }
+    }
+    
+    public void SetGUI(GUI gui){
+        this.gui = gui;
+        for(MenuCategory panel : panels){
+            panel.SetGUI(gui);
         }
     }
     

@@ -16,14 +16,19 @@ public class Consumption {
     String consumptionTitle;
     int price;
     String consumptionType;
-    // hallo ik ben sean
+    Info info;
     
-    public Consumption(int consumtionNumber, String consumtionTitle, int price, String type)
+    public Consumption(int consumtionNumber, String consumtionTitle, int price, String type, Info consumptionInfo)
     {
         this.consumptionNumber = consumtionNumber;
         this.consumptionTitle = consumtionTitle;
         this.price = price;
         this.consumptionType = type;
+        this.info = consumptionInfo;
+    }
+    
+    public Info getInfo(){
+        return info;
     }
 
     public int getConsumtionNumber()

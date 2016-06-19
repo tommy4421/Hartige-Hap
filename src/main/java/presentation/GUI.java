@@ -50,8 +50,20 @@ public class GUI extends javax.swing.JFrame {
         Status t = Status.Besteld;
     }
     
+    public void ShowCard(String cardName){
+        CardLayout card = (CardLayout) jPanel1.getLayout();
+        card.show(jPanel1, cardName);
+    }
+    
+    public void SetInfoConsumption(Consumption consumption){
+        jLabel10.setText(consumption.getConsumtionTitle());
+        jTextArea1.setText(consumption.getInfo().getDescription());
+        jLabel5.setText("<html><img src='https://googledrive.com/host/" + folderID + "/" + consumption.getConsumtionTitle()  +".png' alt='" + consumption.getConsumtionTitle() + "' width='940' height='450' /></html>");
+    }
+    
     private void initMenu(){
         menuPanel.SetConsumptions(conManager.GetConsumptions());
+        menuPanel.SetGUI(this);
         jLabel2.setText("<html><img src='https://googledrive.com/host/" + folderID + "/Menuheader.png' alt='Menu' width='900' height='183' /></html>");
         jLabel3.setText("<html><img src='https://googledrive.com/host/" + folderID + "/MenuFooter.png' alt='Menu' width='900' height='13'/></html>");
         jLabel4.setText("<html><img src='https://googledrive.com/host/" + folderID + "/Logo_HH.png' alt='Menu' width='500' height='500'/></html>");
@@ -119,16 +131,12 @@ public class GUI extends javax.swing.JFrame {
         jButton9 = new javax.swing.JButton();
         jButton10 = new javax.swing.JButton();
         jButton15 = new javax.swing.JButton();
-        Infoscherm1 = new javax.swing.JPanel();
+        Infoscherm = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
         jButton13 = new javax.swing.JButton();
-        Infoscherm2 = new javax.swing.JPanel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea2 = new javax.swing.JTextArea();
-        jButton14 = new javax.swing.JButton();
-        jLabel11 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
         Afrekenscherm = new javax.swing.JPanel();
         jLabel12 = new javax.swing.JLabel();
         jButton16 = new javax.swing.JButton();
@@ -450,7 +458,7 @@ public class GUI extends javax.swing.JFrame {
 
         jPanel1.add(Confirmatiescherm, "Paneel4");
 
-        Infoscherm1.setPreferredSize(new java.awt.Dimension(500, 800));
+        Infoscherm.setPreferredSize(new java.awt.Dimension(500, 800));
 
         jLabel10.setText("Ei met spek");
 
@@ -466,82 +474,43 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout Infoscherm1Layout = new javax.swing.GroupLayout(Infoscherm1);
-        Infoscherm1.setLayout(Infoscherm1Layout);
-        Infoscherm1Layout.setHorizontalGroup(
-            Infoscherm1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(Infoscherm1Layout.createSequentialGroup()
-                .addGroup(Infoscherm1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(Infoscherm1Layout.createSequentialGroup()
+        jLabel5.setText("jLabel5");
+
+        javax.swing.GroupLayout InfoschermLayout = new javax.swing.GroupLayout(Infoscherm);
+        Infoscherm.setLayout(InfoschermLayout);
+        InfoschermLayout.setHorizontalGroup(
+            InfoschermLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(InfoschermLayout.createSequentialGroup()
+                .addGroup(InfoschermLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(InfoschermLayout.createSequentialGroup()
                         .addGap(39, 39, 39)
-                        .addGroup(Infoscherm1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(InfoschermLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel10)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(Infoscherm1Layout.createSequentialGroup()
+                            .addGroup(InfoschermLayout.createSequentialGroup()
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(245, 245, 245)
+                                .addComponent(jLabel5))))
+                    .addGroup(InfoschermLayout.createSequentialGroup()
                         .addGap(133, 133, 133)
                         .addComponent(jButton13, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(537, Short.MAX_VALUE))
+                .addContainerGap(258, Short.MAX_VALUE))
         );
-        Infoscherm1Layout.setVerticalGroup(
-            Infoscherm1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(Infoscherm1Layout.createSequentialGroup()
+        InfoschermLayout.setVerticalGroup(
+            InfoschermLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(InfoschermLayout.createSequentialGroup()
                 .addGap(31, 31, 31)
                 .addComponent(jLabel10)
                 .addGap(27, 27, 27)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(InfoschermLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 624, Short.MAX_VALUE)
                 .addComponent(jButton13, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(25, 25, 25))
         );
 
-        jPanel1.add(Infoscherm1, "Paneel5");
-        Infoscherm1.getAccessibleContext().setAccessibleName("");
-
-        Infoscherm2.setPreferredSize(new java.awt.Dimension(500, 800));
-
-        jTextArea2.setColumns(20);
-        jTextArea2.setRows(5);
-        jTextArea2.setText("Een 500ml glas van cola. Zeer slecht voor je tanden.\nCalorien: 150\nGluten: ja");
-        jScrollPane2.setViewportView(jTextArea2);
-
-        jButton14.setText("Terug");
-        jButton14.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton14ActionPerformed(evt);
-            }
-        });
-
-        jLabel11.setText("Cola");
-
-        javax.swing.GroupLayout Infoscherm2Layout = new javax.swing.GroupLayout(Infoscherm2);
-        Infoscherm2.setLayout(Infoscherm2Layout);
-        Infoscherm2Layout.setHorizontalGroup(
-            Infoscherm2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(Infoscherm2Layout.createSequentialGroup()
-                .addGroup(Infoscherm2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(Infoscherm2Layout.createSequentialGroup()
-                        .addGap(39, 39, 39)
-                        .addGroup(Infoscherm2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel11)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(Infoscherm2Layout.createSequentialGroup()
-                        .addGap(133, 133, 133)
-                        .addComponent(jButton14, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(537, Short.MAX_VALUE))
-        );
-        Infoscherm2Layout.setVerticalGroup(
-            Infoscherm2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(Infoscherm2Layout.createSequentialGroup()
-                .addGap(31, 31, 31)
-                .addComponent(jLabel11)
-                .addGap(27, 27, 27)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 624, Short.MAX_VALUE)
-                .addComponent(jButton14, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(25, 25, 25))
-        );
-
-        jPanel1.add(Infoscherm2, "Paneel6");
+        jPanel1.add(Infoscherm, "Infoscherm");
+        Infoscherm.getAccessibleContext().setAccessibleName("");
 
         Afrekenscherm.setPreferredSize(new java.awt.Dimension(500, 800));
 
@@ -615,11 +584,6 @@ public class GUI extends javax.swing.JFrame {
         card.show(jPanel1, "Paneel2");
     }//GEN-LAST:event_jButton13ActionPerformed
 
-    private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
-        CardLayout card = (CardLayout) jPanel1.getLayout();
-        card.show(jPanel1, "Paneel2");
-    }//GEN-LAST:event_jButton14ActionPerformed
-
     private void jButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton15ActionPerformed
         CardLayout card = (CardLayout) jPanel1.getLayout();
         card.show(jPanel1, "card8");
@@ -692,8 +656,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JPanel Afrekenscherm;
     private javax.swing.JPanel BestellingUitleesScherm;
     private javax.swing.JPanel Confirmatiescherm;
-    private javax.swing.JPanel Infoscherm1;
-    private javax.swing.JPanel Infoscherm2;
+    private javax.swing.JPanel Infoscherm;
     private javax.swing.JPanel Menu;
     private javax.swing.JPanel OrderContainer;
     private javax.swing.JPanel TafelNummer;
@@ -701,7 +664,6 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton13;
-    private javax.swing.JButton jButton14;
     private javax.swing.JButton jButton15;
     private javax.swing.JButton jButton16;
     private javax.swing.JButton jButton17;
@@ -714,20 +676,18 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JFrame jFrame2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextArea jTextArea2;
     private javax.swing.JTextField jTextField1;
     private presentation.Menu menuPanel;
     private java.awt.Panel panel1;

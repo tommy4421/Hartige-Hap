@@ -8,6 +8,7 @@ package presentation;
 import domain.Consumption;
 import domain.Order;
 import domain.Table;
+import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
@@ -38,6 +39,8 @@ public class MenuItem extends JPanel {
     private JButton plusButton;
     private JButton info;
     
+    private GUI gui;
+    
     public MenuItem(Consumption consumption){
         this.conNumber = consumption.getConsumtionNumber();
         this.conTitle = consumption.getConsumtionTitle();
@@ -56,8 +59,10 @@ public class MenuItem extends JPanel {
         amount = new JLabel("0");
         info = new JButton("?");
         
-        minusButton.addActionListener(new ButtonHandler());
-        plusButton.addActionListener(new ButtonHandler());
+        minusButton.addActionListener(new AmountChangeHandler());
+        plusButton.addActionListener(new AmountChangeHandler());
+        
+        info.addActionListener(new InfoButtonHandler());
         
         setLayout(new FlowLayout(FlowLayout.LEFT));
         
@@ -74,6 +79,10 @@ public class MenuItem extends JPanel {
         int curAmount = Integer.parseInt(amount.getText());
         curAmount = Math.max(Math.min(curAmount + change, 9), 0);
         amount.setText(Integer.toString(curAmount));
+    }
+    
+    public void SetGUI(GUI gui){
+        this.gui = gui;
     }
     
     @Override
@@ -94,17 +103,25 @@ public class MenuItem extends JPanel {
         }
     }
     
-    class ButtonHandler implements ActionListener{
+    class AmountChangeHandler implements ActionListener{
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        switch(e.getActionCommand()){
-            case "+":
-                ChangeAmount(1); break;
-            case "-":
-                ChangeAmount(-1); break;
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            switch(e.getActionCommand()){
+                case "+":
+                    ChangeAmount(1); break;
+                case "-":
+                    ChangeAmount(-1); break;
+            }
         }
     }
     
-}
+    class InfoButtonHandler implements ActionListener{
+        @Override
+        public void actionPerformed(ActionEvent e) {
+           gui.ShowCard("Infoscherm");
+           gui.SetInfoConsumption(consumption);
+        }        
+    }
+    
 }

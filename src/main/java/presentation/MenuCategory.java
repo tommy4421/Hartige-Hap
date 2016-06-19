@@ -23,6 +23,8 @@ public class MenuCategory extends JPanel {
     private JPanel panel;
     private String name;
     
+    private GUI gui;
+    
     private ArrayList<MenuItem> menuItems = new ArrayList<>();
     
     public MenuCategory(String name){
@@ -49,6 +51,12 @@ public class MenuCategory extends JPanel {
                 + "</div></html>");
         add(label);
         add(scroll);
+    }
+    
+    public void SetGUI(GUI gui){
+        for(MenuItem item : menuItems){
+            item.SetGUI(gui);
+        }
     }
     
     public void AddItem(MenuItem item){
