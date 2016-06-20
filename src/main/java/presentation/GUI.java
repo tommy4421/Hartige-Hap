@@ -67,6 +67,9 @@ public class GUI extends javax.swing.JFrame {
         jLabel2.setText("<html><img src='https://googledrive.com/host/" + folderID + "/Menuheader.png' alt='Menu' width='900' height='183' /></html>");
         jLabel3.setText("<html><img src='https://googledrive.com/host/" + folderID + "/MenuFooter.png' alt='Menu' width='900' height='13'/></html>");
         jLabel4.setText("<html><img src='https://googledrive.com/host/" + folderID + "/Logo_HH.png' alt='Menu' width='500' height='500'/></html>");
+        jLabel11.setText("<html><img src='https://googledrive.com/host/" + folderID + "/Logo_HH.png' alt='Menu' width='200' height='200'/></html>");
+        jLabel13.setText("<html><img src='https://googledrive.com/host/" + folderID + "/Logo_HH.png' alt='Menu' width='200' height='200'/></html>");
+        jLabel14.setText("<html><img src='https://googledrive.com/host/" + folderID + "/Logo_HH.png' alt='Menu' width='200' height='200'/></html>");
         orderPanel = new JPanel();
         orderPanel.setLayout(new BoxLayout(orderPanel, BoxLayout.Y_AXIS));
         OrderContainer.setLayout(new BorderLayout());
@@ -128,11 +131,12 @@ public class GUI extends javax.swing.JFrame {
         OrderContainer = new javax.swing.JPanel();
         jButton5 = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
         Confirmatiescherm = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         jButton9 = new javax.swing.JButton();
         jButton15 = new javax.swing.JButton();
-        paintPanel1 = new presentation.PaintPanel();
+        jLabel14 = new javax.swing.JLabel();
         Infoscherm = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -142,6 +146,7 @@ public class GUI extends javax.swing.JFrame {
         Afrekenscherm = new javax.swing.JPanel();
         jLabel12 = new javax.swing.JLabel();
         jButton16 = new javax.swing.JButton();
+        jLabel13 = new javax.swing.JLabel();
 
         javax.swing.GroupLayout jFrame1Layout = new javax.swing.GroupLayout(jFrame1.getContentPane());
         jFrame1.getContentPane().setLayout(jFrame1Layout);
@@ -169,7 +174,6 @@ public class GUI extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
-        setPreferredSize(new java.awt.Dimension(990, 500));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new java.awt.CardLayout());
@@ -399,6 +403,12 @@ public class GUI extends javax.swing.JFrame {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.ABOVE_BASELINE;
         BestellingUitleesScherm.add(jLabel6, gridBagConstraints);
 
+        jLabel11.setText("jLabel11");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        BestellingUitleesScherm.add(jLabel11, gridBagConstraints);
+
         jPanel1.add(BestellingUitleesScherm, "Paneel3");
 
         Confirmatiescherm.setPreferredSize(new java.awt.Dimension(500, 800));
@@ -408,7 +418,7 @@ public class GUI extends javax.swing.JFrame {
         jLabel7.setText("Uw bestelling is ontvangen en wordt klaargemaakt.");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridy = 2;
         Confirmatiescherm.add(jLabel7, gridBagConstraints);
 
         jButton9.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
@@ -445,20 +455,8 @@ public class GUI extends javax.swing.JFrame {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.BELOW_BASELINE;
         Confirmatiescherm.add(jButton15, gridBagConstraints);
 
-        paintPanel1.setPreferredSize(new java.awt.Dimension(300, 300));
-
-        javax.swing.GroupLayout paintPanel1Layout = new javax.swing.GroupLayout(paintPanel1);
-        paintPanel1.setLayout(paintPanel1Layout);
-        paintPanel1Layout.setHorizontalGroup(
-            paintPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
-        paintPanel1Layout.setVerticalGroup(
-            paintPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
-
-        Confirmatiescherm.add(paintPanel1, new java.awt.GridBagConstraints());
+        jLabel14.setText("jLabel14");
+        Confirmatiescherm.add(jLabel14, new java.awt.GridBagConstraints());
 
         jPanel1.add(Confirmatiescherm, "Paneel4");
 
@@ -522,7 +520,10 @@ public class GUI extends javax.swing.JFrame {
 
         jLabel12.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         jLabel12.setText("Er komt er komt een bediende aan waarbij u kunt betalen");
-        Afrekenscherm.add(jLabel12, new java.awt.GridBagConstraints());
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        Afrekenscherm.add(jLabel12, gridBagConstraints);
 
         jButton16.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jButton16.setText("Home");
@@ -534,11 +535,16 @@ public class GUI extends javax.swing.JFrame {
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.gridheight = java.awt.GridBagConstraints.RELATIVE;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.PAGE_END;
-        gridBagConstraints.insets = new java.awt.Insets(300, 0, 0, 0);
+        gridBagConstraints.gridy = 2;
         Afrekenscherm.add(jButton16, gridBagConstraints);
+
+        jLabel13.setText("jLabel13");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridwidth = java.awt.GridBagConstraints.RELATIVE;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.BELOW_BASELINE_TRAILING;
+        Afrekenscherm.add(jLabel13, gridBagConstraints);
 
         jPanel1.add(Afrekenscherm, "card8");
 
@@ -669,7 +675,10 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JFrame jFrame2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -683,7 +692,6 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField jTextField1;
     private presentation.Menu menuPanel;
-    private presentation.PaintPanel paintPanel1;
     private java.awt.Panel panel1;
     private java.awt.Panel panel2;
     // End of variables declaration//GEN-END:variables
