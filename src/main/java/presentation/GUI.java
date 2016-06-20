@@ -11,7 +11,6 @@ import businesslogic.OrderManager;
 import domain.Consumption;
 import domain.Order;
 import domain.Pair;
-import domain.Status;
 import domain.Table;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -47,7 +46,6 @@ public class GUI extends javax.swing.JFrame {
         initComponents();
         initMenu();
         
-        Status t = Status.Besteld;
     }
     
     public void ShowCard(String cardName){
@@ -129,7 +127,6 @@ public class GUI extends javax.swing.JFrame {
         Confirmatiescherm = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         jButton9 = new javax.swing.JButton();
-        jButton10 = new javax.swing.JButton();
         jButton15 = new javax.swing.JButton();
         Infoscherm = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
@@ -418,26 +415,10 @@ public class GUI extends javax.swing.JFrame {
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridy = 2;
         gridBagConstraints.fill = java.awt.GridBagConstraints.VERTICAL;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.SOUTH;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.BELOW_BASELINE;
         Confirmatiescherm.add(jButton9, gridBagConstraints);
-
-        jButton10.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jButton10.setText("Home");
-        jButton10.setPreferredSize(new java.awt.Dimension(300, 50));
-        jButton10.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton10ActionPerformed(evt);
-            }
-        });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 4;
-        gridBagConstraints.gridheight = java.awt.GridBagConstraints.RELATIVE;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.VERTICAL;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.SOUTH;
-        Confirmatiescherm.add(jButton10, gridBagConstraints);
 
         jButton15.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jButton15.setText("Afrekenen");
@@ -451,63 +432,50 @@ public class GUI extends javax.swing.JFrame {
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridheight = java.awt.GridBagConstraints.RELATIVE;
         gridBagConstraints.fill = java.awt.GridBagConstraints.VERTICAL;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.SOUTH;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.BELOW_BASELINE;
         Confirmatiescherm.add(jButton15, gridBagConstraints);
 
         jPanel1.add(Confirmatiescherm, "Paneel4");
 
         Infoscherm.setPreferredSize(new java.awt.Dimension(500, 800));
+        Infoscherm.setLayout(new java.awt.GridBagLayout());
 
+        jLabel10.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel10.setText("Ei met spek");
+        Infoscherm.add(jLabel10, new java.awt.GridBagConstraints());
 
         jTextArea1.setColumns(20);
+        jTextArea1.setFont(new java.awt.Font("Verdana", 0, 24)); // NOI18N
         jTextArea1.setRows(5);
         jTextArea1.setText("Dit heerlijke gerecht bestaat uit roerei en spek.\nCalorien: 462\nGluten: ja");
         jScrollPane1.setViewportView(jTextArea1);
 
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.BASELINE;
+        Infoscherm.add(jScrollPane1, gridBagConstraints);
+
+        jButton13.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jButton13.setText("Terug");
+        jButton13.setPreferredSize(new java.awt.Dimension(300, 50));
         jButton13.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton13ActionPerformed(evt);
             }
         });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridheight = java.awt.GridBagConstraints.RELATIVE;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.PAGE_END;
+        Infoscherm.add(jButton13, gridBagConstraints);
 
         jLabel5.setText("jLabel5");
-
-        javax.swing.GroupLayout InfoschermLayout = new javax.swing.GroupLayout(Infoscherm);
-        Infoscherm.setLayout(InfoschermLayout);
-        InfoschermLayout.setHorizontalGroup(
-            InfoschermLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(InfoschermLayout.createSequentialGroup()
-                .addGroup(InfoschermLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(InfoschermLayout.createSequentialGroup()
-                        .addGap(39, 39, 39)
-                        .addGroup(InfoschermLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel10)
-                            .addGroup(InfoschermLayout.createSequentialGroup()
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(245, 245, 245)
-                                .addComponent(jLabel5))))
-                    .addGroup(InfoschermLayout.createSequentialGroup()
-                        .addGap(133, 133, 133)
-                        .addComponent(jButton13, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(258, Short.MAX_VALUE))
-        );
-        InfoschermLayout.setVerticalGroup(
-            InfoschermLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(InfoschermLayout.createSequentialGroup()
-                .addGap(31, 31, 31)
-                .addComponent(jLabel10)
-                .addGap(27, 27, 27)
-                .addGroup(InfoschermLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 624, Short.MAX_VALUE)
-                .addComponent(jButton13, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(25, 25, 25))
-        );
+        Infoscherm.add(jLabel5, new java.awt.GridBagConstraints());
 
         jPanel1.add(Infoscherm, "Infoscherm");
         Infoscherm.getAccessibleContext().setAccessibleName("");
@@ -569,11 +537,6 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
     
 
-    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
-        CardLayout card = (CardLayout) jPanel1.getLayout();
-        card.show(jPanel1, "Paneel1");
-    }//GEN-LAST:event_jButton10ActionPerformed
-
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
         CardLayout card = (CardLayout) jPanel1.getLayout();
         card.show(jPanel1, "Paneel2");
@@ -613,6 +576,7 @@ public class GUI extends javax.swing.JFrame {
         CardLayout card = (CardLayout) jPanel1.getLayout();
         card.show(jPanel1, "Paneel3");
         orderPanel.removeAll();
+        
 
         ArrayList<Pair> consumptions = new ArrayList<>();
 
@@ -633,11 +597,15 @@ public class GUI extends javax.swing.JFrame {
         for(Pair<Consumption, Integer> pair : consumptions){
             int price = (pair.getValue() * pair.getKey().getPrice());
             JLabel label = new JLabel(pair.getValue()+"x " + pair.getKey().getConsumtionTitle() + " €" + price );
+            label.setFont(new Font(label.getFont().getName(), Font.PLAIN, 24));
             orderPanel.add(label);
             total += price;
         }
-
-        orderPanel.add(new JLabel("Totaal bedrag: €"+String.valueOf(total)));
+        JLabel label = new JLabel("Totaal bedrag: €"+String.valueOf(total));
+        label.setFont(new Font(label.getFont().getName(), Font.PLAIN, 24));
+        orderPanel.add(label);
+        
+        
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
@@ -662,7 +630,6 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JPanel TafelNummer;
     private javax.swing.JPanel Welkomscherm;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton13;
     private javax.swing.JButton jButton15;
     private javax.swing.JButton jButton16;

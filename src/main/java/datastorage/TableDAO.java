@@ -26,9 +26,8 @@ public class TableDAO extends BaseDAO {
     }
     
 
-    public Table table(int membershipNumber)
+    public Table table(Table table)
     {
-        Table table = null;
         
         // First open a database connnection
         DatabaseConnection connection = super.getDatabaseConnection();
@@ -37,7 +36,7 @@ public class TableDAO extends BaseDAO {
             // If a connection was successfully setup, execute the SELECT statement.
             ResultSet resultset = connection.executeSQLSelectStatement(
                 "UPDATE `table` SET `Pay`= 1 WHERE TableNumber = " + 
-                        //Table.getTableNumber() +
+                        table.getTableNumber() +
                          ";");
 
             if(resultset != null)

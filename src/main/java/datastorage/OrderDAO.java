@@ -11,7 +11,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import domain.Consumption;
 import domain.Order;
-import domain.Status;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -44,7 +43,6 @@ public class OrderDAO extends BaseDAO{
                 } catch (SQLException ex) {
                     Logger.getLogger(OrderDAO.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                System.out.println(orderid);
                 String query = "";
                 query += " INSERT INTO `consumptionorder` (OrderNumber, ConsumptionNumber) VALUES";
                 ArrayList<Consumption> consumptions = order.getConsumtions();
@@ -55,7 +53,6 @@ public class OrderDAO extends BaseDAO{
                 }
                 
                 query += ";";
-                System.out.println(query);
                 result = connection.executeSQLDeleteStatement(
                          "INSERT INTO `order` (StatusNumber, TableNumber) "
                         + "VALUES (1," + order.getTable().getTableNumber() + ");"

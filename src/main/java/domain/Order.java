@@ -17,7 +17,6 @@ public class Order {
     
     private Table table;
     private ArrayList<Consumption> consumptions = new ArrayList<>();
-    private Status status;
 
     public Order(Table table) {
         this.table = table;
@@ -83,17 +82,5 @@ public class Order {
         return result;
     }
 
-    /**
-     * @return the status
-     */
-    public Status getStatus() {
-        return status;
-    }
 
-    /**
-     * @param status the status to set
-     */
-    public void setStatus(Status status) {
-        this.status = status;
-    }
 }
