@@ -132,6 +132,7 @@ public class GUI extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jButton9 = new javax.swing.JButton();
         jButton15 = new javax.swing.JButton();
+        paintPanel1 = new presentation.PaintPanel();
         Infoscherm = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -405,7 +406,10 @@ public class GUI extends javax.swing.JFrame {
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         jLabel7.setText("Uw bestelling is ontvangen en wordt klaargemaakt.");
-        Confirmatiescherm.add(jLabel7, new java.awt.GridBagConstraints());
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        Confirmatiescherm.add(jLabel7, gridBagConstraints);
 
         jButton9.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jButton9.setText("Bestel opnieuw");
@@ -419,7 +423,7 @@ public class GUI extends javax.swing.JFrame {
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridy = 3;
         gridBagConstraints.fill = java.awt.GridBagConstraints.VERTICAL;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.BELOW_BASELINE;
         Confirmatiescherm.add(jButton9, gridBagConstraints);
@@ -436,11 +440,25 @@ public class GUI extends javax.swing.JFrame {
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 3;
-        gridBagConstraints.gridheight = java.awt.GridBagConstraints.RELATIVE;
+        gridBagConstraints.gridy = 4;
         gridBagConstraints.fill = java.awt.GridBagConstraints.VERTICAL;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.BELOW_BASELINE;
         Confirmatiescherm.add(jButton15, gridBagConstraints);
+
+        paintPanel1.setPreferredSize(new java.awt.Dimension(300, 300));
+
+        javax.swing.GroupLayout paintPanel1Layout = new javax.swing.GroupLayout(paintPanel1);
+        paintPanel1.setLayout(paintPanel1Layout);
+        paintPanel1Layout.setHorizontalGroup(
+            paintPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
+        );
+        paintPanel1Layout.setVerticalGroup(
+            paintPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
+        );
+
+        Confirmatiescherm.add(paintPanel1, new java.awt.GridBagConstraints());
 
         jPanel1.add(Confirmatiescherm, "Paneel4");
 
@@ -665,6 +683,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField jTextField1;
     private presentation.Menu menuPanel;
+    private presentation.PaintPanel paintPanel1;
     private java.awt.Panel panel1;
     private java.awt.Panel panel2;
     // End of variables declaration//GEN-END:variables
