@@ -138,6 +138,7 @@ public class GUI extends javax.swing.JFrame {
         jButton15 = new javax.swing.JButton();
         jLabel14 = new javax.swing.JLabel();
         paintPanel1 = new presentation.PaintPanel();
+        jLabel15 = new javax.swing.JLabel();
         Infoscherm = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -419,7 +420,7 @@ public class GUI extends javax.swing.JFrame {
         jLabel7.setText("Uw bestelling is ontvangen en wordt klaargemaakt.");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridy = 1;
         Confirmatiescherm.add(jLabel7, gridBagConstraints);
 
         jButton9.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
@@ -437,6 +438,7 @@ public class GUI extends javax.swing.JFrame {
         gridBagConstraints.gridy = 3;
         gridBagConstraints.fill = java.awt.GridBagConstraints.VERTICAL;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.BELOW_BASELINE;
+        gridBagConstraints.insets = new java.awt.Insets(200, 0, 0, 0);
         Confirmatiescherm.add(jButton9, gridBagConstraints);
 
         jButton15.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
@@ -457,13 +459,24 @@ public class GUI extends javax.swing.JFrame {
         Confirmatiescherm.add(jButton15, gridBagConstraints);
 
         jLabel14.setText("jLabel14");
-        Confirmatiescherm.add(jLabel14, new java.awt.GridBagConstraints());
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.PAGE_START;
+        Confirmatiescherm.add(jLabel14, gridBagConstraints);
 
         paintPanel1.setPreferredSize(new java.awt.Dimension(800, 500));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 5;
+        gridBagConstraints.gridheight = java.awt.GridBagConstraints.RELATIVE;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.PAGE_END;
         Confirmatiescherm.add(paintPanel1, gridBagConstraints);
+
+        jLabel15.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel15.setText("Onder het wachten kunt u een tekening maken.");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
+        Confirmatiescherm.add(jLabel15, gridBagConstraints);
 
         jPanel1.add(Confirmatiescherm, "Paneel4");
 
@@ -686,6 +699,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
