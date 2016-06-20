@@ -97,6 +97,12 @@ public class Menu extends JPanel {
         }
     }
     
+    public void ResetAmount(){
+        for(MenuCategory panel : panels){
+            panel.ResetAmount();
+        }
+    }
+    
     public ArrayList<Consumption> GetConsumptions(){
         ArrayList<Consumption> cons = new ArrayList<>();
         for(MenuCategory panel : panels){

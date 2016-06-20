@@ -128,4 +128,8 @@ public class MenuItem extends JPanel {
         }        
     }
     
+    public void ResetAmount(){
+        amount.setText("0");
+    }
+    
 }

@@ -76,5 +76,11 @@ public class MenuCategory extends JPanel {
         }
         return cons;
     }
+
+    public void ResetAmount() {
+        for(MenuItem item : menuItems){
+            item.ResetAmount();
+        }
+    }
     
 }

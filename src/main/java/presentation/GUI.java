@@ -58,6 +58,7 @@ public class GUI extends javax.swing.JFrame {
         jTextArea1.setText(consumption.getInfo());
         String nameConsumption = consumption.getConsumtionTitle().replaceAll("\\s","_");
         jLabel5.setText("<html><img src='https://googledrive.com/host/" + folderID + "/" + nameConsumption +".png' alt='" + consumption.getConsumtionTitle() + "' width='620' height='220' /></html>");
+        jTextArea1.setCaretPosition(0);
     }
     
     private void initMenu(){
@@ -76,6 +77,8 @@ public class GUI extends javax.swing.JFrame {
         orderPanel.addMouseListener(dl);
         orderPanel.addMouseMotionListener(dl);
         OrderContainer.add(scroll, BorderLayout.CENTER);
+        
+        
         
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
@@ -401,7 +404,7 @@ public class GUI extends javax.swing.JFrame {
         Confirmatiescherm.setLayout(new java.awt.GridBagLayout());
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
-        jLabel7.setText("Uw bestelling is ontvangen. Eet smakelijk!");
+        jLabel7.setText("Uw bestelling is ontvangen en wordt klaargemaakt.");
         Confirmatiescherm.add(jLabel7, new java.awt.GridBagConstraints());
 
         jButton9.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
@@ -497,39 +500,27 @@ public class GUI extends javax.swing.JFrame {
         Infoscherm.getAccessibleContext().setAccessibleName("");
 
         Afrekenscherm.setPreferredSize(new java.awt.Dimension(500, 800));
+        Afrekenscherm.setLayout(new java.awt.GridBagLayout());
 
-        jLabel12.setText("Er komt er komt iemand aan waarbij u kunt betalen");
+        jLabel12.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
+        jLabel12.setText("Er komt er komt een bediende aan waarbij u kunt betalen");
+        Afrekenscherm.add(jLabel12, new java.awt.GridBagConstraints());
 
+        jButton16.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jButton16.setText("Home");
+        jButton16.setPreferredSize(new java.awt.Dimension(300, 50));
         jButton16.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton16ActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout AfrekenschermLayout = new javax.swing.GroupLayout(Afrekenscherm);
-        Afrekenscherm.setLayout(AfrekenschermLayout);
-        AfrekenschermLayout.setHorizontalGroup(
-            AfrekenschermLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(AfrekenschermLayout.createSequentialGroup()
-                .addGroup(AfrekenschermLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(AfrekenschermLayout.createSequentialGroup()
-                        .addGap(81, 81, 81)
-                        .addComponent(jLabel12))
-                    .addGroup(AfrekenschermLayout.createSequentialGroup()
-                        .addGap(143, 143, 143)
-                        .addComponent(jButton16, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(555, Short.MAX_VALUE))
-        );
-        AfrekenschermLayout.setVerticalGroup(
-            AfrekenschermLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(AfrekenschermLayout.createSequentialGroup()
-                .addGap(59, 59, 59)
-                .addComponent(jLabel12)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 725, Short.MAX_VALUE)
-                .addComponent(jButton16)
-                .addGap(46, 46, 46))
-        );
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridheight = java.awt.GridBagConstraints.RELATIVE;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.PAGE_END;
+        gridBagConstraints.insets = new java.awt.Insets(300, 0, 0, 0);
+        Afrekenscherm.add(jButton16, gridBagConstraints);
 
         jPanel1.add(Afrekenscherm, "card8");
 
@@ -556,6 +547,7 @@ public class GUI extends javax.swing.JFrame {
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
         CardLayout card = (CardLayout) jPanel1.getLayout();
         card.show(jPanel1, "Paneel2");
+        menuPanel.ResetAmount();
     }//GEN-LAST:event_jButton9ActionPerformed
 
     private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
