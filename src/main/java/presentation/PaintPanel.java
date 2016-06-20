@@ -11,10 +11,13 @@ import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.event.ActionEvent;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import javax.swing.*;
 
 /**
@@ -27,14 +30,32 @@ public class PaintPanel extends JPanel{
     private int mouseY;
     
     private ArrayList<Paint> locations;
+    private HashMap<String, Color> colors;
+    private Color paintColor = Color.red;
     
     public PaintPanel(){
         init();
     }
     
     private void init(){
-        locations = new ArrayList<>();
+        this.setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
+        this.setBackground(Color.white);
         this.addMouseMotionListener(new Painter());
+        
+        colors = new HashMap<>();
+        colors.put("Black", Color.black);
+        colors.put("White", Color.white);
+        colors.put("Red", Color.red);
+        colors.put("Green", Color.green);
+        colors.put("Blue", Color.blue);
+        locations = new ArrayList<>();
+        for(Map.Entry<String, Color> entry : colors.entrySet()){
+            JButton colorButton = new JButton(entry.getKey());
+            colorButton.addActionListener((ActionEvent e) -> {
+                paintColor = entry.getValue();
+            });
+            add(colorButton);
+        }
     }
     
     @Override
@@ -58,7 +79,7 @@ public class PaintPanel extends JPanel{
         @Override
         public void mouseDragged(MouseEvent e) {
             Vector2 loc = new Vector2(e.getPoint().x, e.getPoint().y);
-            locations.add(new Paint(loc, Color.red));
+            locations.add(new Paint(loc, paintColor));
             repaint();
         }
 
