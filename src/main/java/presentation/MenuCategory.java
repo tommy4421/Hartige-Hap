@@ -46,7 +46,7 @@ public class MenuCategory extends JPanel {
         panel.addMouseMotionListener(dl);
         scroll.setMinimumSize(new Dimension(400, 130));
         scroll.setPreferredSize(scroll.getMinimumSize());
-        JLabel label = new JLabel("<html><div style='position: relative; width: 110px; background: white url(https://googledrive.com/host/" + folderID + "/Categoryheader.png) no-repeat right top;'>"
+        JLabel label = new JLabel("<html><div style='position: relative; width: 110px; background: white url(https://googledrive.com/host/" + folderID + "/Categoryheader1.png) no-repeat right top;'>"
                 + "<h3 style='position: absolute; padding-left: 3px; color: white'>" + name + "</h3>"
                 + "</div></html>");
         add(label);
