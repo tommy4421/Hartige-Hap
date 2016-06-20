@@ -45,12 +45,12 @@ public class Main {
         DatabaseConnection con = new DatabaseConnection( "jdbc:mysql://145.48.6.148/hartige_hap", "IVP4C1", "Koksmuts#4");
         OrderDAO daoOrder = new OrderDAO(con);
         TableDAO daoTable = new TableDAO(con);
-        OrderManager manager = new TestOrderManager(daoOrder,daoTable);
+        OrderManager manager = new OrderManager(daoOrder,daoTable);
         
         ConsumptionDAO daoConsumption = new ConsumptionDAO(con);
         ConsumptionManager conManager = new ConsumptionManager(daoConsumption);
         
-        GUI ui = new GUI(manager, conManager);
+        GUI ui = new GUI(manager, conManager, daoTable);
         ui.setVisible(true);
     }
 }

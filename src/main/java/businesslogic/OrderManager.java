@@ -35,10 +35,6 @@ public class OrderManager {
         daoOrder.add(order);
         return order;
     } 
-    
-    public List<Table> getTables(){
-        return this.daoTable.getTables();
-    }
 
     protected TableDAO getTableDAO(){
         return this.daoTable;

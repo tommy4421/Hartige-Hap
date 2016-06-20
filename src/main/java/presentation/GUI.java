@@ -8,6 +8,7 @@ package presentation;
 import businesslogic.ConsumptionManager;
 import java.awt.CardLayout;
 import businesslogic.OrderManager;
+import datastorage.TableDAO;
 import domain.Consumption;
 import domain.Order;
 import domain.Pair;
@@ -31,6 +32,7 @@ public class GUI extends javax.swing.JFrame {
     private final ArrayList<MenuItem> menuItems = new ArrayList<>();
     private JPanel orderPanel;
     private int tableNumber;
+    private TableDAO tableDao;
     
     public static String folderID = "0BzSX3v-GVetMeDZrTGZJdEFFNFU";
 
@@ -40,9 +42,10 @@ public class GUI extends javax.swing.JFrame {
      * @param manager
      * @param conManager
      */
-    public GUI(OrderManager manager, ConsumptionManager conManager) {
+    public GUI(OrderManager manager, ConsumptionManager conManager, TableDAO tableDao) {
         this.manager = manager;
         this.conManager = conManager;
+        this.tableDao = tableDao;
         initComponents();
         initMenu();
         
@@ -419,13 +422,13 @@ public class GUI extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         jLabel7.setText("Uw bestelling is ontvangen en wordt klaargemaakt.");
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
         Confirmatiescherm.add(jLabel7, gridBagConstraints);
 
         jButton9.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jButton9.setText("Bestel opnieuw");
-        jButton9.setMaximumSize(new java.awt.Dimension(95, 37));
+        jButton9.setMaximumSize(new java.awt.Dimension(300, 50));
         jButton9.setMinimumSize(new java.awt.Dimension(95, 37));
         jButton9.setPreferredSize(new java.awt.Dimension(300, 50));
         jButton9.addActionListener(new java.awt.event.ActionListener() {
@@ -434,16 +437,16 @@ public class GUI extends javax.swing.JFrame {
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 3;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.VERTICAL;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.BELOW_BASELINE;
         gridBagConstraints.insets = new java.awt.Insets(200, 0, 0, 0);
         Confirmatiescherm.add(jButton9, gridBagConstraints);
 
         jButton15.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jButton15.setText("Afrekenen");
-        jButton15.setMaximumSize(new java.awt.Dimension(95, 37));
+        jButton15.setMaximumSize(new java.awt.Dimension(300, 50));
         jButton15.setMinimumSize(new java.awt.Dimension(95, 37));
         jButton15.setPreferredSize(new java.awt.Dimension(300, 50));
         jButton15.addActionListener(new java.awt.event.ActionListener() {
@@ -452,29 +455,33 @@ public class GUI extends javax.swing.JFrame {
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 4;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.VERTICAL;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.BELOW_BASELINE;
         Confirmatiescherm.add(jButton15, gridBagConstraints);
 
         jLabel14.setText("jLabel14");
         gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 0;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.PAGE_START;
         Confirmatiescherm.add(jLabel14, gridBagConstraints);
 
+        paintPanel1.setMaximumSize(new java.awt.Dimension(800, 500));
         paintPanel1.setPreferredSize(new java.awt.Dimension(800, 500));
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 5;
         gridBagConstraints.gridheight = java.awt.GridBagConstraints.RELATIVE;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.PAGE_END;
         Confirmatiescherm.add(paintPanel1, gridBagConstraints);
 
         jLabel15.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel15.setText("Onder het wachten kunt u een tekening maken.");
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 2;
         Confirmatiescherm.add(jLabel15, gridBagConstraints);
 
@@ -597,6 +604,7 @@ public class GUI extends javax.swing.JFrame {
     private void jButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton15ActionPerformed
         CardLayout card = (CardLayout) jPanel1.getLayout();
         card.show(jPanel1, "card8");
+        tableDao.table(new Table(tableNumber));
     }//GEN-LAST:event_jButton15ActionPerformed
 
     private void jButton16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton16ActionPerformed
