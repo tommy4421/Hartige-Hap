@@ -137,6 +137,7 @@ public class GUI extends javax.swing.JFrame {
         jButton9 = new javax.swing.JButton();
         jButton15 = new javax.swing.JButton();
         jLabel14 = new javax.swing.JLabel();
+        paintPanel1 = new presentation.PaintPanel();
         Infoscherm = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -458,6 +459,12 @@ public class GUI extends javax.swing.JFrame {
         jLabel14.setText("jLabel14");
         Confirmatiescherm.add(jLabel14, new java.awt.GridBagConstraints());
 
+        paintPanel1.setPreferredSize(new java.awt.Dimension(800, 500));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 5;
+        Confirmatiescherm.add(paintPanel1, gridBagConstraints);
+
         jPanel1.add(Confirmatiescherm, "Paneel4");
 
         Infoscherm.setPreferredSize(new java.awt.Dimension(500, 800));
@@ -692,6 +699,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField jTextField1;
     private presentation.Menu menuPanel;
+    private presentation.PaintPanel paintPanel1;
     private java.awt.Panel panel1;
     private java.awt.Panel panel2;
     // End of variables declaration//GEN-END:variables
