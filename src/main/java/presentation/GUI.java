@@ -539,7 +539,7 @@ public class GUI extends javax.swing.JFrame {
         Afrekenscherm.setLayout(new java.awt.GridBagLayout());
 
         jLabel12.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
-        jLabel12.setText("Er komt er komt een bediende aan waarbij u kunt betalen");
+        jLabel12.setText("Er komt een bediende aan waarbij u kunt betalen");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
@@ -559,12 +559,7 @@ public class GUI extends javax.swing.JFrame {
         Afrekenscherm.add(jButton16, gridBagConstraints);
 
         jLabel13.setText("jLabel13");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 3;
-        gridBagConstraints.gridwidth = java.awt.GridBagConstraints.RELATIVE;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.BELOW_BASELINE_TRAILING;
-        Afrekenscherm.add(jLabel13, gridBagConstraints);
+        Afrekenscherm.add(jLabel13, new java.awt.GridBagConstraints());
 
         jPanel1.add(Afrekenscherm, "card8");
 
