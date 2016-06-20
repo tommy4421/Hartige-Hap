@@ -1,1 +1,0 @@
-java -Dswing.plaf.metal.controlFont=Dialog-50 main.Main
