@@ -6,7 +6,6 @@
 package datastorage;
 
 import domain.Consumption;
-import domain.Info;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -34,18 +33,13 @@ public class ConsumptionDAO extends BaseDAO {
             if(connection.openConnection())
             {
                 try {
-                    result = connection.executeSQLSelectStatement("SELECT * FROM `consumption` LEFT JOIN `infoscherm` ON consumption.ConsumptionNumber=infoscherm.ConsumptionNumber");
+                    result = connection.executeSQLSelectStatement("SELECT * FROM `consumption`");
                     while(result.next()){
                         int conNumber = result.getInt("ConsumptionNumber");
                         String conName = result.getString("ConsumptionName");
                         int conPrice = result.getInt("ConsumptionPrice");
                         String conType = result.getString("ConsumptionType");
-                        Info conInfo;
-                        String infoDesc = result.getString("Description");
-                        int infoCal = result.getInt("Calories");
-                        String infoAll = result.getString("Allergies");
-                        String infoIng = result.getString("Ingredients");
-                        conInfo = new Info(infoDesc, infoCal, infoAll, infoIng);
+                        String conInfo = result.getString("Info");
                         cons.add(new Consumption(conNumber, conName, conPrice, conType, conInfo));
                     }
                 } catch (SQLException ex) {

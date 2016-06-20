@@ -16,9 +16,9 @@ public class Consumption {
     String consumptionTitle;
     int price;
     String consumptionType;
-    Info info;
+    String info;
     
-    public Consumption(int consumtionNumber, String consumtionTitle, int price, String type, Info consumptionInfo)
+    public Consumption(int consumtionNumber, String consumtionTitle, int price, String type, String consumptionInfo)
     {
         this.consumptionNumber = consumtionNumber;
         this.consumptionTitle = consumtionTitle;
@@ -27,7 +27,7 @@ public class Consumption {
         this.info = consumptionInfo;
     }
     
-    public Info getInfo(){
+    public String getInfo(){
         return info;
     }
 

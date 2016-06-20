@@ -55,8 +55,9 @@ public class GUI extends javax.swing.JFrame {
     
     public void SetInfoConsumption(Consumption consumption){
         jLabel10.setText(consumption.getConsumtionTitle());
-        jTextArea1.setText(consumption.getInfo().getDescription());
-        jLabel5.setText("<html><img src='https://googledrive.com/host/" + folderID + "/" + consumption.getConsumtionTitle()  +".png' alt='" + consumption.getConsumtionTitle() + "' width='940' height='450' /></html>");
+        jTextArea1.setText(consumption.getInfo());
+        String nameConsumption = consumption.getConsumtionTitle().replaceAll("\\s","_");
+        jLabel5.setText("<html><img src='https://googledrive.com/host/" + folderID + "/" + nameConsumption +".png' alt='" + consumption.getConsumtionTitle() + "' width='620' height='220' /></html>");
     }
     
     private void initMenu(){
@@ -443,20 +444,31 @@ public class GUI extends javax.swing.JFrame {
         Infoscherm.setPreferredSize(new java.awt.Dimension(500, 800));
         Infoscherm.setLayout(new java.awt.GridBagLayout());
 
-        jLabel10.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel10.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
         jLabel10.setText("Ei met spek");
-        Infoscherm.add(jLabel10, new java.awt.GridBagConstraints());
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.ipady = 31;
+        Infoscherm.add(jLabel10, gridBagConstraints);
 
+        jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+
+        jTextArea1.setEditable(false);
         jTextArea1.setColumns(20);
         jTextArea1.setFont(new java.awt.Font("Verdana", 0, 24)); // NOI18N
+        jTextArea1.setLineWrap(true);
         jTextArea1.setRows(5);
         jTextArea1.setText("Dit heerlijke gerecht bestaat uit roerei en spek.\nCalorien: 462\nGluten: ja");
+        jTextArea1.setWrapStyleWord(true);
+        jTextArea1.setMaximumSize(new java.awt.Dimension(500, 500));
         jScrollPane1.setViewportView(jTextArea1);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.BASELINE;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.insets = new java.awt.Insets(50, 0, 0, 0);
         Infoscherm.add(jScrollPane1, gridBagConstraints);
 
         jButton13.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
@@ -469,13 +481,17 @@ public class GUI extends javax.swing.JFrame {
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.gridheight = java.awt.GridBagConstraints.RELATIVE;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.PAGE_END;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.SOUTH;
+        gridBagConstraints.insets = new java.awt.Insets(100, 0, 0, 0);
         Infoscherm.add(jButton13, gridBagConstraints);
 
         jLabel5.setText("jLabel5");
-        Infoscherm.add(jLabel5, new java.awt.GridBagConstraints());
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        Infoscherm.add(jLabel5, gridBagConstraints);
 
         jPanel1.add(Infoscherm, "Infoscherm");
         Infoscherm.getAccessibleContext().setAccessibleName("");

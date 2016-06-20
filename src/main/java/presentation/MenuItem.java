@@ -62,6 +62,10 @@ public class MenuItem extends JPanel {
         minusButton.addActionListener(new AmountChangeHandler());
         plusButton.addActionListener(new AmountChangeHandler());
         
+        
+//        minusButton.setPreferredSize(new Dimension(50, 50));
+//        plusButton.setPreferredSize(new Dimension(50, 50));
+        
         info.addActionListener(new InfoButtonHandler());
         
         setLayout(new FlowLayout(FlowLayout.LEFT));
