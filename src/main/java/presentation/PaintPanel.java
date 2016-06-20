@@ -7,8 +7,10 @@ package presentation;
 
 import domain.Paint;
 import domain.Vector2;
+import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
@@ -37,10 +39,16 @@ public class PaintPanel extends JPanel{
     
     @Override
     public void paintComponent(Graphics g) {
-        super.paintComponent(g);
-        for(Paint loc : locations){
-            g.setColor(loc.getColor());
-            g.fillRoundRect(loc.getX(), loc.getY(), 10, 10, 10, 10);
+       super.paintComponent(g);
+       Graphics2D g2 = (Graphics2D) g;
+       g2.setStroke(new BasicStroke(10));
+        if(locations.size() > 0){
+            Paint lastLoc = locations.get(0);
+            for(Paint loc : locations){
+                g2.setColor(loc.getColor());
+                g2.drawLine(lastLoc.getX(), lastLoc.getY(), loc.getX(), loc.getY());
+                lastLoc = loc;
+            }
         }
     }
     
