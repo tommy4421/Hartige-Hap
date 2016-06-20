@@ -33,7 +33,7 @@ public class ConsumptionDAO extends BaseDAO {
             if(connection.openConnection())
             {
                 try {
-                    result = connection.executeSQLSelectStatement("SELECT * FROM `consumption`");
+                    result = connection.executeSQLSelectStatement("SELECT * FROM `consumption` WHERE in_stock = 1");
                     while(result.next()){
                         int conNumber = result.getInt("ConsumptionNumber");
                         String conName = result.getString("ConsumptionName");
