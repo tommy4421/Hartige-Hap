@@ -84,7 +84,9 @@ public class GUI extends javax.swing.JFrame {
         orderPanel.addMouseMotionListener(dl);
         OrderContainer.add(scroll, BorderLayout.CENTER);
         
-        
+        DragScrollListener dsl = new DragScrollListener(jTextArea1);
+        jTextArea1.addMouseListener(dsl);
+        jTextArea1.addMouseMotionListener(dsl);        
         
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
