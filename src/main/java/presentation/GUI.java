@@ -77,7 +77,7 @@ public class GUI extends javax.swing.JFrame {
         orderPanel.setLayout(new BoxLayout(orderPanel, BoxLayout.Y_AXIS));
         OrderContainer.setLayout(new BorderLayout());
         JScrollPane scroll = new JScrollPane(orderPanel);
-        scroll.setMinimumSize(new Dimension(400, 500));
+        scroll.setMinimumSize(new Dimension(400, 300));
         scroll.setPreferredSize(scroll.getMinimumSize());
         DragScrollListener dl = new DragScrollListener(orderPanel);
         orderPanel.addMouseListener(dl);
