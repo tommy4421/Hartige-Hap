@@ -443,7 +443,7 @@ public class GUI extends javax.swing.JFrame {
         gridBagConstraints.gridy = 3;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.BELOW_BASELINE;
-        gridBagConstraints.insets = new java.awt.Insets(200, 0, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(20, 0, 0, 0);
         Confirmatiescherm.add(jButton9, gridBagConstraints);
 
         jButton15.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
@@ -478,6 +478,7 @@ public class GUI extends javax.swing.JFrame {
         gridBagConstraints.gridheight = java.awt.GridBagConstraints.RELATIVE;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.PAGE_END;
+        gridBagConstraints.insets = new java.awt.Insets(10, 0, 0, 0);
         Confirmatiescherm.add(paintPanel1, gridBagConstraints);
 
         jLabel15.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
